@@ -1,3 +1,39 @@
 <h1>Update Pet</h1>
 
+<form action="/pets/<%= @pet.id %>" method="POST">
+  <label>Name:</label>
+  <br></br>
+  <input type="text" name="pet[name]" id="pet_name" value="<%= @pet.name %>">
+  <br></br>
 
+  <label>Owner:</label>
+  <br><br>
+  <% Owner.all.each do |owner| %>
+    <% if @pet.owner == owner %>
+      <input class="checkbox" type="checkbox" name="pet[owner_id]" value="<%= owner.id %>" id="<%= owner.id %>" checked="checked">
+        <%= owner.name %>
+      </input>
+    <% else %>
+      <input class="checkbox" type="checkbox" name="pet[owner_id]" value="<%= owner.id %>" id="<%= owner.id %>">
+        <%= owner.name %>
+      </input>
+    <% end %>
+  <% end %>
+  <br><br>
+
+  <label>Create a New Owner</label>
+  <br><br>
+  <input type="text" name="owner[name]" id="owner_name">
+  <br><br>
+
+  <input type="submit" value="Update Pet">
+
+  <!-- jQuery to uncheck boxes if one is clicked -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <script type="text/javascript">
+    $('input.checkbox').on('change', function() {
+        $('input.checkbox').not(this).prop('checked', false);  
+    });
+  </script>
+
+</form>
