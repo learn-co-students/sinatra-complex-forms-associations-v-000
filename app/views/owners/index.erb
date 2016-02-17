@@ -1,1 +1,9 @@
-index.erb
+<% @owners.each do |owner| %>
+    <h4><a href="/owners/<%= owner.id %>"><%= owner.name %></a></h4>
+    <p>Pets: 
+    <% @owner_pets = owner.pets.collect do |pet| %>
+        <%= pet.name %>
+    <% end %>
+    <%= @owner_pets.join(", ") %>
+    </p>
+<% end %>
