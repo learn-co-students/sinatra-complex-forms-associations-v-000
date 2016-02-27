@@ -1,1 +1,12 @@
-show.erb
+<h1><%=@pet.name%></h1>
+<% @owner=Owner.find_by_id(@pet[:owner_id]) %>
+<h4>Owner: <%=@owner.name%></h4>
+<p>
+<button type="submit" value="edit"><a href="/pets/<%=@pet.id%>/edit">Edit this pet</a></button>
+<form action='/pets/<%=@pet.id%>/delete' method="post">
+  <input id="hidden" type="hidden" name="_method" value="delete">
+  <button type="submit" value="delete">Delete this pet</button>
+</form>
+
+
+
