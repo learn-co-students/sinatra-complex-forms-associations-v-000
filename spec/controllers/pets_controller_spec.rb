@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe "Pets Controller" do
-  describe "new action" do 
+  describe "new action" do
 
     it "can visit '/pets/new'" do
       get '/pets/new'
@@ -33,7 +33,7 @@ describe "Pets Controller" do
       @owner2 = Owner.create(:name => "Chris")
       visit '/pets/new'
       fill_in "pet_name", :with => "Michael"
-      check(@owner1.id)
+      choose(@owner1.id)
       click_button "Create Pet"
       @pet = Pet.last
       expect(@pet.name).to eq("Michael")
@@ -56,20 +56,20 @@ describe "Pets Controller" do
       @owner2 = Owner.create(:name => "Kaitlin")
       visit '/pets/new'
       fill_in "pet_name", :with => "Joeseph"
-      check(@owner2.id)
+      choose(@owner2.id)
       click_button "Create Pet"
       @pet= Pet.last
       expect(page.current_path).to eq("/pets/#{@pet.id}")
     end
   end
 
-  describe "edit action" do 
+  describe "edit action" do
     before(:each) do
       @owner = Owner.create(:name => "Carla")
       @pet = Pet.create(:name => "Chewie", :owner_id => @owner.id)
     end
 
-    it "can visit '/pets/:id/edit' " do 
+    it "can visit '/pets/:id/edit' " do
       get "/owners/#{@pet.id}/edit"
       expect(last_response.status).to eq(200)
     end
@@ -91,7 +91,7 @@ describe "Pets Controller" do
     it "edit's the pet's owner with an existing owner" do
       @adam = Owner.create(:name => "Adam")
       visit "/pets/#{@pet.id}/edit"
-      check(@adam.id)
+      choose(@adam.id)
       click_button "Update Pet"
       expect(Pet.last.owner.name).to eq("Adam")
     end
