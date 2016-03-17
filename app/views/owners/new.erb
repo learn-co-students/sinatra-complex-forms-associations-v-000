@@ -7,7 +7,7 @@
   <br>
   <label>Existing Pets:</label>
   <% Pet.all.each do |pet| %>
-    <label><input type="checkbox" name="owner[pet_ids][]" id="<%= pet.id %>"><%=pet.name %></label>
+    <label><input type="checkbox" name="owner[pet_ids][]" value="<%= pet.id %>" id="<%= pet.id %>"><%=pet.name %></label>
   <% end %>
   <br>
   <label>New Pet:</label>
