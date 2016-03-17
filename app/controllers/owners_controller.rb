@@ -1,3 +1,4 @@
+require 'pry'
 class OwnersController < ApplicationController
 
   get '/owners' do
@@ -10,7 +11,10 @@ class OwnersController < ApplicationController
   end
 
   post '/owners' do 
-    
+    @owner = Owner.new(params[owner][name])
+
+    @owner.save
+    redirect_to "owners/#{@owner.id}"
   end
 
   get '/owners/:id/edit' do 
