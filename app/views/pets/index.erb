@@ -1,1 +1,9 @@
-index.erb
+All Pets:
+
+<%@pets.each do |pet|%>
+  <h1><%=pet.name%></h1>
+  <%if pet.owner_id%>
+  <h4>Owner:<%=pet.owner_id%></h4>
+  <%end%>
+  <h5><a href="/pets/<%=pet.id%>">Show <%=pet.name%></a>
+<%end%>

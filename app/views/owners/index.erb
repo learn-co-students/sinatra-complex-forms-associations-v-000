@@ -1,1 +1,17 @@
-index.erb
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <%@owners.each do |owner|%>
+    <h1><%=owner.name%></h1>
+    <h3><%owner.pets.each do |pet|%></h3>
+        <h4><%=pet.name%></h4>
+        <%end%>
+    <h3><a href="/owners/<%=owner.id%>"><%=owner.name%></a></h5>
+    <%end%>
+
+  </body>
+</html>
