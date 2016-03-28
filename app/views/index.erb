@@ -1,0 +1,10 @@
+<h1>Hello, future cat ladies of America!</h1>
+<a href='/owners'><h2>All Owners</h2></a>
+<% Owner.all.each do |owner| %>
+  <a href='/owners/<%= owner.id %>'><h4><%= owner.name %></h4></a>
+<% end %>
+<a href='/pets'><h2>All Pets</h2></a>
+<% Pet.all.each do |pet| %>
+  <a href='/pets/<%= pet.id %>'><h4><%= pet.name %></h4></a>
+<% end %>
+
