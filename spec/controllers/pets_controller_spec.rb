@@ -1,3 +1,4 @@
+require 'pry'
 require 'spec_helper'
 
 describe "Pets Controller" do
@@ -47,6 +48,7 @@ describe "Pets Controller" do
       click_button "Create Pet"
       @owner = Owner.last
       @pet = Pet.last
+      
       expect(@pet.name).to eq("Pippa")
       expect(@pet.owner.name).to eq("Mary Nelson")
     end
@@ -76,6 +78,7 @@ describe "Pets Controller" do
 
     it " loads form to edit a pet and his owner" do
       visit "/pets/#{@pet.id}/edit"
+      
       expect(page).to have_field('pet[name]')
       expect(page.has_checked_field?(@owner.id)).to eq(true)
       expect(page).to have_field('owner[name]')
