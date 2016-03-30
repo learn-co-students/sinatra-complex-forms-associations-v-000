@@ -1,10 +1,20 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title></title>
+    <title>Sinatra Complex Forms Associations Lab</title>
+    <style>
+      .main-menu {margin: 0; padding: 0; list-style: none;}
+      .main-menu li { display: inline-block; padding: 5px 15px 5px 0;}
+    </style>
   </head>
 
   <body>
+    <ul class="main-menu">
+      <li><a href="/owners">All Owners</a></li>
+      <li><a href="/owners/new">New Owner</a></li>
+      <li><a href="/pets">All Pets</a></li>
+      <li><a href="/pets/new">New Pet</a></li>
+    </ul>
     <%= yield %>
   </body>
 </html>

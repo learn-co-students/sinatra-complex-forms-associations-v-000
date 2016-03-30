@@ -34,6 +34,7 @@ describe "Pets Controller" do
       visit '/pets/new'
       fill_in "pet_name", :with => "Michael"
       check(@owner1.id)
+      save_and_open_page
       click_button "Create Pet"
       @pet = Pet.last
       expect(@pet.name).to eq("Michael")
@@ -91,6 +92,7 @@ describe "Pets Controller" do
     it "edit's the pet's owner with an existing owner" do
       @adam = Owner.create(:name => "Adam")
       visit "/pets/#{@pet.id}/edit"
+      uncheck(@owner.id)
       check(@adam.id)
       click_button "Update Pet"
       expect(Pet.last.owner.name).to eq("Adam")
@@ -98,6 +100,7 @@ describe "Pets Controller" do
 
     it "edit's the pet's owner with a new owner" do
       visit "/pets/#{@pet.id}/edit"
+      uncheck(@owner.id)
       fill_in "owner_name", :with => "Samantha"
       click_button "Update Pet"
       expect(Pet.last.owner.name).to eq("Samantha")
