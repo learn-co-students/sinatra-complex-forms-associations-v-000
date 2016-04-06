@@ -3,6 +3,7 @@ source 'http://rubygems.org'
 gem 'activerecord', :require => 'active_record'
 gem 'sinatra-activerecord', :require => 'sinatra/activerecord'
 
+gem 'shotgun'
 gem 'sinatra'
 gem 'sqlite3'
 gem 'tux'
@@ -22,7 +23,7 @@ gem 'sinatra'
     gem 'thin'
     gem 'shotgun'
     gem 'pry'
-    
+
 group :test do
       gem 'rspec'
       gem 'capybara'
