@@ -1,1 +1,14 @@
-index.erb
+<!DOCTYPE html>
+<html>
+<head>
+  <title>All Pets Index</title>
+</head>
+<body>
+<h1>All the pets</h1>
+<form action="/pets/:id" method="GET">
+  <% @pets.each do |p| %>
+  <a href="/pets/<%="#{p.id}"%>"><%= p.name  %></a><br><br>
+  <% end %>
+  </form>
+</body>
+</html>
