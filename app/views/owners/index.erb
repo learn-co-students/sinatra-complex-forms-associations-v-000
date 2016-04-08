@@ -1,1 +1,14 @@
-index.erb
+<!DOCTYPE html>
+<html>
+<head>
+  <title>All Owners Index</title>
+</head>
+<body>
+<h1>All the Owners</h1>
+<form action="/owners/:id" method="GET">
+  <% @owners.each do |o| %>
+  <a href="/owners/<%="#{o.id}"%>"><%= o.name  %></a><br><br>
+  <% end %>
+  </form>
+</body>
+</html>
