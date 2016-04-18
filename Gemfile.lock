@@ -20,6 +20,7 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    addressable (2.4.0)
     arel (6.0.3)
     bond (0.5.1)
     builder (3.2.2)
@@ -35,6 +36,8 @@ GEM
     eventmachine (1.0.8)
     i18n (0.7.0)
     json (1.8.3)
+    launchy (2.4.3)
+      addressable (~> 2.3)
     method_source (0.8.2)
     mime-types (3.0)
       mime-types-data (~> 3.2015)
@@ -111,6 +114,7 @@ DEPENDENCIES
   activerecord
   capybara
   database_cleaner!
+  launchy
   pry
   pry-nav
   rack-test
@@ -125,4 +129,4 @@ DEPENDENCIES
   tux
 
 BUNDLED WITH
-   1.10.6
+   1.11.2
