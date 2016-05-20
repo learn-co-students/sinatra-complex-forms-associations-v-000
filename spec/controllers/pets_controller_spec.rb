@@ -33,6 +33,7 @@ describe "Pets Controller" do
       @owner2 = Owner.create(:name => "Chris")
       visit '/pets/new'
       fill_in "pet_name", :with => "Michael"
+      binding.pry
       check(@owner1.id)
       click_button "Create Pet"
       @pet = Pet.last
