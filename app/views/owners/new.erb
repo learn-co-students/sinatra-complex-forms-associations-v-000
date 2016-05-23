@@ -6,6 +6,10 @@
   <br></br>
   
   <input type="text" name="owner[name]">
+
+  <%Pet.all.each do |pet|%>
+    <input type="checkbox" name="owner[pet_ids][]" value="<%=pet.id%>" id="<%=pet.id%>"><%=pet.name%></input>
+  <%end%>
   
   <br></br>
   
