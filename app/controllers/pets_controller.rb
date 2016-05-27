@@ -44,7 +44,8 @@ class PetsController < ApplicationController
       @pet.owner_id = @owner.id
       @owner.pets << @pet
     end
-    redirect to "pets/#{@pet.id}"
+    binding.pry
+    #redirect to "pets/#{@pet.id}"
   end
 
 end
