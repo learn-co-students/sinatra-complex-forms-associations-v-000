@@ -1,4 +1,4 @@
-<h1>Create a new Owner</h1>
+<h1>Create a new Owner</h1> <!--- correct -->
 
 <form action="/owners" method="POST">
   <label>Name:</label>
@@ -6,6 +6,8 @@
   <br></br>
   
   <input type="text" name="owner[name]" id="owner_name">
+  <!--- name="owner[name]" means the structure returned is owner =>{:name => whatever value entered} -->
+  
 
   <br></br>
   
@@ -15,8 +17,8 @@
 
   <%Pet.all.each do |pet|%>
     <input type="checkbox" name="owner[pet_ids][]" value="<%=pet.id%>" id="<%=pet.id%>"><%=pet.name%></input>
+    <!-- name="owner[pet_ids][]" value=pet.id returns owner => {pet_ids = [pet.id...]}-->
   <%end%>
-
 
   <br></br>
     <label>and/or, create a new pet:</label>
