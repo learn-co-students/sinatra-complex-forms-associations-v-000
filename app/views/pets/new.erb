@@ -1,2 +1,29 @@
+<!-- pets/new.erb -->
+
 <h1>Create a new Pet</h1>
 
+<form action="/pets" method="POST">
+  <label>Pet Name:</label>
+
+  <br></br>
+  <input type="text" name="pet[name]" id="pet_name"> <!--#This creates the box for name -->
+  <br></br>
+
+  <label>Choose an existing owner:</label>
+  <br></br>
+
+  <%Owner.all.each do |owner|%> <!-- This block ynamically generate checkboxes -->
+      <input type="checkbox" name="pet[owner_id]" value="<%=owner.id%>" id="<%=owner.id%>"><%=owner.name%></input>
+<!--name="pet[owner_id][]  owner_id is singular -->
+  <%end%>
+  <br></br>
+<br></br>
+  <label>... and/or, create a new owner:</label>
+  <br></br>
+  <label>Owner Name:</label>
+  <br></br>
+    <input type="text" name="owner[name]" id="owner_name"></input>
+
+  <br></br>
+  <input type="submit" value="Create Pet">
+</form>
