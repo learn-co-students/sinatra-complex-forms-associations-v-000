@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe "Pets Controller" do
-  describe "new action" do 
+  describe "new action" do
 
     it "can visit '/pets/new'" do
       get '/pets/new'
@@ -10,7 +10,8 @@ describe "Pets Controller" do
 
     it " loads form to create a new pet" do
       visit '/pets/new'
-      expect(page).to have_field('pet[name]')
+      ##I think here the field name it's not same as with the bottom so i edit it the old pet[name]
+      expect(page).to have_field('pet_name')
     end
 
     it "has a form with a checkbox for existing owners" do
@@ -63,22 +64,22 @@ describe "Pets Controller" do
     end
   end
 
-  describe "edit action" do 
+  describe "edit action" do
     before(:each) do
       @owner = Owner.create(:name => "Carla")
       @pet = Pet.create(:name => "Chewie", :owner_id => @owner.id)
     end
 
-    it "can visit '/pets/:id/edit' " do 
+    it "can visit '/pets/:id/edit' " do
       get "/owners/#{@pet.id}/edit"
       expect(last_response.status).to eq(200)
     end
 
     it " loads form to edit a pet and his owner" do
       visit "/pets/#{@pet.id}/edit"
-      expect(page).to have_field('pet[name]')
+      expect(page).to have_field('pet_name')
       expect(page.has_checked_field?(@owner.id)).to eq(true)
-      expect(page).to have_field('owner[name]')
+      expect(page).to have_field('owner_name')
     end
 
      it "edit's the pet's name" do
