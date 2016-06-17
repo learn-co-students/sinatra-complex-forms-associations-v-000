@@ -13,13 +13,11 @@ class PetsController < ApplicationController
     @pet = Pet.create(params[:pet])
     @owner = Owner.find_by_id(params[:owner][:id])
     if @owner
-      @pet.owner_id = @owner.id
       @owner.pets << @pet
     else
       @owner = Owner.create(name: params[:owner][:name])
       @owner.save
       @pet.owner_id = @owner.id
-      @owner.pets << @pet
     end
     @pet.save
     redirect to "pets/#{@pet.id}"
@@ -38,15 +36,13 @@ class PetsController < ApplicationController
   post '/pets/:id' do
     @pet = Pet.find_by_id(params[:id])
     @pet.update(params[:pet])
-    @owner = Owner.find_by_id(params[:owner][:id])
-    if @owner
-      @pet.owner_id = @owner.id
+    if !params[:owner][:id].empty?
+      @owner = Owner.find_by_id(params[:owner][:id])
       @owner.pets << @pet
     else
       @owner = Owner.create(name: params[:owner][:name])
       @owner.save
       @pet.owner_id = @owner.id
-      @owner.pets << @pet
     end
     redirect to "pets/#{@pet.id}"
   end
