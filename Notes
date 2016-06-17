@@ -1,0 +1,4 @@
+Notes
+
+If its checked, then its going to be the id so you can search for that owner id. 
+Owner.find_by_id(params[:owner][:id])
