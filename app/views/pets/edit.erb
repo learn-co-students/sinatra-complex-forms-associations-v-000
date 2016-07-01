@@ -1,3 +1,14 @@
 <h1>Update Pet</h1>
 
+<!--
+it " loads form to edit a pet and his owner" do
+  visit "/pets/#{@pet.id}/edit"
+  expect(page).to have_field('pet[name]')
+  expect(page.has_checked_field?(@owner.id)).to eq(true)
+  expect(page).to have_field('owner[name]')
+end -->
+        <!-- processin will take place at pets/id-->
+<form method="post" action="/pets/<%=@pet.id%>">
+    Name: <input type="text" name="pet[name]"   value="<%=@pet.name%>">
 
+</form>
