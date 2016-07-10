@@ -1,7 +1,7 @@
 <h1><%=@pet.name%></h1>
 <h4>Owner:</h4>
 <ul>
-  <%@pet.owner.each do |owner|%>
+  <%@pets.owner.each do |owner|%>
   <li><%=owner.name%></li>
   <%end%>
 </ul>
