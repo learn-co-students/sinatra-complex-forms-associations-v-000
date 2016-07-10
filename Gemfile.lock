@@ -117,7 +117,6 @@ DEPENDENCIES
   rack-test
   rake
   require_all
-  ripl-rack
   rspec
   shotgun
   sinatra
