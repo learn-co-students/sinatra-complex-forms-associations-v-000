@@ -14,3 +14,5 @@ gem 'sinatra-activerecord', :require => 'sinatra/activerecord'
 gem 'sqlite3'
 gem 'thin'
 gem 'tux'
+gem 'capybara'
+gem "ripl-rack"
