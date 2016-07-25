@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe "Pets Controller" do
-  describe "new action" do 
+  describe "new action" do
 
     it "can visit '/pets/new'" do
       get '/pets/new'
@@ -24,7 +24,7 @@ describe "Pets Controller" do
 
     it "has a field for creating a new owner" do
       visit '/pets/new'
-      expect(page).to have_field(:owner_name)
+      expect(page).to have_field('owner[name]')
     end
 
 
@@ -32,7 +32,7 @@ describe "Pets Controller" do
       @owner1 = Owner.create(:name => "Cricky")
       @owner2 = Owner.create(:name => "Chris")
       visit '/pets/new'
-      fill_in "pet_name", :with => "Michael"
+      fill_in "pet[name]", :with => "Michael"
       check(@owner1.id)
       click_button "Create Pet"
       @pet = Pet.last
@@ -42,8 +42,8 @@ describe "Pets Controller" do
 
       it " creates a new pet and a new owner" do
       visit '/pets/new'
-      fill_in "pet_name", :with => "Pippa"
-      fill_in "owner_name", :with => "Mary Nelson"
+      fill_in "pet[name]", :with => "Pippa"
+      fill_in "owner[name]", :with => "Mary Nelson"
       click_button "Create Pet"
       @owner = Owner.last
       @pet = Pet.last
@@ -55,7 +55,7 @@ describe "Pets Controller" do
       @owner1 = Owner.create(:name => "Kristi")
       @owner2 = Owner.create(:name => "Kaitlin")
       visit '/pets/new'
-      fill_in "pet_name", :with => "Joeseph"
+      fill_in "pet[name]", :with => "Joeseph"
       check(@owner2.id)
       click_button "Create Pet"
       @pet= Pet.last
@@ -63,13 +63,13 @@ describe "Pets Controller" do
     end
   end
 
-  describe "edit action" do 
+  describe "edit action" do
     before(:each) do
       @owner = Owner.create(:name => "Carla")
       @pet = Pet.create(:name => "Chewie", :owner_id => @owner.id)
     end
 
-    it "can visit '/pets/:id/edit' " do 
+    it "can visit '/pets/:id/edit' " do
       get "/owners/#{@pet.id}/edit"
       expect(last_response.status).to eq(200)
     end
