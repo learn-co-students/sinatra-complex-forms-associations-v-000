@@ -2,27 +2,21 @@
 
 <form action="/owners" method="POST">
   <label>Name:</label>
-
   <br></br>
-
   <input type="text" name="owner[name]" id="owner_name">
-
   <br></br>
-
   <label>Choose an existing pet:</label>
-
   <br></br>
-
-  <%Pet.all.each do |pet|%>
+ <%Pet.all.each do |pet|%> <!-- select existing pets to associate with that new owner at the same time. -->
+     <!-- list of checkboxes for all of the pets that are currently in our database -->
     <input type="checkbox" name="owner[pet_ids][]" id="<%=pet.id%>" value="<%=pet.id%>"><%=pet.name%></input>
+    <!-- when that checkbox is selected, its value, i.e., the pet's ID, is what gets sent through to the params hash. -->
   <%end%>
-
   <br></br>
-
-    <label>and/or, create a new pet:</label>
+  <label>and/or, create a new pet:</label>
+  <br></br>
+  <label>name:</label>
+    <input type="text" name="pet[name]" id="pet_name">
     <br></br>
-    <label>name:</label>
-      <input  type="text" name="pet[name]">
-    <br></br>
-  <input type="submit" value="Create Owner">
+    <input type="submit" value="Create Owner">
 </form>
