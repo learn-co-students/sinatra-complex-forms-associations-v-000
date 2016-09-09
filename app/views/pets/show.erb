@@ -1,1 +1,7 @@
-show.erb
+<h1>Pet: <%=@pet.name%></h1>
+ <br></br>
+ <%Owner.all.each do |owner|%>
+  <%if owner.pets.include?(@pet)%>
+    <h2>Owner: <%=owner.name%></h2>
+    <%end%>
+    <%end%>
