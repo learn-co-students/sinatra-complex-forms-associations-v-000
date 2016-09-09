@@ -10,7 +10,16 @@ class PetsController < ApplicationController
   end
 
   post '/pets' do 
-
+    # want to create a new pet based on params
+    @pet = Pet.create(params[:pet])
+    if !params["owner"]["name"].empty? # meaning its not empty - meaning you are creating the owner now
+      owner = Owner.create(name: params["owner"]["name"])
+      @pet.owner_id = owner.id
+    else 
+      owner_id = params["owner"]["owner_ids"].join.to_i
+      @pet.owner_id = owner_id 
+    end
+    @pet.save
     redirect to "pets/#{@pet.id}"
   end
 
@@ -19,8 +28,18 @@ class PetsController < ApplicationController
     erb :'/pets/show'
   end
 
-  post '/pets/:id' do 
+  get '/pets/:id/edit' do 
+    @pet = Pet.find(params[:id])
+    erb :'pets/edit'
+  end
 
+  post '/pets/:id' do 
+    @pet = Pet.find(params[:id])
+    @pet.update(params["pet"])
+
+    if !params["owner"]["name"].empty?
+      @pets.owner << Owner.create(name: params["owmer"]["name"])
+    end
     redirect to "pets/#{@pet.id}"
   end
 end
