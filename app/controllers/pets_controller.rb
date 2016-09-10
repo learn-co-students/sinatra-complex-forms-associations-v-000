@@ -1,3 +1,5 @@
+require 'pry'
+
 class PetsController < ApplicationController
 
   get '/pets' do
@@ -28,18 +30,22 @@ class PetsController < ApplicationController
     erb :'/pets/show'
   end
 
-  get '/pets/:id/edit' do 
+  get '/pets/:id/edit' do
     @pet = Pet.find(params[:id])
     erb :'pets/edit'
   end
 
   post '/pets/:id' do 
-    @pet = Pet.find(params[:id])
-    @pet.update(params["pet"])
 
-    if !params["owner"]["name"].empty?
-      @pets.owner << Owner.create(name: params["owmer"]["name"])
+    @pet = Pet.find(params[:pet])
+    @pet.update(params["pet"])
+ 
+    if params["owner"]["owner_ids"]
+      @pet.owner_id = params["owner"]["owner_ids"].join.to_i
     end
+    @pet.save
     redirect to "pets/#{@pet.id}"
   end
 end
+
+#need to ask an expert how i can binding pry and get to the bottom of this
