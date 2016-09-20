@@ -3,6 +3,10 @@
 
   Name: <input type="text" name="pet[name]" id="pet_name" value="<%=@pet.name%>">
   <br></br>
+
+  Updating the owner will only work if ONE checkbox is clicked!
+  <br></br>
+
   <%Owner.all.each do |owner|%>
     <input type="checkbox" name="owner[name]" id="<%=owner.id%>" value="<%=owner.name%>" <%='checked' if @pet.owner == owner %>><%=owner.name%></input>
   <%end%>
