@@ -1,7 +1,8 @@
 require 'spec_helper'
+require 'pry'
 
 describe "Pets Controller" do
-  describe "new action" do 
+  describe "new action" do
 
     it "can visit '/pets/new'" do
       get '/pets/new'
@@ -35,6 +36,7 @@ describe "Pets Controller" do
       fill_in "pet_name", :with => "Michael"
       check(@owner1.id)
       click_button "Create Pet"
+
       @pet = Pet.last
       expect(@pet.name).to eq("Michael")
       expect(@pet.owner.name).to eq("Cricky")
@@ -63,20 +65,20 @@ describe "Pets Controller" do
     end
   end
 
-  describe "edit action" do 
+  describe "edit action" do
     before(:each) do
       @owner = Owner.create(:name => "Carla")
       @pet = Pet.create(:name => "Chewie", :owner_id => @owner.id)
     end
 
-    it "can visit '/pets/:id/edit' " do 
+    it "can visit '/pets/:id/edit' " do
       get "/owners/#{@pet.id}/edit"
       expect(last_response.status).to eq(200)
     end
 
     it " loads form to edit a pet and his owner" do
       visit "/pets/#{@pet.id}/edit"
-      expect(page).to have_field('pet[name]')
+      expect(page).to have_field('pet_name')
       expect(page.has_checked_field?(@owner.id)).to eq(true)
       expect(page).to have_field('owner[name]')
     end
