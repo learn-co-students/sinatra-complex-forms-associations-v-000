@@ -9,7 +9,7 @@
 
   <br></br>
 
-  <% Pet. each do |pet| %>
+  <% Pet.each do |pet| %>
   <input type="checkbox" name="owner[pet_ids][]" value="<%=pet.id%>" id="<%=pet.id%>"><%pet.name%></input>
   <%end%>
   <label>and/or, create a new pet:</label>
