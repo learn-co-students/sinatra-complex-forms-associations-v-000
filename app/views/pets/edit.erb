@@ -5,8 +5,15 @@
   <label>Name:</label><br><br>
   <input type="text" name="pet[name]" value="<%=@pet.name%>" id="pet_name"><br><br>
   <label>Select an owner: </label><br><br>
-  <input type="checkbox" name="owner[name]" value="<%=@pet.owner.id%>" id=<%=@pet.owner.id%>><%=@pet.owner.name%></input>
+
+  <%Owner.all.each do |owner|%>
+    <input type="checkbox" name="pet[owner_id]" value="<%=owner.id%>" id=<%=owner.id%>><%=owner.name%></input>
+    <%end%>
   <br><br>
+
+  And/or creat a new owner:
+  <br><br>
+  <input type="text" name="[owner][name]" value="" id="owner_name">
   <input type="submit"  value="Update Pet">
 
 </form>
