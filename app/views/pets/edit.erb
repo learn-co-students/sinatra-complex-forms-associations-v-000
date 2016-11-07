@@ -1,3 +1,4 @@
+#pets/edit.erb
 <h1>Update Pet</h1>
 
 
@@ -7,13 +8,13 @@
   <label>Select an owner: </label><br><br>
 
   <%Owner.all.each do |owner|%>
-    <input type="checkbox" name="pet[owner_id]" value="<%=owner.id%>" id=<%=owner.id%>><%=owner.name%></input>
+    <input type="checkbox" name="pet[owner_id]" value="<%=owner.id%>" <%= 'checked' if @pet.owner == owner%> id=<%=owner.id%>><%=owner.name%></input>
     <%end%>
   <br><br>
 
   And/or creat a new owner:
   <br><br>
-  <input type="text" name="[owner][name]" value="" id="owner_name">
+  <input type="text" name="owner[name]" value="" id="owner_name">
   <input type="submit"  value="Update Pet">
 
 </form>
