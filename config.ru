@@ -11,4 +11,11 @@ Dir[File.join(File.dirname(__FILE__), "app/controllers", "*.rb")].collect {|file
   use class_name
 end
 use Rack::MethodOverride
+
+require_relative 'app/controllers/application_controller'
+require_relative 'app/controllers/owners_controller'
+require_relative 'app/controllers/pets_controller'
+
+use PetsController
+use OwnersController
 run ApplicationController
