@@ -1,7 +1,8 @@
 require 'spec_helper'
+require 'pry'
 
 describe "Pets Controller" do
-  describe "new action" do 
+  describe "new action" do
 
     it "can visit '/pets/new'" do
       get '/pets/new'
@@ -16,6 +17,7 @@ describe "Pets Controller" do
     it "has a form with a checkbox for existing owners" do
       @owner1 = Owner.create(:name => "Cricky")
       @owner2 = Owner.create(:name => "Chris")
+      #binding.pry
 
       visit '/pets/new'
       expect(page.has_unchecked_field?(@owner1.id)).to eq(true)
@@ -63,13 +65,13 @@ describe "Pets Controller" do
     end
   end
 
-  describe "edit action" do 
+  describe "edit action" do
     before(:each) do
       @owner = Owner.create(:name => "Carla")
       @pet = Pet.create(:name => "Chewie", :owner_id => @owner.id)
     end
 
-    it "can visit '/pets/:id/edit' " do 
+    it "can visit '/pets/:id/edit' " do
       get "/owners/#{@pet.id}/edit"
       expect(last_response.status).to eq(200)
     end
@@ -90,6 +92,7 @@ describe "Pets Controller" do
 
     it "edit's the pet's owner with an existing owner" do
       @adam = Owner.create(:name => "Adam")
+      #binding.pry
       visit "/pets/#{@pet.id}/edit"
       check(@adam.id)
       click_button "Update Pet"
