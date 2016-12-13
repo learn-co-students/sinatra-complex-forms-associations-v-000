@@ -1,1 +1,9 @@
 <h1>Update Pet</h1>
+<form method="post" action="/pets/<%=@pet.id%>">
+  <p>name: </p>
+  <input type="text" value="<%=@pet.name%>" name="pet[name]" id="pet[name]"/>
+  <p>owner: </p>
+  <input type="text" value="<%=@pet.owner.name%>" name="owner[name]"/>
+
+  <input type="submit" value="submit" id="submit"/>
+</form>
