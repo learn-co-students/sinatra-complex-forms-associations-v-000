@@ -39,7 +39,8 @@ class OwnersController < ApplicationController
     def create_pets(params, owner)
       if params[:pet][:name] != ""
         Pet.create(name: params[:pet][:name], owner_id: @owner.id)
-      elsif params[:owner][:pet_ids]
+      end
+      if params[:owner][:pet_ids]
 
         params[:owner][:pet_ids].each do |pet_id|
           pet = Pet.find(pet_id)
