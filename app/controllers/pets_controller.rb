@@ -19,7 +19,7 @@ class PetsController < ApplicationController
       params[:pet][:owner_id] = @owner.id
     end
     @pet = Pet.create(params[:pet])
-    redirect to "pets/#{@pet.id}"
+    redirect to "/pets/#{@pet.id}"
   end
 
   get '/pets/:id' do
@@ -35,6 +35,6 @@ class PetsController < ApplicationController
   post '/pets/:id' do
     @pet = Pet.find(params[:id])
     @pet.update(params["pet"])
-    redirect to "pets/#{@pet.id}"
+    redirect to "/pets/#{@pet.id}"
   end
 end
