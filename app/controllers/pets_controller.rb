@@ -11,11 +11,13 @@ class PetsController < ApplicationController
 
   post '/pets' do
     @pet= Pet.create(params[:pet])
-    @pet.owner = Owner.find_by_id(params[:pet][:owner_id][0])
+    if params[:pet][:owner_id]
+      @pet.owner = Owner.find_by_id(params[:pet][:owner_id])
+    end
     @pet.save
     if params[:owner][:name].size > 0
 
-      @pet.owner = Owner.create(name: params["owner"]["name"][0])
+      @pet.owner = Owner.create(name: params["owner"]["name"])
       @pet.save
     end
     redirect to "pets/#{@pet.id}"
@@ -27,7 +29,15 @@ class PetsController < ApplicationController
   end
 
   post '/pets/:id' do
-
+    @pet = Pet.find_by_id(params[:id])
+    @pet.update(params["pet"])
+    @pet.owner = Owner.create(name: params["owner"]["name"]) if params["owner"]["name"] != ""
+    @pet.save
     redirect to "pets/#{@pet.id}"
   end
+
+  get '/pets/:id/edit' do
+   @pet = Pet.find(params[:id])
+   erb :'/pets/edit'
+ end
 end
