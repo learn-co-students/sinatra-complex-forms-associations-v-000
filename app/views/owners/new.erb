@@ -1,13 +1,34 @@
 <h1>Create a new Owner</h1>
 
 <form action="/owners" method="POST">
-  <label>Name:</label>
-  
+  <label>Owner Name:</label> <!--label-->
+
   <br></br>
-  
-  <input type="text" name="owner[name]">
-  
+
+  <input type="text" name="owner[name]"> <!--field-->
+
   <br></br>
-  
-  <input type="submit" value="Create Owner">
+
+<h3>Choose an existing pet</h3>
+
+<%@pets.each do |pet|%>
+    <input type="checkbox" name="owner[pet_ids][]" value="<%=pet.id%>" id="<%=pet.id%>"><%=pet.name%></input>
+<%end%>
+<br>
+<br>
+<h3>And/or, create a new pet:</h3>
+    <label>New pet name:</label>
+      <input  type="text" name="pet[name]"></input>
+    <br></br>
+    <p><input type="submit" value="Create Owner"></p>  <!--button-->
 </form>
+<!--The checkbox has a name of "owner[pet_ids][]" because we want to structure our params hash so the array of pet IDs is stored inside the "owner" hash. We want to associate the pets that have these IDs with the new owner.
+
+(Entered Daniel for owner, and checked "Maddy" and "Nona" from checkboxes):
+[1] pry(#<OwnersController>)>  params
+=> {"owner"=>{"name"=>"Daniel", "pet_ids"=>["1", "2"]}}
+
+
+Pet.all returns:
+=> [#<Pet:0x00000003350428 id: 1, name: "Maddy", owner_id: 1>,
+ #<Pet:0x00000003350248 id: 2, name: "Nona", owner_id: 1>]-->
