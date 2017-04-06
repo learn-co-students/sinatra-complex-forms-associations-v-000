@@ -5,4 +5,4 @@ class CreatePetsTable < ActiveRecord::Migration
       t.integer :owner_id
     end
   end
-end
+end 

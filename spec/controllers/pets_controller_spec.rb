@@ -10,7 +10,7 @@ describe "Pets Controller" do
 
     it " loads form to create a new pet" do
       visit '/pets/new'
-      expect(page).to have_field('pet[name]')
+      expect(page).to have_field('pet_name')
     end
 
     it "has a form with a checkbox for existing owners" do
