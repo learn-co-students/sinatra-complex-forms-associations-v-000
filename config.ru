@@ -1,4 +1,6 @@
 require_relative './config/environment'
+require_relative 'app/controllers/owners_controller'
+require_relative 'app/controllers/pets_controller'
 
 if ActiveRecord::Migrator.needs_migration?
   raise 'Migrations are pending. Run `rake db:migrate` to resolve the issue.'
@@ -10,5 +12,8 @@ Dir[File.join(File.dirname(__FILE__), "app/controllers", "*.rb")].collect {|file
   class_name = Object.const_get(string_class_name)
   use class_name
 end
+
 use Rack::MethodOverride
+use OwnersController
+use PetsController
 run ApplicationController
