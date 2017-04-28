@@ -14,7 +14,7 @@
   <br></br>
 
   <%@owners.each do |owner|%>
-    <input type="checkbox" name="pet[owner_id]" id="<%=owner.name%>" value="<%=owner.id%>"><%=owner.name%></input>
+    <input type="checkbox" name="pet[owner_id]" id="<%=owner.id%>" value="<%=owner.id%>"><%=owner.name%></input>
   <%end%>
 
   <br></br>
@@ -26,5 +26,3 @@
     <br></br>
   <input type="submit" value="Create Pet">
 </form>
-
-
