@@ -38,5 +38,3 @@ class PetsController < ApplicationController
   end
 
 end
-
-# => When I edit a pet by adding a new owner, the new owner gets created but doesn't get associated with the pet that I'm trying to connect them to.
