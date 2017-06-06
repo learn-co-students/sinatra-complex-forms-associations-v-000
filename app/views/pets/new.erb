@@ -5,15 +5,15 @@
   <input id="pet_name" type="text" name="pet[name]"></br>
 
   <% @owners.each do |owner| %>
-    <input id="<%= owner.id %>" value="<%= owner.id %>" type="radio" name="pet[owner_id][]">
+    <input id="<%= owner.id %>" value="<%= owner.id %>" type="checkbox" name="pet[owner_id][]">
       <%= owner.name %>
     </input>
   <% end %>
 
   </br>
 
-  <label for="new_owner">or, create a new owner</label></br>
-  <input id="new_owner" type="text" name="owner[name]"></br>
+  <label for="owner_name">or, create a new owner</label></br>
+  <input id="owner_name" type="text" name="owner[name]"></br>
 
   <input type="submit" value="Create Pet">
 </form>
