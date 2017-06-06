@@ -6,7 +6,7 @@
 
   <label>Owner verification</label>
   <% Owner.all.each do |owner| %>
-    <input id="<%= owner.id %>" value="<%= owner.id %>" type="radio" name="pet[owner_id][]" <%= 'checked' if @pet.owner == owner %>>
+    <input id="<%= owner.id %>" value="<%= owner.id %>" type="radio" name="pet[owner_id]" <%= 'checked' if @pet.owner == owner %>>
       <%= owner.name %>
     </input>
   <% end %>
