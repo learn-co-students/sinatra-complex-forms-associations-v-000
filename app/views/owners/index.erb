@@ -1,1 +1,19 @@
-index.erb
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>Pet Owners List</title>
+  <link rel="stylesheet" href="stylesheets/style.css" type="text/css">
+ </head>
+ <body>
+  <h1> Pet Owners </h1>
+  <% if @owners.size > 0%>
+    <% @owners.each do |owner| %>
+      <a href="http://138.197.214.116:30005/owners/<%=owner.id%>"><%=owner.name%></a><br>
+    <% end %>
+    <br><br><a href="http://138.197.214.116:30005/owners/new">Add A New Owner</a><br>
+  <%else%>
+  <h2>There are no pet owners to display!</h2>
+  <%end%>
+ </body>
+</html>

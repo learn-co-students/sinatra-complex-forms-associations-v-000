@@ -1,1 +1,19 @@
-index.erb
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>Pets List</title>
+  <link rel="stylesheet" href="stylesheets/style.css" type="text/css">
+ </head>
+ <body>
+  <h1> Pets </h1>
+  <% if @pets.size > 0%>
+    <% @pets.each do |pet| %>
+      <a href="http://138.197.214.116:30005/pets/<%=pet.id%>"><%=pet.name%></a><br>
+    <% end %>
+    <br><br><a href="http://138.197.214.116:30005/pets/new">Add A New Pet</a><br>
+  <%else%>
+  <h2>There are no pes to display!</h2>
+  <%end%>
+ </body>
+</html>
