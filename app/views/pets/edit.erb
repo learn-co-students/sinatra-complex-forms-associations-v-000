@@ -1,3 +1,23 @@
 <h1>Update Pet</h1>
 
+<form method="post" action="/pets/<%=@id%>">
 
+<label for"pet[name]">Pet's Name:</label>
+<input type="text" name="pet[name]" id="pet_name" value = "<%=Pet.find(@id).name%>">
+
+<p>Select an owner </p>
+<select name="pet[owner_id]" id="pet[owner_id]">
+  <%@owners.each {|owner|%>
+                    <option name="<%=owner.id%>" id="<%=owner.id%>" value="<%=owner.id%>" \
+                    <%if owner.name == Pet.find(@id).owner.name %>
+                    selected \
+                    <%end%> 
+                    ><%=owner.name%></option>
+<%}%>
+</select>
+
+<p>Or create a new owner (Filling this out will nullify any entries above)</p>
+<input type="text" name="owner[name]" id="owner_name">
+<br><br>
+<input type="submit" name="Update Pet" id="Update Pet" value="Update">
+</form>
