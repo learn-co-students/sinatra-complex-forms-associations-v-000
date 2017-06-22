@@ -36,6 +36,7 @@ describe "Pets Controller" do
       check(@owner1.id)
       click_button "Create Pet"
       @pet = Pet.last
+      binding.pry
       expect(@pet.name).to eq("Michael")
       expect(@pet.owner.name).to eq("Cricky")
     end
