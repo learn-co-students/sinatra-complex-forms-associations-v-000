@@ -10,7 +10,7 @@
   <br></br>
 
   <%@owners.each do |owner|%>
-	<input type="checkbox" name="owner[pet_ids][]" id="<%= owner.id %>" value="<%=owner.id%>"><%=owner.name%></input>
+	<input type="checkbox" name="owner[name][]" id="<%=owner.id %>" value="<%=owner.id%><%=owner.name%>"><%=owner.name%></input>
   <%end%>
 
   <br></br>
