@@ -18,6 +18,7 @@ describe "Pets Controller" do
       @owner2 = Owner.create(:name => "Chris")
 
       visit '/pets/new'
+
       expect(page.has_unchecked_field?(@owner1.id)).to eq(true)
       expect(page.has_unchecked_field?(@owner2.id)).to eq(true)
     end
@@ -70,7 +71,7 @@ describe "Pets Controller" do
     end
 
     it "can visit '/pets/:id/edit' " do
-      get "/owners/#{@pet.id}/edit"
+      get "/pets/#{@pet.id}/edit"
       expect(last_response.status).to eq(200)
     end
 
