@@ -11,7 +11,7 @@
 
   <%Owner.all.each do |owner|%>
     <input type="radio" name="pet[owner_id]" id="<%=owner.id%>" value="<%=owner.id%>" <%= 'checked' if @pet.owner.name == owner.name %>><%=owner.name%></input>
-<!--note the comparable for the petowner's name to owner's name in the db-->
+    <!--note the comparable for the petowner's name to owner's name in the db-->
   <%end%>
 
   <br></br>
