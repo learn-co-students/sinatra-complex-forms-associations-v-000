@@ -2,12 +2,33 @@
 
 <form action="/owners" method="POST">
   <label>Name:</label>
-  
+
   <br></br>
-  
-  <input type="text" name="owner[name]">
-  
+
+  <input type="text" name="owner[name]" id="owner_name">
+
   <br></br>
-  
-  <input type="submit" value="Create Owner">
+
+  <label>Choose an existing pet:</label>
+
+  <br></br>
+
+  <!--Creates checkboxes of Pet names
+  Built a form that dynamically generates checkboxes for each of the existing pets.-->
+  <%Pet.all.each do |pet|%>
+    <input type="checkbox" name="owner[pet_ids][]" id="<%=pet.id%>" value="<%=pet.id%>"><%=pet.name%></input>
+    <%end%>
+
+  <br></br>
+
+  <!--section for creating a new pet at the bottom of the form
+  Added a field to that form in which a user can fill out the name for a brand new pet.-->
+  <label>and/or, create a new pet:</label>
+  <br></br>
+  <label>name:</label>
+    <!--and we've given that input field a name of pet[name]-->
+    <input  type="text" name="pet[name]"></input>
+  <br></br>
+
+    <input type="submit" value="Create Owner">
 </form>
