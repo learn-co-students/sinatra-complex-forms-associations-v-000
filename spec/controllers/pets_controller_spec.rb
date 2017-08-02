@@ -1,5 +1,5 @@
 require 'spec_helper'
-
+require 'pry'
 describe "Pets Controller" do
   describe "new action" do
 
@@ -38,6 +38,7 @@ describe "Pets Controller" do
       @pet = Pet.last
       expect(@pet.name).to eq("Michael")
       expect(@pet.owner.name).to eq("Cricky")
+
     end
 
       it " creates a new pet and a new owner" do
