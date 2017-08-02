@@ -5,9 +5,18 @@
   
   <br></br>
   
-  <input type="text" name="owner[name]">
+  <input type="text" name="owner[name]" id="owner_name">
   
   <br></br>
-  
+  <p>Choose and existing pet:</p>
+  <%Pet.all.each do |pet|%>
+    <input type="checkbox" name="owner[pet_ids][]" value="<%=pet.id%>" id="<%=pet.id%>"><%=pet.name%></input>
+<%end%>
+  <br></br>
+ <p> and/or, create a new pet: </p>
+ <br></br>
+ <label>Name:</label>
+  <input type="text" name="pet[name]"></input>
+  <br></br>
   <input type="submit" value="Create Owner">
 </form>
