@@ -11,10 +11,10 @@ class PetsController < ApplicationController
   end
 
   post '/pets' do
-    #CREATING NEW OWNERS WITH ASSOCIATED PETS IN THE CONTROLLER
+    #CREATING NEW PETS WITH ASSOCIATED OWNERS IN THE CONTROLLER
     @pet = Pet.create(params[:pet])
 
-    #create an if statement to check whether or not the value of params["pet"]["name"] is an empty string.
+    #create an if statement to check whether or not the value of params["owner"]["name"] is an empty string.
     if !params["owner"]["name"].empty?
       @pet.owners << Owner.create(name: params["owner"]["name"])
     end
