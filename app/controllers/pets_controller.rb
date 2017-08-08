@@ -15,15 +15,13 @@ class PetsController < ApplicationController
       @pet = Pet.create(params[:pet])
     #create an if statement to check whether or not the value of params["owner"]["name"] is an empty string.
     if !params["owner"]["name"].empty?
-      @pet.owner = Owner.create(name: params["owner"]["name"])
+      @pet.owner = Owner.create(name: params[:owner][:name])
+
+    else
+      @pet.owner = Owner.first
     end
-    #@pet = @pet.owner
-    #pet = @pet.owner
-    #pet.last = owner
-    #owner = pet.last
-    #owner = @pet.last
     @pet.save
-  redirect to "pets/#{@pet.id}"
+    redirect to "pets/#{@pet.id}"
   end
 
 #SET variable
@@ -31,7 +29,12 @@ class PetsController < ApplicationController
 #DEFINE function(method)
 #EXECUTE function(method)
 
-  get '/pets/:id' do
+get "/pets/:id/edit" do
+  @pet = Pet.find(params[:id])
+  erb :"/pets/edit"
+end
+
+get '/pets/:id' do
     @pet = Pet.find(params[:id])
     erb :'/pets/show'
   end

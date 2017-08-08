@@ -1,11 +1,9 @@
 <h1>Update Pet</h1>
 
-<form action="/pets/<%=@pet.id%>" method="POST">
-<label>Name:</label>
-
+<form action="/pets/<%= @pet.id %>" method="POST">
+<label for="pet[name]">Pet Name: </label>
 <br></br>
-
-<input type="text" name="pet[name]" id="pet_name" value="<%=@pet.name%>">
+<input type="text" name="pet[name]" id="pet_name" value="<%= @pet.name %>">
 
 <br></br>
 
@@ -15,8 +13,8 @@
 
 <!--we added the checked property to each checkbox with a condition
 to test whether the given owner is already present in the current pet's collection of owners.-->
-<%Owner.all.each do |pet|%>
-  <input type="checkbox" name="pet[owner_id][]" id="<%= owner.id%>" value="<%=owner.id%>" <%='checked' if @pet.owners.include?(pet) %>><%=owner.name%></input>
+<% owners.each do |owner|%>
+  <input type="checkbox" name="pet[owner_id][]" id="<%= owner.id %>" value="<%= owner.id %>" "<%='checked' if @pet.owner.include?(pet) %>" "<%= owner.name %>"></input>
 <%end%>
 
 <br></br>
