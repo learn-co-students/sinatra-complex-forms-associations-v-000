@@ -4,26 +4,25 @@
 <label for="pet[name]">Pet Name: </label>
 <br></br>
 <input type="text" name="pet[name]" id="pet_name" value="<%= @pet.name %>">
-
 <br></br>
 
 <label>Choose an existing owner:</label>
-
 <br></br>
 
 <!--we added the checked property to each checkbox with a condition
-to test whether the given owner is already present in the current pet's collection of owners.-->
-<% owners.each do |owner|%>
-  <input type="checkbox" name="pet[owner_id][]" id="<%= owner.id %>" value="<%= owner.id %>" "<%='checked' if @pet.owner.include?(pet) %>" "<%= owner.name %>"></input>
+to test whether the given owner is already present in the current pet's collection of owners.
+class="radio" did not work either? -->
+<% @owners.each do |owner|%>
+  <input type="radio" name="pet[owner_id]" id="<%= owner.id %>" value="<%= owner.id %>"
+  <%='checked' if @pet.owner.id == owner.id %> > <%= owner.name %></input>
 <%end%>
-
 <br></br>
 
 <label>and/or, create a new owner:</label>
 <br></br>
 
-<label>name:</label>
-  <input  type="text" name="owner[name]" id="owner_name"></input>
+<label for="owner[name]">Owner Name: </label>
+  <input type="radio" name="owner[name]" id="owner_name" value="owner_name"></input>
 <br></br>
 
 <input type="submit" value="Update Pet">

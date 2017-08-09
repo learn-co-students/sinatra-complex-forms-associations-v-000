@@ -1,7 +1,7 @@
 <h1>Create a new Pet</h1>
 
 <form action="/pets" method="POST">
-  <label>Name:</label>
+  <label>Pet Name:</label>
 
   <br></br>
 
@@ -15,7 +15,7 @@
 
   <!--Creates checkboxes of owners names
   Built a form that dynamically generates checkboxes for each of the existing owners.-->
-  <%Owner.all.each do |owner|%>
+  <% Owner.all.each do |owner| %>
     <input type="checkbox" name="pet[owner_id][]" id="<%=owner.id%>" value="<%=owner.id%>"><%=owner.name%></input>
     <%end%>
 

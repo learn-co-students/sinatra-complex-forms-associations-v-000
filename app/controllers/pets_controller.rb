@@ -29,12 +29,9 @@ class PetsController < ApplicationController
 #DEFINE function(method)
 #EXECUTE function(method)
 
-get "/pets/:id/edit" do
-  @pet = Pet.find(params[:id])
-  erb :"/pets/edit"
-end
 
-get '/pets/:id' do
+
+  get '/pets/:id' do
     @pet = Pet.find(params[:id])
     erb :'/pets/show'
   end
@@ -48,4 +45,12 @@ get '/pets/:id' do
     @pet.save
     redirect to "pets/#{@pet.id}"
   end
+
+  get "/pets/:id/edit" do
+    @pet = Pet.find(params[:id])
+    @owners = Owner.all
+    erb :'/pets/edit'
+
+      #redirect to "pets/#{@pet.id}/edit"
+    end
 end
