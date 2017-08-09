@@ -14,7 +14,7 @@ to test whether the given owner is already present in the current pet's collecti
 class="radio" did not work either? -->
 <% @owners.each do |owner|%>
   <input type="radio" name="pet[owner_id]" id="<%= owner.id %>" value="<%= owner.id %>"
-  <%='checked' if @pet.owner.id == owner.id %> > <%= owner.name %></input>
+  <%='checked' if @pet.owner.id == owner.id %> > <%= owner_name %></input>
 <%end%>
 <br></br>
 
