@@ -30,12 +30,13 @@ class OwnersController < ApplicationController
     erb :'/owners/show'
   end
 
-  post '/owners/:id' do # Error saying that owner's name is not updated
+  post '/owners/:id' do
     @owner = Owner.find(params[:id])
-    @owner.name = params[:name]
+    @owner.update(params["owner"])
+    if !params["pet"]["name"].empty?
+      @owner.pets << Pet.create(name: params["pet"]["name"])
+    end
     @owner.save
-    #binding.pry
-    redirect "/owners/#{@owner.id}"
-
+    redirect "owners/#{@owner.id}"
   end
 end
