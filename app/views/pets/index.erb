@@ -1,1 +1,13 @@
-index.erb
+<h1>Pets</h1>
+
+ <% if @pets %>
+   <ul>
+     <% @pets.each.with_index(1) do |pet, idx| %>
+       <li><a href="/pets/<%= pet.id %>"><%= idx %>. <%= pet.name %></a></li>
+     <% end %>
+   </ul>
+ <% else %>
+   <a href="/pets/new">Create a new pet</a>
+ <% end %>
+
+ <a href="/pets/new">Create a new Pet!</a>

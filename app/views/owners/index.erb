@@ -1,1 +1,13 @@
-index.erb
+<h1>Owners</h1>
+
+ <% if @owners %>
+   <ul>
+     <% @owners.each.with_index(1) do |owner, idx| %>
+       <li><a href="/owners/<%= owner.id %>"><%= idx %>. <%= owner.name %></a></li>
+     <% end %>
+   </ul>
+ <% else %>
+   <a href="/owners/new">Create a new owner</a>
+ <% end %>
+
+ <a href="/owners/new">Create a new Owner!</a>
