@@ -7,7 +7,10 @@
 
 	<br />
 	<%Owner.all.each do |owner|%>
-	    <input type="checkbox" name="pet[owner_id]" id="<%= owner.id%>" value="<%=owner.id%>" <%='checked' if @pet.owner_id == owner.id %>><%=owner.name%></input>
+	    <input type="radio" name="pet[owner_id]" id="<%= owner.id%>" value="<%=owner.id%>" <%='checked' if @pet.owner_id == owner.id %>><%=owner.name%></input>
+	    <br />
   	<%end%>
-	<button type="submit">Create Pet</button>
+  	<label>Owner Name:</label>
+  	<input type="text" name="owner[name]" id="owner_name">
+	<button type="submit">Update Pet</button>
 </form>
