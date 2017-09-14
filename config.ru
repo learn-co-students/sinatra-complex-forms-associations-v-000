@@ -10,5 +10,8 @@ Dir[File.join(File.dirname(__FILE__), "app/controllers", "*.rb")].collect {|file
   class_name = Object.const_get(string_class_name)
   use class_name
 end
+
 use Rack::MethodOverride
+use OwnersController
+use PetsController
 run ApplicationController
