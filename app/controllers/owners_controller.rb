@@ -1,6 +1,8 @@
+require 'pry'
+
 class OwnersController < ApplicationController
 
-  get '/owners' do
+	get '/owners' do
     @owners = Owner.all
     erb :'/owners/index' 
   end
@@ -9,7 +11,7 @@ class OwnersController < ApplicationController
     erb :'/owners/new'
   end
  
-  post '/owners' do
+	post '/owners' do
     @owner = Owner.create(params[:owner])
     if !params["pet"]["name"].empty?
       @owner.pets << Pet.create(name: params["pet"]["name"])

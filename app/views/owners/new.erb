@@ -8,9 +8,9 @@
   <label>Choose an existing pet: </label>
   <br></br>
 
-  <%Pet.all.each do |pet|%>
+  <% Pet.all.each do |pet|%>
     <input type="checkbox" name="owner[pet_ids][]" value="<%=pet.id%>" id="<%=pet.id%>"><%=pet.name%></input>
-  <%end%>
+  <% end %>
   <br></br>
 
   <label>and/or, create a new pet: </label>
