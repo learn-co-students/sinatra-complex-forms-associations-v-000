@@ -3,18 +3,11 @@
 <head>
   <title>Individual Pet</title>
 </head>
-<body>
-  <label><h1>Individual Pet</h1></label>
-
-<form action="/pets/show" method="get">
-  <p><h3>Pet:</h3><%= @pet.name %></p>
-  <% Owner.all.each do |o|%>
-  <% if o.id == @pet.owner_id %>
-  <p><h3>Owner:</h3><%= o.name %></p>
-  <% end %>
-  <% end %>
-
-</form>
-
-</body>
+	<body>
+		<label><h1>Individual Pet</h1></label>
+		<form action="/pets/show" method="get">
+			<p>Pet: <%= @pet.name %></p>
+			<p>Owner: <a href="/owners/<%="#{@pet.owner_id}"%>"><%= @pet.owner.name %></a></p>
+		</form>
+	</body>
 </html>
