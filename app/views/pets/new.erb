@@ -7,20 +7,24 @@
  
   <input type="text" name="pet[name]" id="pet_name">
  
+  <label>Choose an existing owner:</label>
+ 
   <br></br>
  
  
   <%Owner.all.each do |owner|%>
-    <input type="checkbox" name="pet[owner_id]" id="<%=owner.name%>" value="<%=owner.id%>"><%=owner.name%>
-    </input>
+    <input type="checkbox" name="pet[owner_id]" id="<%=owner.id%>" value="<%=owner.id%>">
+    <%=owner.name%></input>
   <%end%>
  
-  <br></br>
+  <br>
  
+    <br></br>
+ 
+    <label>Create a new owner:</label>
+    <br></br>
     <label>name:</label>
-   
-    
-      <input type="text" name="owner[name]" id="owner_name"></input>
+      <input type="text" name="owner[name]" id="owner_name">
     <br></br>
   <input type="submit" value="Create Pet">
 </form>
