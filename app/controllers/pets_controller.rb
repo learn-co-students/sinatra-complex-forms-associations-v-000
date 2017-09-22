@@ -31,9 +31,9 @@ class PetsController < ApplicationController
   end
 
   post '/pets/:id' do
-    @owner = @pet.owner
+    #@owner = @pet.owner
     @pet = Pet.find(params[:id])
-    @pet.update(:pet)
+    @pet.update(params[:pet])  #<- it looks like you just forgot the params part 
     #@pet.update(name: params["pet"]["name"])
   #  owner = Owner.find(params["owner_id"])
   #  @pet.update(owner: owner)
@@ -41,6 +41,8 @@ class PetsController < ApplicationController
        @pet.owner = Owner.create(name: params["owner"]["name"])
        #@pet.update(owner: owner)
      end
+
+     @pet.save #need to save the pet
     redirect to "pets/#{@pet.id}"
   end
 end
