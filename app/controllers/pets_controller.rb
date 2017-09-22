@@ -31,6 +31,7 @@ class PetsController < ApplicationController
   end
 
   post '/pets/:id' do
+    @owner = @pet.owner
     @pet = Pet.find(params[:id])
     @pet.update(:pet)
     #@pet.update(name: params["pet"]["name"])
