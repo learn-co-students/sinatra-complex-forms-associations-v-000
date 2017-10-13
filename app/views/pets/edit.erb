@@ -15,12 +15,12 @@
   <br></br>
 
   <%Owner.all.each do |owner|%>
-    <input type="radio" name="pet[owner_ids][]" id="<%= owner.id%>" value="<%=owner.id%>" <%='checked' if @pet.owners.include?(owner) %>><%=owner.name%></input>
+    <input type="radio" name="pet[owner_id]" id="<%= owner.id%>" value="<%=owner.id%>" <%='checked' if @pet.owner.name == owner.name %>><%=owner.name%></input>
   <%end%>
 
   <br></br>
 
-  <label>and/or, create a new owner:</label>
+  <label>or, create a new owner:</label>
   <br></br>
   <label>name:</label>
     <input type="text" name="owner[name]" id="owner_name"></input>
