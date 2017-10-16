@@ -12,9 +12,7 @@ class PetsController < ApplicationController
 
   post '/pets' do
     @pet = Pet.new(name: params[:pet][:name])
-    if params[:pet][:owner]
-      @pet.owner = Owner.find_by_id(params[:pet][:owner])
-    elsif !params["owner"]["name"].empty?
+    if !params["owner"]["name"].empty?
       @pet.owner = Owner.new(name: params["owner"]["name"])
     end
     @pet.save
