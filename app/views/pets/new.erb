@@ -1,2 +1,16 @@
 <h1>Create a new Pet</h1>
+<form action="/pets" method="POST">
+  <label>Name:</label>
+  <input type="text" name="pet[name]" id="pet_name">
 
+  <label>Choose an existing owner:</label>
+
+  <%@owners.each do |owner|%>
+    <input type="checkbox" name="pet[owner_id]" id="<%=owner.id%>" value="<%=owner.id%>"><%=owner.name%></input> <!--pet belongs to owner, so pet[owner_id][] is not necessary(we don't need an array for multiple owners) -->
+  <%end%>
+
+    <label>and/or, create a new Owner:</label>
+    <label>name:</label>
+      <input  type="text" name="owner[name]" id="owner_name"></input>
+  <input type="submit" value="Create Pet">
+</form>
