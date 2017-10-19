@@ -36,10 +36,10 @@ class PetsController < ApplicationController
     @pet = Pet.find(params[:id])
     @pet.update(params["pet"])
     if !params["owner"]["name"].empty?
-      @pet.owner = Owner.create(params["owner"])
+      @pet.owner = Owner.create(params["owner"]) #remember, << is for has_many, = is for belongs_to
     end
     @pet.save #make sure to save after editing the pet!!
-    binding.pry
+  #binding.pry
     redirect to "pets/#{@pet.id}"
   end
 end
