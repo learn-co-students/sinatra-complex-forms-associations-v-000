@@ -1,3 +1,6 @@
+<!-- Show pet name found by id -->
 <h1><%= @pet.name %></h1>
+<!-- Display the owner of the pet -->
 <h2>Owner: <%= @pet.owner.name %></h2>
+<!-- Link to edit this pet -->
 <a href="/pets/<%= @pet.id %>/edit">Edit <%= @pet.name %></a>
