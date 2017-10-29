@@ -1,1 +1,17 @@
-show.erb
+<h1><%= @pet.name %></h1>
+<h4>Owner: <%= @pet.owner.name %></h4>
+
+
+<a href="/pets/<%=@pet.id%>/edit">
+
+  <button>Edit</button>
+ </a> 
+ <form action="/pets/<%=@pet.id%>/delete" method="post">
+   <input id="hidden" type="hidden" name="_method" value="delete">
+   <input type="submit" value="delete">
+ </form>
+
+<form action="/recipes/<%=@recipe.id%>/delete" method="post">
+  <input id="hidden" type="hidden" name="_method" value="delete">
+  <input type="submit" value="delete">
+</form>

@@ -2,3 +2,6 @@
 <% @pets.each do |pet| %>
   <h3><a href="/pets/<%=pet.id%>"><%= pet.name %></a></h3> 
 <% end %>  
+<a href="/pets/new">
+  Add a new pet
+</a>
