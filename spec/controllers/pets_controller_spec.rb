@@ -10,7 +10,7 @@ describe "Pets Controller" do
 
     it " loads form to create a new pet" do
       visit '/pets/new'
-      expect(page).to have_field('pet[name]')
+      expect(page).to have_field('pet_name')
     end
 
     it "has a form with a checkbox for existing owners" do
@@ -70,7 +70,7 @@ describe "Pets Controller" do
     end
 
     it "can visit '/pets/:id/edit' " do
-      get "/owners/#{@pet.id}/edit"
+      get "/pets/#{@pet.id}/edit"
       expect(last_response.status).to eq(200)
     end
 
