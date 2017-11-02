@@ -92,7 +92,6 @@ describe "Pets Controller" do
       @adam = Owner.create(:name => "Adam")
       visit "/pets/#{@pet.id}/edit"
       choose(@adam.name)
-    #  binding.pry
       click_button "Update Pet"
       expect(Pet.last.owner.name).to eq("Adam")
     end
