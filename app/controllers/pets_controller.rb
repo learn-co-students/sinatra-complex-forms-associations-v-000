@@ -6,20 +6,22 @@ class PetsController < ApplicationController
   end
 
   get '/pets/new' do
+    @owners = Owner.all
     erb :'/pets/new'
   end
 
   post '/pets' do
     @pet = Pet.create(params[:pet])
-    if !params[:owner][:name].empty?
-      @pet.owner = Owner.create(name: params[:owner][:name])
+    if !params[:owner][:name].empty? #if pet already associated with owner
+      @pet.owner = Owner.create(name: params[:owner][:name]) #create new owner instace and add it to pet object
     end
-    @pet.save
+    @pet.save #save changes
     redirect to "pets/#{@pet.id}"
   end
 
   get '/pets/:id/edit' do
     @pet = Pet.find(params[:id])
+    @owners = Owner.all
     erb :'/pets/edit'
   end
 

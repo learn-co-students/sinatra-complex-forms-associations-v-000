@@ -1,6 +1,9 @@
 <h1>Update Owner</h1>
 
 <form action="/owners/<%=@owner.id%>" method="POST">
+  <!--action is set dynamically... you're posting this to an individual owner's page to update -->
+
+
  <label>Name:</label>
 
  <br></br>
@@ -13,7 +16,7 @@
 
  <br></br>
 
- <%Pet.all.each do |pet|%>
+ <%@pets.each do |pet|%>
    <input type="checkbox" name="owner[pet_ids][]" id="<%= pet.id%>" value="<%=pet.id%>" <%='checked' if @owner.pets.include?(pet) %>><%=pet.name%></input>
  <%end%>
 

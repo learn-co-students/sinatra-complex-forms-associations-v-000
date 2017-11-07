@@ -6,11 +6,14 @@
   <br></br>
 
   <input type="text" name="owner[name]">
+  <!--name value creates key in params hash-->
 
   <br></br>
 
   <label>Select Cats for Owner:</label>
-  <% Pet.all.each do |p| %>
+
+  <!--our form has a list of checkboxes, one for each existing pet, for our user to select from at will. -->
+  <% @pets.each do |p| %>
     <input type="checkbox" id="<%=p.id%>" value="<%=p.id%>" name="owner[pet_ids][]"><%=p.name%></input>
   <% end %>
 
