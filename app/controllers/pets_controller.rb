@@ -33,7 +33,7 @@ class PetsController < ApplicationController
      erb :'/pets/edit'
    end
 
-   post '/pets/:id' do
+   patch '/pets/:id' do
      @pet = Pet.find(params[:id])
      if !params[:owner_name].empty?
        @owner = Owner.create(name:params[:owner_name])
