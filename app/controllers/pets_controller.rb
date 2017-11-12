@@ -36,8 +36,6 @@ class PetsController < ApplicationController
    post '/pets/:id' do
      @pet = Pet.find(params[:id])
      if !params[:owner_name].empty?
-
-      #Owner.find_by_name(params[:owner_name])
        @owner = Owner.create(name:params[:owner_name])
        @pet.update(name:@owner.name, owner_id:@owner.id)
       else
@@ -48,5 +46,3 @@ class PetsController < ApplicationController
    end
 
 end
-
-# need to write conditional statement for controller  post '/pets/:id' for when owner_name params is filled rspec line 103
