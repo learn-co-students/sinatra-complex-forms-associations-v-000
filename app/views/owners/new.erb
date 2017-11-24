@@ -3,8 +3,11 @@
 <form action="/owners" method="POST">
 
   <label>Name:</label>
+
   <br></br>
+
   <input type="text" name="owner[name]">
+
   <br></br>
 
   <%@pets.each do |pet|%>
@@ -14,9 +17,12 @@
   <br></br>
 
   <label>and/or, create a new pet:</label>
+
   <br></br>
+
   <label>name:</label>
   <input  type="text" name="pet[name]"></input>
+  
   <br></br>
 
   <input type="submit" value="Create Owner">
