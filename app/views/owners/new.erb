@@ -9,18 +9,18 @@
   
   <br></br>
   
- <label>Choose an existing pet</label>
+<!--  <label>Choose an existing pet</label> -->
    <!-- this code mass-assigns pets to checkboxes. Amazing.  -->
 	<% Pet.all.each do |pet|%>
-	    <input type="checkbox" name="owner[pet_ids][]" value="<%=pet.id%>" id="<%=pet.id%>"><%=pet.name%></input>
+	    <input type="checkbox" name="owner[pet_ids][]" value="<%=pet.id%>" id="<%=pet.name%>"><%=pet.name%></input>
 	<%end%>
 
 
-	<label>and/or, create a new pet:</label>
+	<!-- <label>and/or, create a new pet:</label> -->
 	    <br></br>
 
-	    <label>name:</label>
-	      <input  type="text" name="pet[name]"></input>
+	<label>name:</label>
+	<input  type="text" name="pet[name]" id="pet_name"></input>
 	    <br></br>
 
 	  <input type="submit" value="Create Owner">
