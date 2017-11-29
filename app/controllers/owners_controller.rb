@@ -18,6 +18,7 @@ end
     end
     @owner.save
     redirect "owners/#{@owner.id}"
+
   end
 
 # send form to edit
@@ -26,7 +27,11 @@ end
     erb :'/owners/edit'
   end
 
- 
+ #show the result of editing 
+   get '/owners/:id' do 
+    @owner = Owner.find(params[:id])
+    erb :'/owners/show'
+  end
 
 #receive data from the form 
   post '/owners/:id' do 
@@ -38,9 +43,4 @@ end
     redirect to "owners/#{@owner.id}"
   end
 
-  #show the result of editing 
-   get '/owners/:id' do 
-    @owner = Owner.find(params[:id])
-    erb :'/owners/show'
-  end
 end
