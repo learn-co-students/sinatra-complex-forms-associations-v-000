@@ -12,7 +12,7 @@ end
 
 #receive data from form
   post '/owners' do 
-   @owner = Owner.create(params[:owner])
+   @owner = Owner.create(params[:owner]) #name="owner[name]" 
    if !params["pet"]["name"].empty? #makes sure that the form field was filled out. 
       @owner.pets << Pet.create(name: params["pet"]["name"])
     end

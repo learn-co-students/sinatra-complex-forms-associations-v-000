@@ -4,7 +4,11 @@
 	<label>Name: </label>
 	<br><br>
 
-	<input type="text" name="owner[name]" id="owner_name" value="<%= @owner.name%>">
+	<input 
+		type="text" 
+		name="owner[name]" 
+		id="owner_name" 
+		value="<%= @owner.name%>">
 	<br><br>
 
 	<label>Choose an existing pet:</label>
@@ -12,7 +16,12 @@
 	<br><br>
 
 	<% Pet.all.each do |pet| %>
-		<input type="checkbox" name="owner[pet_ids][]" id="<%= pet.id%> value="<%=pet.id%>" <%="checked" if @owner.pets.include?(pet) %>><%=pet.name%></input>
+		<input 
+			type="checkbox" 
+			name="owner[pet_ids][]" 
+			id="<%= pet.id%>" 
+			value="<%=pet.id%>" 
+			<%="checked" if @owner.pets.include?(pet) %>><%=pet.name%></input>
 
 		<% end %>
 		<br><br>
@@ -23,3 +32,4 @@
 		<br><br>
 		<input type="submit" value="Update Owner">
 </form>
+
