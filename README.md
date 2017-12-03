@@ -314,7 +314,7 @@ My `params` hash consequently looks like this:
 Let's update our owner with this new information. Just as Active Record was smart enough to allow us to use mass assignment to not only create a new owner but to associate that owner to the pets whose IDs were contained in the `"pet_ids"` array, it is also smart enough to allow us to update an owner in the same way. In our Pry console in the terminal, let's execute the following:
 
 ```ruby
-@owner = Owner.find(params[:id])
+@owner = Owner.find_by_id(params[:id])
 @owner.update(params[:owner])
 ```
 
@@ -330,7 +330,7 @@ Great! Now, we need to implement logic similar to that in our `post '/owners'` a
 
 ```ruby
 post '/owners/:id' do
-  @owner = Owner.find(params[:id])
+  @owner = Owner.find_by_id(params[:id])
   @owner.update(params["owner"])
   if !params["pet"]["name"].empty?
     @owner.pets << Pet.create(name: params["pet"]["name"])
@@ -343,7 +343,7 @@ And that's it!
 
 ### Creating and Updating Pets with Associated Owners
 
-Now that we've walked through these features together for the `Owner` model, take some time and try to build out the same functionality for `Pet`. The form to create a new pet should allow a user to select from the list of available owners and/or create a new owner, and the form to edit a given pet should allow the user to select a new owner or create a new owner. Note that if a new owner is created it would override any existing owner that is selected. 
+Now that we've walked through these features together for the `Owner` model, take some time and try to build out the same functionality for `Pet`. The form to create a new pet should allow a user to select from the list of available owners and/or create a new owner, and the form to edit a given pet should allow the user to select a new owner or create a new owner. Note that if a new owner is created it would override any existing owner that is selected.
 
 Make sure you run the tests to check your work.
 
