@@ -1,48 +1,48 @@
 <h1>Create a new Owner</h1>
 
 <form action="/owners" method="POST">
-  <label>Name:</label>
-  
+  <label>Owner Name:</label>
+
   <br></br>
-  
-  <input 
-  		type="text" 
-  		name="owner[name]" 
+
+  <input
+  		type="text"
+  		name="owner[name]"
   		id="owner_name">
-  
+
   <br></br>
-  
+
 <!--  <label>Choose an existing pet</label> -->
    <!-- this code mass-assigns pets to checkboxes. Amazing.  -->
 	<% Pet.all.each do |pet|%>
 
-	    <input 
-	    	type="checkbox" 
+	    <input
+	    	type="checkbox"
 	    	name= "owner[pet_ids][]"
 	    	id="<%= pet.id %>"
 	    	value="<%=pet.id%>">
 	    	<%=pet.name%>
 	    	</input>
-	   
+
 
 	<%end%>
 
-<!-- name="owner[pet_ids][]" -->
+
 	<!-- <label>and/or, create a new pet:</label> -->
 	 <br></br>
 
-	<label>name:</label>
-	<input  
-		type="text" 
-		name="pet[name]" 
+	<label>pet name:</label>
+	<input
+		type="text"
+		name="pet[name]"
 		id="pet_name">
 		</input>
-			
-	
+
+
 	 <br></br>
 
 	  <input type="submit" value="Create Owner">
 </form>
 
-<!-- #challenge: dynamically create a list of pets that are in teh db? 
+<!-- #challenge: dynamically create a list of pets that are in teh db?
  -->
