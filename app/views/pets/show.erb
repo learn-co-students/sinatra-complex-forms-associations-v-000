@@ -1,1 +1,4 @@
-show.erb
+<h1><%= @pet.name %></h1>
+<% if @pet.owner != nil %>
+<h2>Owner: <%= @pet.owner.name %></h2>
+<%end%>
