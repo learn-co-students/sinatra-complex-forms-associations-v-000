@@ -11,11 +11,11 @@
   <label>Choose the existing owner:</label>
   <br></br>
 
-  <input type="checkbox" name="owner[name]" id="<%= @pet.owner.id%>" checked="checked"><%= @pet.owner.name%></input>
+  <input type="radio" name="owner[name]" id="<%= @pet.owner.id%>" checked><%= @pet.owner.name%></input>
 
   <br></br>
 
-  <label>create a new owner:</label>
+  <label>and/or create a new owner:</label>
   <br></br>
   <label>name:</label>
     <input  type="text" name="owner[name]" id="owner_name"></input>

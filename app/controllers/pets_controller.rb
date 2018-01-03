@@ -31,7 +31,11 @@ class PetsController < ApplicationController
   post '/pets/:id' do
     @pet = Pet.find(params[:id])
     @pet.update(params["pet"])
-
+    if params["owner"]["name"] == ""
+      @pet.owner.delete
+    else
+      @pet.owner = Owner.create(name: params["owner"]["name"])
+    end
     redirect to "pets/#{@pet.id}"
   end
 end
