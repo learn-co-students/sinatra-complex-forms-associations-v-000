@@ -42,7 +42,6 @@ class PetsController < ApplicationController
       @pet.owner_id = @owner.id
     end
     @pet.save
-    @owner.save
 
     redirect to "pets/#{@pet.id}"
   end
