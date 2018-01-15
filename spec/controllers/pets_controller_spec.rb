@@ -13,13 +13,12 @@ describe "Pets Controller" do
       expect(page).to have_field('pet[name]')
     end
 
-    it "has a form with a checkbox for existing owners" do
-      @owner1 = Owner.create(:name => "Cricky")
-      @owner2 = Owner.create(:name => "Chris")
+    it "has a form with a select for existing owners" do
+      owner1 = Owner.create(:name => "Cricky")
+      owner2 = Owner.create(:name => "Chris")
 
       visit '/pets/new'
-      expect(page.has_unchecked_field?(@owner1.id)).to eq(true)
-      expect(page.has_unchecked_field?(@owner2.id)).to eq(true)
+      expect(page.has_select?("Choose an existing owner:", options: [owner1.name, owner2.name]))
     end
 
     it "has a field for creating a new owner" do
@@ -29,34 +28,34 @@ describe "Pets Controller" do
 
 
     it "creates a new pet and associates an existing owner" do
-      @owner1 = Owner.create(:name => "Cricky")
-      @owner2 = Owner.create(:name => "Chris")
+      owner1 = Owner.create(:name => "Cricky")
+      owner2 = Owner.create(:name => "Chris")
       visit '/pets/new'
       fill_in "pet_name", :with => "Michael"
-      check(@owner1.id)
+      select(owner1.name)
       click_button "Create Pet"
-      @pet = Pet.last
-      expect(@pet.name).to eq("Michael")
-      expect(@pet.owner.name).to eq("Cricky")
+      pet = Pet.last
+      expect(pet.name).to eq("Michael")
+      expect(pet.owner.name).to eq("Cricky")
     end
 
-      it " creates a new pet and a new owner" do
+    it " creates a new pet and a new owner" do
       visit '/pets/new'
       fill_in "pet_name", :with => "Pippa"
       fill_in "owner_name", :with => "Mary Nelson"
       click_button "Create Pet"
-      @owner = Owner.last
-      @pet = Pet.last
-      expect(@pet.name).to eq("Pippa")
-      expect(@pet.owner.name).to eq("Mary Nelson")
+      owner = Owner.last
+      pet = Pet.last
+      expect(pet.name).to eq("Pippa")
+      expect(pet.owner.name).to eq("Mary Nelson")
     end
 
     it "redirects to '/pets/:id' after form submissions" do
-      @owner1 = Owner.create(:name => "Kristi")
-      @owner2 = Owner.create(:name => "Kaitlin")
+      owner1 = Owner.create(:name => "Kristi")
+      owner2 = Owner.create(:name => "Kaitlin")
       visit '/pets/new'
       fill_in "pet_name", :with => "Joeseph"
-      check(@owner2.id)
+      select(owner2.name)
       click_button "Create Pet"
       @pet= Pet.last
       expect(page.current_path).to eq("/pets/#{@pet.id}")
@@ -77,8 +76,8 @@ describe "Pets Controller" do
     it " loads form to edit a pet and his owner" do
       visit "/pets/#{@pet.id}/edit"
       expect(page).to have_field('pet[name]')
-      expect(page.has_checked_field?(@owner.id)).to eq(true)
-      expect(page).to have_field('owner[name]')
+      expect(page.has_select?("Choose an existing owner:", selected: @owner.name)).to eq(true)
+      expect(page).to have_field('pet[owner_name]')
     end
 
      it "edit's the pet's name" do
@@ -91,7 +90,7 @@ describe "Pets Controller" do
     it "edit's the pet's owner with an existing owner" do
       @adam = Owner.create(:name => "Adam")
       visit "/pets/#{@pet.id}/edit"
-      choose(@adam.id)
+      select(@adam.name)
       click_button "Update Pet"
       expect(Pet.last.owner.name).to eq("Adam")
     end
