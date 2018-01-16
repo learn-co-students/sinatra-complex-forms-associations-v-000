@@ -1,0 +1,14 @@
+<h1>Here are all the Owners and their Pets</h1>
+
+<% Owner.all.each do |person| %>
+  <% if person.pets.empty? %>
+    <br><h2><%= person.name + " has no pets." %></h2>
+  <% else %>
+    <br><h2><%= person.name %></h2>
+    <ul>
+      <% person.pets.each do |petname| %>
+        <li><%= petname.name %></li>
+      <% end %>
+    </ul>
+  <% end %>
+<% end %>

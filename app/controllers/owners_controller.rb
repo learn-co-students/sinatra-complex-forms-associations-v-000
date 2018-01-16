@@ -84,11 +84,23 @@ tests so I get how those work too!
   end
 
   post "/burd/owners" do
-    @baal = Owner.create(params[:new_owner])
+#    raise params.inspect
+#   => {"owner" => {"name" => "Maximus"}, "pet" => {"name" => "Garfield"}}
+    @baal = Owner.create(params[:owner])
+    if !params["pet"]["name"].empty?
+#     @baal.pets << Pet.create(name: params["pet"]["name"])
+      @baal.pets << Pet.create(params[:pet])
+    end
+    @baal.save
+    redirect "owners/#{@baal.id}"
   end
 
   get '/burd/etzhayim' do
-    erb :'owners/burd_3'
+    erb :'/owners/burd_3'
+  end
+
+  get '/burd/owners' do
+    erb :'/owners/burd_4'
   end
 
 end

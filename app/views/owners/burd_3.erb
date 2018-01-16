@@ -1,16 +1,18 @@
 <h1>ברוכים הבאים לעץ חיים</h1>
 <h2>You Chose Wisely!</h2>
 <br></br>
+<a href="/burd/owners">See all the owners & their pets here</a>
+<br></br>
 <h3>Ok now we're gonna toss data around in forms with some objects</h3>
 <h3>Active-Record will keep track of these objects as we go</h3>
 <h3>We're just gonna use owners & pets for now before we make new objects</h3>
 <br></br>
 
 <form action="/burd/owners" method="POST">
-  <input type="text" name="new_owner" id="new-owner" value="Owner's Name" />
+  <input type="text" name="owner[name]" id="new-owner" value="Owner's Name" />
     <label for="new-owner">Enter the name of a new owner here.</label>
     <br></br>
-  <input type="text" name="new_pet" id="new-pet" value="Pet's Name" />
+  <input type="text" name="pet[name]" id="new-pet" value="Pet's Name" />
     <label for="new-pet">Enter the name of a new pet here.</label>
     <br></br>
   <input type="submit" value="Send" />
