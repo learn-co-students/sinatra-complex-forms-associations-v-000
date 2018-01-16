@@ -1,0 +1,34 @@
+<h3>
+Ok so this page isn't working correctly.  It displays just fine but you cant
+just pass this page's hash to the '/burd/owners' controller because that
+controller assumes we're editing the *last* owner, and not one of the owners
+that is in the middle of the list somewhere.  Getting this page to work
+properly may need to involve Javascript but I dunno yet.
+</h3>
+
+
+<h1>Here are all the Owners and their Pets</h1>
+<h2>Go ahead and add a pet to any of the Owners</h2>
+<% Owner.all.each do |person| %>
+  <% if person.pets.empty? %>
+    <br><h2><%= person.name %> <%= " has no pets." %></h2>
+    <form action="/burd/owners" method="POST">
+      <label>new pet</label>
+      <input type="text" name="pet[name]" />
+
+  <% else %>
+    <br><h2><%= person.name %></h2>
+
+    <label>new pet</label>
+    <input type="text" name="pet[name]" />
+
+    <ul>
+      <% person.pets.each do |petname| %>
+        <li><%= petname.name %></li>
+      <% end %>
+    </ul>
+  <% end %>
+<% end %>
+<br></br>
+<input type="submit" />
+</form>
