@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe "Owners Controller" do
-  describe "new action" do 
+  describe "new action" do
 
     it "can visit '/owners/new'" do
       get '/owners/new'
@@ -28,7 +28,7 @@ describe "Owners Controller" do
 
 
     it "'/owners/new' creates a new owner and associates an existing pet " do
-      @pet1 = Pet.create(:name => "Bessie") 
+      @pet1 = Pet.create(:name => "Bessie")
       @pet2 = Pet.create(:name => "Sadie")
       visit '/owners/new'
       fill_in "owner[name]", :with => "Sophie"
@@ -40,7 +40,7 @@ describe "Owners Controller" do
     end
 
       it "'/owners/new' creates a new owner and a new pet" do
-      @pet1 = Pet.create(:name => "Bessie") 
+      @pet1 = Pet.create(:name => "Bessie")
       @pet2 = Pet.create(:name => "Sadie")
       visit '/owners/new'
       fill_in "owner[name]", :with => "Sophie"
@@ -53,7 +53,7 @@ describe "Owners Controller" do
     end
 
     it "'/owners/new' redirects to '/owners/:id' after form submissions" do
-      @pet1 = Pet.create(:name => "Bessie") 
+      @pet1 = Pet.create(:name => "Bessie")
       @pet2 = Pet.create(:name => "Sadie")
       visit '/owners/new'
       fill_in "owner[name]", :with => "Sophie"
@@ -64,13 +64,13 @@ describe "Owners Controller" do
     end
   end
 
-  describe "edit action" do 
+  describe "edit action" do
     before(:each) do
       @owner = Owner.create(:name => "Carla")
       @pet = Pet.create(:name => "Chewie", :owner_id => @owner.id)
     end
 
-    it "can visit '/owners/:id/edit' " do 
+    it "can visit '/owners/:id/edit' " do
       get "/owners/#{@owner.id}/edit"
       expect(last_response.status).to eq(200)
     end
@@ -104,6 +104,37 @@ describe "Owners Controller" do
       expect(Owner.last.pets.last.name).to eq("Carlton")
     end
 
+  end
+
+  describe "burd custom actions" do
+
+    it "can visit '/burd'" do
+      get '/burd'
+      expect(last_response.status).to eq(200)
+    end
+
+    it "'/burd/etzhayim' this tree of life loads a form to create a new owner" do
+      visit '/burd/etzhayim'
+      expect(page).to have_field('owner[name]')
+    end
+
+    it "'/burd/etzhayim' this tree of life loads a form to create a new pet" do
+      visit '/burd/etzhayim'
+      expect(page).to have_field('pet[name]')
+    end
+
+    it "'/burd/etzhayim' creates a new owner and associates an existing pet " do
+      @pet1 = Pet.create(:name => "Bessie")
+#     @pet2 = Pet.create(:name => "Sadie")          <=# this doesn't apply since there's no checkboxs
+      visit '/burd/etzhayim'
+      fill_in "owner[name]", :with => "Sophie"
+      fill_in "pet[name]", :with => @pet1.name
+#     check(@pet1.id)                               <=# this doesn't apply since there's no checkboxs
+      click_button "Send"
+      @owner = Owner.last
+      expect(@owner.name).to eq("Sophie")
+      expect(@owner.pets.first.name).to eq("Bessie")
+    end
 
   end
 
