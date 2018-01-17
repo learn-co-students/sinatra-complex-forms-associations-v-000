@@ -1,0 +1,22 @@
+<h1>Burd's First Custom Form!</h1>
+
+<h3>
+  <ul>
+    <% @var.each do |anowner| %>
+      <li>
+        The Owner <%= anowner.name %> Has an ID of <%= anowner.id %>
+      </li>
+    <% end %>
+  </ul>
+</h3>
+
+<form action= "/burd/chamber" method="POST">
+  <h3>The Burd Form</h3>
+    <label>First Text</label>
+    <input type="text" name="I'm very important" />
+    <br></br>
+    <label>Second Text</label>
+    <input type="text" name="I'm not important" />
+    <br></br>
+    <input type="submit" />
+</form>

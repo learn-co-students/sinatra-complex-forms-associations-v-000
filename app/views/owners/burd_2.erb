@@ -1,0 +1,19 @@
+<h1>Burd's Second Custom Form!</h1>
+
+<h3>Ok so the first thing you gave me was <%= params["I'm very important"] %></h3>
+<h3>Ok so the second thing you gave me was <%= params["I'm not important"] %></h3>
+  <br></br>
+<h2>OK, choose a box wisely...one leads to the secret chamber and the others lead to death!!</h2>
+
+<form action= "/burd/life" method="POST">
+  <input type="checkbox" name="Box 1" id="b1" />
+    <label for="b1">First Box</label>
+  <br></br>
+  <input type="checkbox" name="Box 2" id="b2" />
+    <label for="b1">Second Box</label>
+  <br></br>
+  <input type="checkbox" name="Box 3" id="b3" />
+    <label for="b1">Third Box</label>
+  <br></br>
+  <input type="submit" />
+</form>
