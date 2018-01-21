@@ -6,7 +6,7 @@
   <label>Choose an existing owner:</label>
   <br>
   <% Owner.all.each do |owner| %>
-  <input type="checkbox" name="pet[owner_id]" value="<%= owner.id %>" id="<%= owner.name %>"><%= owner.name %></input>
+  <input type="checkbox" name="pet[owner_id]" value="<%=owner.id %>" id="<%=owner.name %>"><%=owner.name %></input>
   <% end %>
   <br><br>
   <label>name:</label>
