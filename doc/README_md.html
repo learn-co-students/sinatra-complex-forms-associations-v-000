@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>README - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+  var index_rel_prefix = "./";
+</script>
+
+<script src="./js/jquery.js"></script>
+<script src="./js/darkfish.js"></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="file">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+<div class="nav-section">
+  <h3>Table of Contents</h3>
+
+  <ul class="link-list" role="directory">
+    <li><a href="#label-Sinatra+and+Active+Record-3A+Associations+and+Complex+Forms">Sinatra and Active Record: Associations and Complex Forms</a>
+    <li><a href="#label-Objectives">Objectives</a>
+    <li><a href="#label-Introduction">Introduction</a>
+    <li><a href="#label-Overview">Overview</a>
+    <li><a href="#label-Instructions">Instructions</a>
+    <li><a href="#label-Before+You+Begin">Before You Begin</a>
+    <li><a href="#label-A+Note+on+Seed+Files">A Note on Seed Files</a>
+    <li><a href="#label-Creating+a+New+Owner+and+Their+Associated+Pets">Creating a New Owner and Their Associated Pets</a>
+    <li><a href="#label-Dynamically+Generating+Checkboxes">Dynamically Generating Checkboxes</a>
+    <li><a href="#label-Creating+New+Owners+with+Associated+Pets+in+the+Controller">Creating New Owners with Associated Pets in the Controller</a>
+    <li><a href="#label-Creating+a+New+Owner+and+Associating+Them+with+a+New+Pet">Creating a New Owner and Associating Them with a New Pet</a>
+    <li><a href="#label-Editing+Owners+and+Associated+Pets">Editing Owners and Associated Pets</a>
+    <li><a href="#label-Updating+Owners+in+the+Controller">Updating Owners in the Controller</a>
+    <li><a href="#label-Creating+and+Updating+Pets+with+Associated+Owners">Creating and Updating Pets with Associated Owners</a>
+  </ul>
+</div>
+
+
+  <div id="project-metadata">
+    <div id="fileindex-section" class="nav-section">
+  <h3>Pages</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./CONTRIBUTING_md.html">CONTRIBUTING</a>
+  
+    <li><a href="./Gemfile.html">Gemfile</a>
+  
+    <li><a href="./Gemfile_lock.html">Gemfile.lock</a>
+  
+    <li><a href="./LICENSE_md.html">LICENSE</a>
+  
+    <li><a href="./README_md.html">README</a>
+  
+    <li><a href="./Rakefile.html">Rakefile</a>
+  
+    <li><a href="./config_ru.html">config.ru</a>
+  
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-label="Page README.md">
+
+<h1 id="label-Sinatra+and+Active+Record-3A+Associations+and+Complex+Forms">Sinatra and Active Record: Associations and Complex Forms<span><a href="#label-Sinatra+and+Active+Record-3A+Associations+and+Complex+Forms">&para;</a> <a href="#top">&uarr;</a></span></h1>
+
+<h2 id="label-Objectives">Objectives<span><a href="#label-Objectives">&para;</a> <a href="#top">&uarr;</a></span></h2>
+<ol><li>
+<p>Build forms that allow a user to create and edit a given resource and its
+associated resources.</p>
+</li><li>
+<p>Build controller actions that handle the requests sent by such forms.</p>
+</li></ol>
+
+<h2 id="label-Introduction">Introduction<span><a href="#label-Introduction">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>As the relationships we build between our models grow and become more
+complex, we need to build ways for our users to interact with those models
+in all of their complexity. If a genre has many songs, then a user should
+be able to create a new song <em>and</em> select from a list of existing
+genres and/or create a new genre to be associated with that song, all at
+the same time. In other words, if our models are associated in a certain
+way, our users should be able to create and edit instances of those models
+in ways that reflect those associations.</p>
+
+<p>In order to achieve this, we&#39;ll have to build forms that allow for a
+user to create and edit not just the given object but any and all objects
+that are associated with it.</p>
+
+<h2 id="label-Overview">Overview<span><a href="#label-Overview">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p><strong>This is a walk-through with some extra challenges for you to
+complete on your own. There are tests, so be sure to run the tests to make
+sure you&#39;re following along correctly. To follow along, use
+<code>shotgun</code> to start your app and visit URLs/fill out forms as
+instructed.</strong> In this walk-through, we&#39;re dealing with a pet
+domain model. We have an <code>Owner</code> model and a <code>Pet</code>
+model. An owner has many pets, and a pet belongs to an owner. We&#39;ve
+already built the migrations, models, and some controller actions and
+views. Fork and clone this lab to follow along.</p>
+
+<p>Because an owner can have many pets, we want to be able to choose which of
+the existing pets in our database to associate to a new owner <em>when the
+owner is being created</em>. We also want to be able to create a new pet
+<em>and associate it with the owner being created</em>. So, our form for a
+new owner must contain a way to select a number of existing pets to
+associate with that owner as well as a way to create a brand new pet to
+associate with that owner. The same is true of editing a given owner: we
+should be able to select and deselect existing pets and/or create a new pet
+to associate with the owner.</p>
+
+<p>Here, we&#39;ll be taking a look together at the code that will implement
+this functionality. Then, you&#39;ll build out the same feature for
+creating/editing new pets.</p>
+
+<h2 id="label-Instructions">Instructions<span><a href="#label-Instructions">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<h3 id="label-Before+You+Begin">Before You Begin<span><a href="#label-Before+You+Begin">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>Since we&#39;ve provided you with much of the code for this project, take a
+few moments to go through the provided files and familiarize yourself with
+the app. Note that an owner has a name and has many pets and a pet has a
+name and belongs to an owner. Note that we have two separate controllers,
+one for pets and one for owners, each of which inherit from the main
+application controller. Note that each controller has a set of routes that
+enable the basic CRUD actions (except for delete –– we don&#39;t really
+care about deleting for the purposes of this exercise).</p>
+
+<p><strong>Make sure you run <code>rake db:migrate</code> and <code>rake
+db:seed</code> before you move on</strong>. This will migrate our database
+and seed it with one owner and two pets to get us started.</p>
+
+<h4 id="label-A+Note+on+Seed+Files">A Note on Seed Files<span><a href="#label-A+Note+on+Seed+Files">&para;</a> <a href="#top">&uarr;</a></span></h4>
+
+<p>The phrase &#39;seeding the database&#39; refers to the practice of filling
+up your database with some dummy data. As we develop our apps, it is
+essential that we have some data to work with. Otherwise, we won&#39;t be
+able to tell if our app is working or try out the actions and features that
+we are building. Sinatra makes it easy for us to seed our database by
+providing us with something called a seed file. This file should be placed
+in the <code>db</code> directory, <code>db/seeds.rb</code>. The seed file
+is where you can write code that creates and saves instances of your
+models.</p>
+
+<p>When you run the seed task provided by Sinatra and Rake, <code>rake
+db:seed</code>, the code in the seed file will be executed, inserting some
+sample data into your database.</p>
+
+<p>Go ahead and open up the seed file in this app, <code>db/seeds.rb</code>.
+You should see the following:</p>
+
+<pre class="ruby"><span class="ruby-comment"># Add seed data here. Seed your database with `rake db:seed`</span>
+<span class="ruby-identifier">sophie</span> = <span class="ruby-constant">Owner</span>.<span class="ruby-identifier">create</span>(<span class="ruby-identifier">name</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;Sophie&quot;</span>)
+<span class="ruby-constant">Pet</span>.<span class="ruby-identifier">create</span>(<span class="ruby-identifier">name</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;Maddy&quot;</span>, <span class="ruby-identifier">owner</span><span class="ruby-operator">:</span> <span class="ruby-identifier">sophie</span>)
+<span class="ruby-constant">Pet</span>.<span class="ruby-identifier">create</span>(<span class="ruby-identifier">name</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;Nona&quot;</span>, <span class="ruby-identifier">owner</span><span class="ruby-operator">:</span> <span class="ruby-identifier">sophie</span>)
+</pre>
+
+<p>This is code you should be pretty familiar with by now. We are simply
+creating and saving an instance of our <code>Owner</code> class and
+creating and saving two new instances of the <code>Pet</code> class.</p>
+
+<p>So, when <code>rake db:seed</code> is run, the code in this file is
+actually executed, inserting the data regarding Sophie, Maddy, and Nona
+into our database.</p>
+
+<p>You can write code to seed your database in any number of ways. We&#39;ve
+done it fairly simply here, but you could imagine writing code in your seed
+file that sends a request to an external API and instantiates and saves
+instances of a class using the response from the API. You could also write
+code that opens a directory of files and uses information about each file
+to create and save instances of a class. The list goes on.</p>
+
+<h3 id="label-Creating+a+New+Owner+and+Their+Associated+Pets">Creating a New <a href="Owner.html">Owner</a> and Their Associated Pets<span><a href="#label-Creating+a+New+Owner+and+Their+Associated+Pets">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>Open up <code>app/views/owners/new.erb</code> and you should see the
+following code:</p>
+
+<pre>&lt;h1&gt;Create a new Owner&lt;/h1&gt;
+
+&lt;form action=&quot;/owners&quot; method=&quot;POST&quot;&gt;
+  &lt;label&gt;Name:&lt;/label&gt;
+
+  &lt;br&gt;&lt;/br&gt;
+
+  &lt;input type=&quot;text&quot; name=&quot;owner[name]&quot; id=&quot;owner_name&quot;&gt;
+
+  &lt;input type=&quot;submit&quot; value=&quot;Create Owner&quot;&gt;
+&lt;/form&gt;</pre>
+
+<p>Here we have a basic form for a new owner with a field for that new
+owner&#39;s name. However, we want our users to be able to create an owner
+and select existing pets to associate with that new owner <em>at the same
+time</em>. So, our form should include a list of checkboxes, one for each
+existing pet, for our user to select from at will.</p>
+
+<p>How can we dynamically, or programmatically, generate a list of checkboxes
+for all of the pets that are currently in our database?</p>
+
+<h4 id="label-Dynamically+Generating+Checkboxes">Dynamically Generating Checkboxes<span><a href="#label-Dynamically+Generating+Checkboxes">&para;</a> <a href="#top">&uarr;</a></span></h4>
+
+<p>In order to dynamically generate these checkboxes, we need to load up all
+of the pets from the database. Then, we can iterate over them in our
+<code>owners/new.erb</code> view using ERB tags to inject each pet&#39;s
+information into a checkbox form element. Let&#39;s take a look:</p>
+
+<pre class="ruby"><span class="ruby-comment"># controllers/owners_controller.rb</span>
+<span class="ruby-identifier">get</span> <span class="ruby-string">&#39;/owners/new&#39;</span> <span class="ruby-keyword">do</span>
+  <span class="ruby-ivar">@pets</span> = <span class="ruby-constant">Pet</span>.<span class="ruby-identifier">all</span>
+  <span class="ruby-identifier">erb</span> :<span class="ruby-string">&#39;owners/new&#39;</span>
+<span class="ruby-keyword">end</span>
+</pre>
+
+<pre># views/owners/new.erb
+&lt;%@pets.each do |pet|%&gt;
+    &lt;input type=&quot;checkbox&quot; name=&quot;owner[pet_ids][]&quot; value=&quot;&lt;%=pet.id%&gt;&quot; id=&quot;&lt;%=pet.id%&gt;&quot;&gt;&lt;%=pet.name%&gt;&lt;/input&gt;
+&lt;%end%&gt;</pre>
+
+<p>Let&#39;s break this down:</p>
+<ul><li>
+<p>We use ERB to get all of the pets with <code>Pet.all</code>, then we
+iterate over that collection of <code>Pet</code> objects and generate a
+checkbox for each pet.</p>
+</li><li>
+<p>That checkbox has a <code>name</code> of
+<code>&quot;owner[pet_ids][]&quot;</code> because we want to structure our
+<code>params</code> hash such that the array of pet IDs is stored inside
+the <code>&quot;owner&quot;</code> hash. We are aiming to associate the
+pets that have these IDs with the new owner.</p>
+</li><li>
+<p>We give the checkbox a <code>value</code> of the given pet&#39;s ID. This
+way, when that checkbox is selected, its value, i.e., the pet&#39;s ID, is
+what gets sent through to the <code>params</code> hash.</p>
+</li><li>
+<p>We give the checkbox an <code>id</code> of the given pet&#39;s ID so that
+our Capybara test can find the checkbox using the pet&#39;s ID.</p>
+</li><li>
+<p>Finally, in between the opening and closing input tags, we use ERB to
+render the given pet&#39;s name.</p>
+</li></ul>
+
+<p>The result is a form that looks something like this:</p>
+
+<p><img src="http://readme-pics.s3.amazonaws.com/create-owner-orig.png"></p>
+
+<p>Let&#39;s place a <code>binding.pry</code> in the <code>post
+&#39;/owners&#39;</code> route and submit our form so that we can get a
+better understanding of the <code>params</code> hash we&#39;re creating
+with our form. Once you hit your binding, type <code>params</code> in the
+terminal, and you should see something like this:</p>
+
+<pre class="ruby">{<span class="ruby-string">&quot;owner&quot;</span>=<span class="ruby-operator">&gt;</span>{<span class="ruby-string">&quot;name&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-string">&quot;Adele&quot;</span>, <span class="ruby-string">&quot;pet_ids&quot;</span>=<span class="ruby-operator">&gt;</span>[<span class="ruby-string">&quot;1&quot;</span>, <span class="ruby-string">&quot;2&quot;</span>]}}
+</pre>
+
+<p>I filled out my form with a name of “Adele”, and I checked the boxes for
+“Maddy” and “Nona”. So, our <code>params</code> hash has a key of
+<code>&quot;owner&quot;</code> that points to a value that is a hash
+containing two keys: <code>&quot;name&quot;</code>, with a value of the
+name entered into the form, and <code>&quot;pet_ids&quot;</code>, with a
+value of an array containing the ids of all of the pets we selected via our
+checkboxes. Let&#39;s move on to writing the code that will create a new
+owner <em>and</em> associate it to these pets.</p>
+
+<h4 id="label-Creating+New+Owners+with+Associated+Pets+in+the+Controller">Creating New Owners with Associated Pets in the Controller<span><a href="#label-Creating+New+Owners+with+Associated+Pets+in+the+Controller">&para;</a> <a href="#top">&uarr;</a></span></h4>
+
+<p>We are familiar with using mass assignment to create new instances of a
+class with Active Record. For example, if we had a hash,
+<code>owner_info</code>, that looked like this…</p>
+
+<pre class="ruby"><span class="ruby-identifier">owner_info</span> = {<span class="ruby-identifier">name</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;Adele&quot;</span>}
+</pre>
+
+<p>…we could easily create a new owner like this:</p>
+
+<pre class="ruby"><span class="ruby-constant">Owner</span>.<span class="ruby-identifier">create</span>(<span class="ruby-identifier">owner_info</span>)
+</pre>
+
+<p>But our <code>params</code> hash contains this additional key of
+<code>&quot;pet_ids&quot;</code> pointing to an array of pet ID numbers.
+You may be wondering if we can still use mass assignment here. Well, the
+answer is yes. Active Record is smart enough to take that key of
+<code>pet_ids</code>, pointing to an array of numbers, find the pets that
+have those IDs, and associate them to the given owner, all because we set
+up our associations such that an owner has many pets. Wow! Let&#39;s give
+it a shot. Still in your Pry console that you entered via the
+<code>binding.pry</code> in the <code>post &#39;/owners&#39;</code> action
+of the <code>OwnersController</code>, type:</p>
+
+<pre class="ruby"><span class="ruby-ivar">@owner</span> = <span class="ruby-constant">Owner</span>.<span class="ruby-identifier">create</span>(<span class="ruby-identifier">params</span>[<span class="ruby-string">&quot;owner&quot;</span>])
+<span class="ruby-comment"># =&gt; #&lt;Owner:0x007fdfcc96e430 id: 2, name: &quot;Adele&quot;&gt;</span>
+</pre>
+
+<p>It worked! Now, type:</p>
+
+<pre class="ruby"><span class="ruby-ivar">@owner</span>.<span class="ruby-identifier">pets</span>
+<span class="ruby-comment">#=&gt; [#&lt;Pet:0x007fb371bc22b8 id: 1, name: &quot;Maddy&quot;, owner_id: 2&gt;, #&lt;Pet:0x007fb371bc1f98 id: 2, name: &quot;Nona&quot;, owner_id: 2&gt;]</span>
+</pre>
+
+<p>And our usage of mass assignment successfully associated the new owner with
+the pets whose ID numbers were in the <code>params</code> hash!</p>
+
+<p>Now that we have this working code, let&#39;s go ahead and place it in our
+<code>post &#39;/owners&#39;</code> action:</p>
+
+<pre class="ruby"><span class="ruby-comment"># app/controllers/owners_controller.rb</span>
+
+<span class="ruby-identifier">post</span> <span class="ruby-string">&#39;/owners&#39;</span> <span class="ruby-keyword">do</span>
+  <span class="ruby-ivar">@owner</span> = <span class="ruby-constant">Owner</span>.<span class="ruby-identifier">create</span>(<span class="ruby-identifier">params</span>[:<span class="ruby-identifier">owner</span>])
+  <span class="ruby-identifier">redirect</span> <span class="ruby-node">&quot;owners/#{@owner.id}&quot;</span>
+<span class="ruby-keyword">end</span>
+</pre>
+
+<p>Great! We&#39;re almost done with this feature. But, remember that we want
+a user to be able to create a new owner, select some existing pets to
+associate with that owner, <em>and</em> also have the option of creating a
+new pet to associate with that owner. Let&#39;s build that latter
+capability into our form.</p>
+
+<h4 id="label-Creating+a+New+Owner+and+Associating+Them+with+a+New+Pet">Creating a New <a href="Owner.html">Owner</a> and Associating Them with a New <a href="Pet.html">Pet</a><span><a href="#label-Creating+a+New+Owner+and+Associating+Them+with+a+New+Pet">&para;</a> <a href="#top">&uarr;</a></span></h4>
+
+<p>This will be fairly simple. All we need to do is add a section to our form
+for creating a new pet:</p>
+
+<pre>and/or, create a new pet:
+    &lt;br&gt;&lt;/br&gt;
+    &lt;label&gt;name:&lt;/label&gt;
+      &lt;input  type=&quot;text&quot; name=&quot;pet[name]&quot;&gt;&lt;/input&gt;
+    &lt;br&gt;&lt;/br&gt;</pre>
+
+<p>Now our whole form should look something like this:</p>
+
+<pre>&lt;h1&gt;Create a new Owner&lt;/h1&gt;
+
+&lt;form action=&quot;/owners&quot; method=&quot;POST&quot;&gt;
+  &lt;label&gt;Name:&lt;/label&gt;
+
+  &lt;br&gt;&lt;/br&gt;
+
+  &lt;input type=&quot;text&quot; name=&quot;owner[name]&quot; id=&quot;owner_name&quot;&gt;
+
+  &lt;br&gt;&lt;/br&gt;
+
+  &lt;label&gt;Choose an existing pet:&lt;/label&gt;
+
+  &lt;br&gt;&lt;/br&gt;
+
+  &lt;%Pet.all.each do |pet|%&gt;
+    &lt;input type=&quot;checkbox&quot; name=&quot;owner[pet_ids][]&quot; id=&quot;&lt;%=pet.id%&gt;&quot; value=&quot;&lt;%=pet.id%&gt;&quot;&gt;&lt;%=pet.name%&gt;&lt;/input&gt;
+  &lt;%end%&gt;
+
+  &lt;br&gt;&lt;/br&gt;
+
+    &lt;label&gt;and/or, create a new pet:&lt;/label&gt;
+    &lt;br&gt;&lt;/br&gt;
+    &lt;label&gt;name:&lt;/label&gt;
+      &lt;input  type=&quot;text&quot; name=&quot;pet[name]&quot;&gt;&lt;/input&gt;
+    &lt;br&gt;&lt;/br&gt;
+  &lt;input type=&quot;submit&quot; value=&quot;Create Owner&quot;&gt;
+&lt;/form&gt;</pre>
+
+<p>Note that we&#39;ve included the section for creating a new pet at the
+bottom of the form and we&#39;ve given that input field a <code>name</code>
+of <code>pet[name]</code>. Now, if we fill out our form like this…</p>
+
+<p><img src="http://readme-pics.s3.amazonaws.com/creat-owner-two.png"></p>
+
+<p>…when we submit our form, our <code>params</code> hash should look
+something like this:</p>
+
+<pre class="ruby">{<span class="ruby-string">&quot;owner&quot;</span>=<span class="ruby-operator">&gt;</span>{<span class="ruby-string">&quot;name&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-string">&quot;Adele&quot;</span>, <span class="ruby-string">&quot;pet_ids&quot;</span>=<span class="ruby-operator">&gt;</span>[<span class="ruby-string">&quot;1&quot;</span>, <span class="ruby-string">&quot;2&quot;</span>]}, <span class="ruby-string">&quot;pet&quot;</span>=<span class="ruby-operator">&gt;</span>{<span class="ruby-string">&quot;name&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-string">&quot;Fake Pet&quot;</span>}}
+</pre>
+
+<p>Our <code>params["owner"]</code> hash is unchanged, so <code>@owner =
+Owner.create(params["owner"])</code> still works. But what about creating
+our new pet with a name of <code>&quot;Fake Pet&quot;</code> and
+associating it to our new owner?</p>
+
+<p>For this, we&#39;ll have to grab the new pet&#39;s name from
+<code>params["pet"][&quot;name&quot;]</code>, use it to create a new pet,
+and add the new pet to our new owner&#39;s collection of pets:</p>
+
+<pre class="ruby"><span class="ruby-ivar">@owner</span>.<span class="ruby-identifier">pets</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Pet</span>.<span class="ruby-identifier">create</span>(<span class="ruby-identifier">name</span><span class="ruby-operator">:</span> <span class="ruby-identifier">params</span>[<span class="ruby-string">&quot;pet&quot;</span>][<span class="ruby-string">&quot;name&quot;</span>])
+</pre>
+
+<p>But, you might be wondering, what if the user <em>does not</em> fill out
+the field to name and create a new pet? In that case, our
+<code>params</code> hash would look like this:</p>
+
+<pre class="ruby">{<span class="ruby-string">&quot;owner&quot;</span>=<span class="ruby-operator">&gt;</span>{<span class="ruby-string">&quot;name&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-string">&quot;Adele&quot;</span>, <span class="ruby-string">&quot;pet_ids&quot;</span>=<span class="ruby-operator">&gt;</span>[<span class="ruby-string">&quot;1&quot;</span>, <span class="ruby-string">&quot;2&quot;</span>]}, <span class="ruby-string">&quot;pet&quot;</span>=<span class="ruby-operator">&gt;</span>{<span class="ruby-string">&quot;name&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-string">&quot;&quot;</span>}}
+</pre>
+
+<p>The above line of code would create a new pet with a name of an empty
+string and associate it to our owner. That&#39;s no good. We&#39;ll need a
+way to control whether or not the above line of code runs. Let&#39;s create
+an <code>if</code> statement to check whether or not the value of
+<code>params["pet"][&quot;name&quot;]</code> is an empty string.</p>
+
+<pre class="ruby"><span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">params</span>[<span class="ruby-string">&quot;pet&quot;</span>][<span class="ruby-string">&quot;name&quot;</span>].<span class="ruby-identifier">empty?</span>
+  <span class="ruby-ivar">@owner</span>.<span class="ruby-identifier">pets</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Pet</span>.<span class="ruby-identifier">create</span>(<span class="ruby-identifier">name</span><span class="ruby-operator">:</span> <span class="ruby-identifier">params</span>[<span class="ruby-string">&quot;pet&quot;</span>][<span class="ruby-string">&quot;name&quot;</span>])
+<span class="ruby-keyword">end</span>
+</pre>
+
+<p>That looks pretty good. Let&#39;s put it all together:</p>
+
+<pre class="ruby"><span class="ruby-identifier">post</span> <span class="ruby-string">&#39;/owners&#39;</span> <span class="ruby-keyword">do</span>
+  <span class="ruby-ivar">@owner</span> = <span class="ruby-constant">Owner</span>.<span class="ruby-identifier">create</span>(<span class="ruby-identifier">params</span>[:<span class="ruby-identifier">owner</span>])
+  <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">params</span>[<span class="ruby-string">&quot;pet&quot;</span>][<span class="ruby-string">&quot;name&quot;</span>].<span class="ruby-identifier">empty?</span>
+    <span class="ruby-ivar">@owner</span>.<span class="ruby-identifier">pets</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Pet</span>.<span class="ruby-identifier">create</span>(<span class="ruby-identifier">name</span><span class="ruby-operator">:</span> <span class="ruby-identifier">params</span>[<span class="ruby-string">&quot;pet&quot;</span>][<span class="ruby-string">&quot;name&quot;</span>])
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-ivar">@owner</span>.<span class="ruby-identifier">save</span>
+  <span class="ruby-identifier">redirect</span> <span class="ruby-identifier">to</span> <span class="ruby-node">&quot;owners/#{@owner.id}&quot;</span>
+<span class="ruby-keyword">end</span>
+</pre>
+
+<p>Let&#39;s sum up before we move on. We:</p>
+<ul><li>
+<p>Built a form that dynamically generates checkboxes for each of the existing
+pets.</p>
+</li><li>
+<p>Added a field to that form in which a user can fill out the name for a
+brand new pet.</p>
+</li><li>
+<p>Built a controller action that uses mass assignment to create a new owner
+and associate it to any existing pets that the user selected via
+checkboxes.</p>
+</li><li>
+<p>Added to that controller action code that checks to see if a user did in
+fact fill out the form field to name and create a new pet. If so, our code
+will create that new pet and add it to the newly-created owner&#39;s
+collection of pets.</p>
+</li></ul>
+
+<p>Now that we can create a new owner with associated pets, let&#39;s build
+out the feature for editing that owner and their associated pets.</p>
+
+<h3 id="label-Editing+Owners+and+Associated+Pets">Editing Owners and Associated Pets<span><a href="#label-Editing+Owners+and+Associated+Pets">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>Our edit form will be very similar to our create form. We want a user to be
+able to edit everything about an owner: the owner&#39;s name, any existing
+pet associations, and any new pet the user would like to create and
+associate with that owner. So, our form should have the standard,
+pre-filled name field as well as dynamically generated checkboxes for
+existing pets. This time, though, the checkboxes should be automatically
+checked if the given owner already owns that pet. Finally, we&#39;ll need
+the same form field we built earlier for a user to create a new pet to be
+associated with our owner.</p>
+
+<p>Let&#39;s do it!</p>
+
+<pre># edit.erb
+&lt;h1&gt;Update Owner&lt;/h1&gt;
+
+&lt;form action=&quot;/owners/&lt;%=@owner.id%&gt;&quot; method=&quot;POST&quot;&gt;
+  &lt;label&gt;Name:&lt;/label&gt;
+
+  &lt;br&gt;&lt;/br&gt;
+
+  &lt;input type=&quot;text&quot; name=&quot;owner[name]&quot; id=&quot;owner_name&quot; value=&quot;&lt;%=@owner.name%&gt;&quot;&gt;
+
+  &lt;br&gt;&lt;/br&gt;
+
+  &lt;label&gt;Choose an existing pet:&lt;/label&gt;
+
+  &lt;br&gt;&lt;/br&gt;
+
+  &lt;%Pet.all.each do |pet|%&gt;
+    &lt;input type=&quot;checkbox&quot; name=&quot;owner[pet_ids][]&quot; id=&quot;&lt;%= pet.id%&gt;&quot; value=&quot;&lt;%=pet.id%&gt;&quot; &lt;%=&#39;checked&#39; if @owner.pets.include?(pet) %&gt;&gt;&lt;%=pet.name%&gt;&lt;/input&gt;
+  &lt;%end%&gt;
+
+  &lt;br&gt;&lt;/br&gt;
+
+  &lt;label&gt;and/or, create a new pet:&lt;/label&gt;
+  &lt;br&gt;&lt;/br&gt;
+  &lt;label&gt;name:&lt;/label&gt;
+    &lt;input  type=&quot;text&quot; name=&quot;pet[name]&quot; id=&quot;pet_name&quot;&gt;&lt;/input&gt;
+  &lt;br&gt;&lt;/br&gt;
+  &lt;input type=&quot;submit&quot; value=&quot;Update Owner&quot;&gt;
+&lt;/form&gt;</pre>
+
+<p>The main difference here is that we added the <code>checked</code> property
+to each checkbox with a condition to test whether the given pet is already
+present in the current owner&#39;s collection of pets. We implemented this
+<code>if</code> statement by wrapping the <code>checked</code> attribute in
+ERB tags, allowing us to use Ruby on our view page.</p>
+
+<p>Go ahead and make some changes to your owner using this edit form, then
+place a <code>binding.pry</code> in your <code>post
+&#39;/owners/:id&#39;</code> action and submit the form. Once you hit your
+binding, type <code>params</code> in the terminal.</p>
+
+<p>I filled out my edit form like this:</p>
+
+<p><img src="http://readme-pics.s3.amazonaws.com/update-owner.png"></p>
+
+<p>Notice that I&#39;ve unchecked the first two pets, Maddy and Nona, and
+checked the next two pets.</p>
+
+<p>My <code>params</code> hash consequently looks like this:</p>
+
+<pre class="ruby">{<span class="ruby-string">&quot;owner&quot;</span>=<span class="ruby-operator">&gt;</span>{<span class="ruby-string">&quot;name&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-string">&quot;Adele&quot;</span>, <span class="ruby-string">&quot;pet_ids&quot;</span>=<span class="ruby-operator">&gt;</span>[<span class="ruby-string">&quot;3&quot;</span>, <span class="ruby-string">&quot;4&quot;</span>]},
+ <span class="ruby-string">&quot;pet&quot;</span>=<span class="ruby-operator">&gt;</span>{<span class="ruby-string">&quot;name&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-string">&quot;Another New Pet&quot;</span>},
+ <span class="ruby-string">&quot;splat&quot;</span>=<span class="ruby-operator">&gt;</span>[],
+ <span class="ruby-string">&quot;captures&quot;</span>=<span class="ruby-operator">&gt;</span>[<span class="ruby-string">&quot;8&quot;</span>],
+ <span class="ruby-string">&quot;id&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-string">&quot;8&quot;</span>}
+</pre>
+
+<h4 id="label-Updating+Owners+in+the+Controller">Updating Owners in the Controller<span><a href="#label-Updating+Owners+in+the+Controller">&para;</a> <a href="#top">&uarr;</a></span></h4>
+
+<p>Let&#39;s update our owner with this new information. Just as Active Record
+was smart enough to allow us to use mass assignment to not only create a
+new owner but to associate that owner to the pets whose IDs were contained
+in the <code>&quot;pet_ids&quot;</code> array, it is also smart enough to
+allow us to update an owner in the same way. In our Pry console in the
+terminal, let&#39;s execute the following:</p>
+
+<pre class="ruby"><span class="ruby-ivar">@owner</span> = <span class="ruby-constant">Owner</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[:<span class="ruby-identifier">id</span>])
+<span class="ruby-ivar">@owner</span>.<span class="ruby-identifier">update</span>(<span class="ruby-identifier">params</span>[:<span class="ruby-identifier">owner</span>])
+</pre>
+
+<p>Now, if we type <code>@owner.pets</code>, we&#39;ll see that the owner is
+no longer associated to the pets with an ID of 1 or 2, but they are
+associated to pets 3 and 4:</p>
+
+<pre class="ruby"><span class="ruby-ivar">@owner</span>.<span class="ruby-identifier">pets</span>
+<span class="ruby-comment"># =&gt; [#&lt;Pet:0x007fd511d5e560 id: 3, name: &quot;SBC&quot;, owner_id: 8&gt;,</span>
+ <span class="ruby-comment">#&lt;Pet:0x007fd511d5e3d0 id: 4, name: &quot;Fake Pet&quot;, owner_id: 8&gt;]</span>
+</pre>
+
+<p>Great! Now, we need to implement logic similar to that in our <code>post
+&#39;/owners&#39;</code> action to handle a user trying to associate a
+brand new pet to our owner:</p>
+
+<pre class="ruby"><span class="ruby-identifier">post</span> <span class="ruby-string">&#39;/owners/:id&#39;</span> <span class="ruby-keyword">do</span>
+  <span class="ruby-ivar">@owner</span> = <span class="ruby-constant">Owner</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[:<span class="ruby-identifier">id</span>])
+  <span class="ruby-ivar">@owner</span>.<span class="ruby-identifier">update</span>(<span class="ruby-identifier">params</span>[<span class="ruby-string">&quot;owner&quot;</span>])
+  <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">params</span>[<span class="ruby-string">&quot;pet&quot;</span>][<span class="ruby-string">&quot;name&quot;</span>].<span class="ruby-identifier">empty?</span>
+    <span class="ruby-ivar">@owner</span>.<span class="ruby-identifier">pets</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Pet</span>.<span class="ruby-identifier">create</span>(<span class="ruby-identifier">name</span><span class="ruby-operator">:</span> <span class="ruby-identifier">params</span>[<span class="ruby-string">&quot;pet&quot;</span>][<span class="ruby-string">&quot;name&quot;</span>])
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">redirect</span> <span class="ruby-identifier">to</span> <span class="ruby-node">&quot;owners/#{@owner.id}&quot;</span>
+<span class="ruby-keyword">end</span>
+</pre>
+
+<p>And that&#39;s it!</p>
+
+<h3 id="label-Creating+and+Updating+Pets+with+Associated+Owners">Creating and Updating Pets with Associated Owners<span><a href="#label-Creating+and+Updating+Pets+with+Associated+Owners">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>Now that we&#39;ve walked through these features together for the
+<code>Owner</code> model, take some time and try to build out the same
+functionality for <code>Pet</code>. The form to create a new pet should
+allow a user to select from the list of available owners and/or create a
+new owner, and the form to edit a given pet should allow the user to select
+a new owner or create a new owner. Note that if a new owner is created it
+would override any existing owner that is selected.</p>
+
+<p>Make sure you run the tests to check your work.</p>
+<p data-visibility='hidden'>View <a href='https://learn.co/lessons/sinatra-complex-forms-associations' title='Sinatra and Active Record: Associations and Complex Forms'>Sinatra and Active Record: Associations and Complex Forms</a> on Learn.co and start learning to code for free.</p><p class='util--hide'>View <a href='https://learn.co/lessons/sinatra-complex-forms-associations'>Sinatra Complex Forms Associations</a> on Learn.co and start learning to code for free.</p></main>
+
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://rdoc.github.io/rdoc">RDoc</a> 5.0.0.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+
