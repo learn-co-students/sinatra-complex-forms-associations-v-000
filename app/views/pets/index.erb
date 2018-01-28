@@ -1,1 +1,4 @@
 index.erb
+<% @pets.each do |pet| %>
+<p>Pet's Name: <%= pet.name %>, Owner's Name: <%=pet.owner_id %></p>
+<%end%>
