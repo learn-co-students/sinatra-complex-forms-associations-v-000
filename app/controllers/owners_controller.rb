@@ -2,27 +2,28 @@ require 'pry'
 
 class OwnersController < ApplicationController
 
-  get '/' do
-    # binding.pry
-
-  # get '/owners' do
+  get '/owners' do
     @owners = Owner.all
-
     erb :'/owners/index' 
   end
 
+  get '/owners/new' do 
+    erb :'/owners/new'
+  end
+  
   get '/owners/new' do
+    @pets = Pet.all
     erb :'owners/new'
   end
 
-  # get '/owners/new' do 
-  #   erb :'/owners/new'
-  # end
-
   post '/owners' do 
-    binding.pry
-    # @owners = Owner.create(name: params[name])
-    
+    binding.prylea
+    # @owner = Owner.create(params[:owner])
+    # if !params["pet"]["name"].empty?
+    #   @owner.pets << Pet.create(name: params["pet"]["name"])
+    # end
+    # @owner.save
+    # redirect "owners/#{@owner.id}"
   end
 
   get '/owners/:id/edit' do 
