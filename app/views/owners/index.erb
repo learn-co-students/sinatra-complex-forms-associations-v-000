@@ -1,1 +1,8 @@
-index.erb
+<h1>Welcome All Ye Pet Lovers to the Owners Page!</h1>
+<h2>Click on an Owner to go to their homepage:</h2>
+<% @owners.each do |owner| %>
+  <a href="/owners/<%=owner.id%>"><%=owner.name%></a><br>
+<% end %>
+<br>
+<a href="/owners/new">Click to Create a New Owner</a><br>
+<a href="/pets">Click to Go to the Pets Page</a>
