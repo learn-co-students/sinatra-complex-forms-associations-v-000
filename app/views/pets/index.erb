@@ -1,1 +1,5 @@
-index.erb
+<h1>The Pet List:</h1>
+<%@pets.each do |pet|%>
+  <h2><%=pet.name%></h2>
+  <a href="/pets/<%=pet.id%>">LINK</a>
+  <%end%>
