@@ -68,7 +68,6 @@ describe "Pets Controller" do
       @owner = Owner.create(:name => "Carla")
       @pet = Pet.create(:name => "Chewie", :owner_id => @owner.id)
     end
-
     it "can visit '/pets/:id/edit' " do
       get "/owners/#{@pet.id}/edit"
       expect(last_response.status).to eq(200)
