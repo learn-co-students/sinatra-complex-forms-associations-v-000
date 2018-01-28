@@ -13,14 +13,13 @@ describe "Pets Controller" do
       expect(page).to have_field('pet[name]')
     end
 
-    it "has a form with a checkbox for existing owners" do
+    it "has a dropdown showing existing owners" do
       @owner1 = Owner.create(:name => "Cricky")
       @owner2 = Owner.create(:name => "Chris")
 
-      visit '/pets/new'
-      expect(page.has_unchecked_field?(@owner1.id)).to eq(true)
-      expect(page.has_unchecked_field?(@owner2.id)).to eq(true)
-    end
+      visit '/pets/new' 
+      expect(page).to have_select("pet[owner_id]", options: [@owner1.name, @owner2.name])
+      end
 
     it "has a field for creating a new owner" do
       visit '/pets/new'
@@ -33,7 +32,7 @@ describe "Pets Controller" do
       @owner2 = Owner.create(:name => "Chris")
       visit '/pets/new'
       fill_in "pet_name", :with => "Michael"
-      check(@owner1.id)
+      select "#{@owner1.name}", :from => "pet[owner_id]"
       click_button "Create Pet"
       @pet = Pet.last
       expect(@pet.name).to eq("Michael")
@@ -56,7 +55,7 @@ describe "Pets Controller" do
       @owner2 = Owner.create(:name => "Kaitlin")
       visit '/pets/new'
       fill_in "pet_name", :with => "Joeseph"
-      check(@owner2.id)
+     select "#{@owner2.name}", :from => "pet[owner_id]"
       click_button "Create Pet"
       @pet= Pet.last
       expect(page.current_path).to eq("/pets/#{@pet.id}")
@@ -77,7 +76,9 @@ describe "Pets Controller" do
     it " loads form to edit a pet and his owner" do
       visit "/pets/#{@pet.id}/edit"
       expect(page).to have_field('pet[name]')
-      expect(page.has_checked_field?(@owner.id)).to eq(true)
+
+      # expect(page).to have_select("pet[owner_id]")
+      expect(page).to have_select('pet[owner_id]', selected: @owner.name)
       expect(page).to have_field('owner[name]')
     end
 
@@ -91,7 +92,7 @@ describe "Pets Controller" do
     it "edit's the pet's owner with an existing owner" do
       @adam = Owner.create(:name => "Adam")
       visit "/pets/#{@pet.id}/edit"
-      choose(@adam.id)
+      select "#{@adam.name}", :from => "pet[owner_id]"
       click_button "Update Pet"
       expect(Pet.last.owner.name).to eq("Adam")
     end
