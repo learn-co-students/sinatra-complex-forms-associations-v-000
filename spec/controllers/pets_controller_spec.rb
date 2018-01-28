@@ -24,7 +24,7 @@ describe "Pets Controller" do
 
     it "has a field for creating a new owner" do
       visit '/pets/new'
-      expect(page).to have_field(:owner_name)
+      expect(page).to have_field("owner[name]")
     end
 
 
@@ -32,7 +32,7 @@ describe "Pets Controller" do
       @owner1 = Owner.create(:name => "Cricky")
       @owner2 = Owner.create(:name => "Chris")
       visit '/pets/new'
-      fill_in "pet_name", :with => "Michael"
+      fill_in "pet[name]", :with => "Michael"
       check(@owner1.id)
       click_button "Create Pet"
       @pet = Pet.last
@@ -42,8 +42,8 @@ describe "Pets Controller" do
 
       it " creates a new pet and a new owner" do
       visit '/pets/new'
-      fill_in "pet_name", :with => "Pippa"
-      fill_in "owner_name", :with => "Mary Nelson"
+      fill_in "pet[name]", :with => "Pippa"
+      fill_in "owner[name]", :with => "Mary Nelson"
       click_button "Create Pet"
       @owner = Owner.last
       @pet = Pet.last
@@ -55,7 +55,7 @@ describe "Pets Controller" do
       @owner1 = Owner.create(:name => "Kristi")
       @owner2 = Owner.create(:name => "Kaitlin")
       visit '/pets/new'
-      fill_in "pet_name", :with => "Joeseph"
+      fill_in "pet[name]", :with => "Joeseph"
       check(@owner2.id)
       click_button "Create Pet"
       @pet= Pet.last
@@ -83,7 +83,7 @@ describe "Pets Controller" do
 
      it "edit's the pet's name" do
       visit "/pets/#{@pet.id}/edit"
-      fill_in "pet_name", :with => "Chewie Darling"
+      fill_in "pet[name]", :with => "Chewie Darling"
       click_button "Update Pet"
       expect(Pet.last.name).to eq("Chewie Darling")
     end
@@ -98,7 +98,7 @@ describe "Pets Controller" do
 
     it "edit's the pet's owner with a new owner" do
       visit "/pets/#{@pet.id}/edit"
-      fill_in "owner_name", :with => "Samantha"
+      fill_in "owner[name]", :with => "Samantha"
       click_button "Update Pet"
       expect(Pet.last.owner.name).to eq("Samantha")
     end
