@@ -32,11 +32,11 @@ describe "Pets Controller" do
       @owner1 = Owner.create(:name => "Cricky")
       @owner2 = Owner.create(:name => "Chris")
       visit '/pets/new'
-      fill_in "pet_name", :with => "Michael"
+      fill_in "pet_name", :with => "Dogbert"
       check(@owner1.id)
       click_button "Create Pet"
       @pet = Pet.last
-      expect(@pet.name).to eq("Michael")
+      expect(@pet.name).to eq("Dogbert")
       expect(@pet.owner.name).to eq("Cricky")
     end
 
