@@ -1,0 +1,18 @@
+<h1>Update Pet</h1>
+<form method="post" action="/pets/<%=@pet.id%>">
+  <p>name: </p>
+  <input type="text" value="<%=@pet.name%>" name="pet[name]" id="pet_name"/>
+  <p>owner: </p>
+  <%Owner.all.each do |owner|%>
+  <input type="checkbox" value="<%=owner.id%>" id="<%=owner.id%>" name="owner[name]" <%='checked' if @pet.owner.name == owner.name%>> <%=owner.name%></input>
+  <%end%>
+
+
+  <label>and/or, create a new owner:</label>
+   <br></br>
+   <label>name:</label>
+     <input  type="text" name="owner[name]" id="owner_name"></input>
+   <br></br>
+
+  <input type="submit" value="Update Pet" id="submit"/>
+</form>
