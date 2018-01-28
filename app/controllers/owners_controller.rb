@@ -2,15 +2,11 @@ require 'pry'
 
 class OwnersController < ApplicationController
 
-  get '/owners' do
+  get '/' do
     @owners = Owner.all
     erb :'/owners/index' 
   end
 
-  get '/owners/new' do 
-    erb :'/owners/new'
-  end
-  
   get '/owners/new' do
     @pets = Pet.all
     erb :'owners/new'
