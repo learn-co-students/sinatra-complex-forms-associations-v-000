@@ -2,6 +2,8 @@
 <h4>Pets:</h4>
 <ul>
   <%@owner.pets.each do |pet|%>
-  <li><%=pet.name%></li>
+  <li><a href="/pets/<%= pet.id %>"><%=pet.name%></li></a>
   <%end%>
 </ul>
+
+<a href="/owners/<%= @owner.id %>/edit">Edit Owner</a>
