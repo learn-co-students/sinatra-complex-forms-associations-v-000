@@ -40,7 +40,7 @@ describe "Pets Controller" do
       expect(@pet.owner.name).to eq("Cricky")
     end
 
-      it " creates a new pet and a new owner" do
+    it " creates a new pet and a new owner" do
       visit '/pets/new'
       fill_in "pet_name", :with => "Pippa"
       fill_in "owner_name", :with => "Mary Nelson"

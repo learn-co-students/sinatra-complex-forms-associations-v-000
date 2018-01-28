@@ -15,3 +15,6 @@ gem 'sqlite3'
 gem 'thin'
 gem 'tux'
 gem 'capybara'
+gem 'mini_portile2'
+
+gem 'learn-co'
