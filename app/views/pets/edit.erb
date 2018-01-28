@@ -1,3 +1,36 @@
 <h1>Update Pet</h1>
 
+  <form class="" action="/pets/<%=@pet.id %>" method="post">
+   <input type="hidden" name="_method" value="patch">
+    <label for="pet_name">Pet Name :</label>
+    <input type="text" name="pet_name" value="<%= @pet.name%>" id="pet[name]" maxlength='50' size="25">
 
+    <br> </br>
+
+     <label for="owner_name" >Owners:</label>
+    <br>
+
+
+   <% Owner.all.each do |owner| %>
+    <% if @pet.owner.id == owner.id  %>
+      <br>
+      <input type="radio" id="@owner.id" name="owner_id" value="<%= owner.id %>" checked>
+      <label for="@owner.id"> <%= @owner.id %> - <%= @pet.owner.name %> </label>
+      <br>
+    <% else %>
+    <br>
+    <input type="radio" id="owner[name]" name="owner_id" value="<%= owner.id %>">
+    <label for="owner[name]"> <%= owner.id %>  - <%= owner.name %>  </label>
+    <br>
+
+    <% end %>
+  <%end  %>
+
+  <br><br>
+  <label>Create a New Owner:</label>
+  <br><br>
+  <label for="owner[name]">Name:</label>
+  <input type="textarea" id="owner[name]" name="owner_name">
+    <br> <br>
+    <input type="submit" name="submit" value="Update Pet">
+  </form>
