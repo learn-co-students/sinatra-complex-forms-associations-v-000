@@ -1,1 +1,6 @@
-show.erb
+<h4>Owners:</h4>
+<ul>
+  <%Owner.all.each do |owner|%>
+  <li><%=owner.name%></li>
+  <%end%>
+</ul>
