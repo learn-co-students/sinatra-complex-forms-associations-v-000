@@ -40,7 +40,7 @@ describe "Pets Controller" do
       expect(@pet.owner.name).to eq("Cricky")
     end
 
-      it " creates a new pet and a new owner" do
+    it " creates a new pet and a new owner" do
       visit '/pets/new'
       fill_in "pet_name", :with => "Pippa"
       fill_in "owner_name", :with => "Mary Nelson"
@@ -81,7 +81,7 @@ describe "Pets Controller" do
       expect(page).to have_field('owner[name]')
     end
 
-     it "edit's the pet's name" do
+    it "edit's the pet's name" do
       visit "/pets/#{@pet.id}/edit"
       fill_in "pet_name", :with => "Chewie Darling"
       click_button "Update Pet"
