@@ -41,7 +41,7 @@ class PetsController < ApplicationController
       @pet[0].save
     else
       #binding.pry
-      @pet = Pet.update(name: params["pet"]["name"], owner_id: params["pet"]["owner_id"])
+      @pet = Pet.update(name: params["pet"]["name"], owner_id: params["pet"]["owner"]["id"])
     end
     redirect to "pets/#{@pet[0].id}"
   end
