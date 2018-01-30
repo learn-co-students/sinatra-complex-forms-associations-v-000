@@ -1,3 +1,44 @@
-<h1>Update Pet</h1>
+<html><head>
+    <title></title>
+  <style></style></head>
 
+  <body>
+    <h1>Update Pet</h1>
 
+<form action="/pets/1" method="POST">
+  <label>Name:</label>
+
+  <br><br>
+
+  <input type="text" name="pet[name]" id="pet_name" value="Nona">
+
+  <br><br>
+
+  <label>Choose an existing owner:</label>
+
+  <br><br>
+
+  
+    <input type="checkbox" name="pet[owner][id]" id="1" value="1" checked="">Sophie
+  
+    <input type="checkbox" name="pet[owner][id]" id="2" value="2">George
+  
+    <input type="checkbox" name="pet[owner][id]" id="3" value="3">George
+  
+    <input type="checkbox" name="pet[owner][id]" id="4" value="4">George
+  
+    <input type="checkbox" name="pet[owner][id]" id="5" value="5">George
+  
+
+  <br><br>
+
+  <label>or, create a new owner:</label>
+  <br><br>
+  <label>name:</label>
+    <input type="text" name="owner[name]" id="owner_name">
+  <br><br>
+  <input type="submit" value="Update Pet">
+</form>
+
+  
+</body></html>
