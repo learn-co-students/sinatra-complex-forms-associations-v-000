@@ -1,1 +1,3 @@
-show.erb
+<% Pet.all.each do |pet| %> 
+<%= @pet.name %> is owned by <%= @pet.owner.name %>. 
+<%end%> 
