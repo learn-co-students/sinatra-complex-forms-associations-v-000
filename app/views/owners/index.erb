@@ -1,1 +1,22 @@
-index.erb
+<!DOCTYPE <html>
+<head>
+  <title>All Owners</title>
+</head>
+<body>
+  <h1>Here's who gots what:</h1>
+  <% @owners.each do |o| %>
+    <h2><a href="/owners/<%=o.id%>"><%= o.name %></a></h2>
+    <% unless o.pets.empty? %>
+      <h3>Pets:</h3>
+      <ul>
+        <% o.pets.each do |p| %>
+        <li><%= p.name %></li>
+        <% end %>
+      </ul>
+    <% end %>
+  <% end %>
+
+
+
+</body>
+</html>
