@@ -288,217 +288,56 @@ a {
   <dl style="margin-left: 15px;">
   <dt id="example_group_2" class="passed">new action</dt>
     <script type="text/javascript">moveProgressBar('4.1');</script>
-    <dd class="example passed"><span class="passed_spec_name">can visit &#39;/owners/new&#39;</span><span class='duration'>0.11480s</span></dd>
+    <dd class="example passed"><span class="passed_spec_name">can visit &#39;/owners/new&#39;</span><span class='duration'>0.04083s</span></dd>
     <script type="text/javascript">moveProgressBar('8.3');</script>
-    <dd class="example passed"><span class="passed_spec_name">&#39;/owners/new&#39; loads form to create a new owner</span><span class='duration'>0.01449s</span></dd>
-    <script type="text/javascript">makeRed('rspec-header');</script>
-    <script type="text/javascript">makeRed('div_group_2');</script>
-    <script type="text/javascript">makeRed('example_group_2');</script>
+    <dd class="example passed"><span class="passed_spec_name">&#39;/owners/new&#39; loads form to create a new owner</span><span class='duration'>0.01399s</span></dd>
     <script type="text/javascript">moveProgressBar('12.5');</script>
-    <dd class="example failed">
-      <span class="failed_spec_name">&#39;/owners/new&#39; form has a checkbox for existing pets</span>
-      <span class="duration">0.68737s</span>
-      <div class="failure" id="failure_1">
-        <div class="message"><pre>  Failure/Error: expect(page.has_unchecked_field?(@pet1.id)).to eq(true)
-
-    expected: true
-         got: false
-
-    (compared using ==)
-  # ./spec/controllers/owners_controller_spec.rb:20:in `block (3 levels) in &lt;top (required)&gt;&#39;</pre></div>
-        <div class="backtrace"><pre>./spec/controllers/owners_controller_spec.rb:20:in `block (3 levels) in &lt;top (required)&gt;&#39;</pre></div>
-    <pre class="ruby"><code><span class="linenum">18</span>      <span class="instance-variable">@pet2</span> = <span class="constant">Pet</span>.create(<span class="symbol">:name</span> =&gt; <span class="string"><span class="delimiter">&quot;</span><span class="content">Sadie</span><span class="delimiter">&quot;</span></span>)
-<span class="linenum">19</span>      visit <span class="string"><span class="delimiter">'</span><span class="content">/owners/new</span><span class="delimiter">'</span></span>
-<span class="offending"><span class="linenum">20</span>      <span class="keyword">expect</span>(page.has_unchecked_field?(<span class="instance-variable">@pet1</span>.id)).to eq(<span class="predefined-constant">true</span>)</span>
-<span class="linenum">21</span>      <span class="keyword">expect</span>(page.has_unchecked_field?(<span class="instance-variable">@pet2</span>.id)).to eq(<span class="predefined-constant">true</span>)
-<span class="linenum">22</span>    <span class="keyword">end</span></code></pre>
-      </div>
-    </dd>
+    <dd class="example passed"><span class="passed_spec_name">&#39;/owners/new&#39; form has a checkbox for existing pets</span><span class='duration'>0.04696s</span></dd>
     <script type="text/javascript">moveProgressBar('16.6');</script>
-    <dd class="example failed">
-      <span class="failed_spec_name">&#39;/owners/new&#39; form has a field for creating a new pet</span>
-      <span class="duration">0.01279s</span>
-      <div class="failure" id="failure_2">
-        <div class="message"><pre>  Failure/Error: expect(page).to have_field(&#39;pet[name]&#39;)
-    expected #has_field?(&quot;pet[name]&quot;) to return true, got false
-  # ./spec/controllers/owners_controller_spec.rb:26:in `block (3 levels) in &lt;top (required)&gt;&#39;</pre></div>
-        <div class="backtrace"><pre>./spec/controllers/owners_controller_spec.rb:26:in `block (3 levels) in &lt;top (required)&gt;&#39;</pre></div>
-    <pre class="ruby"><code><span class="linenum">24</span>    <span class="keyword">it</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">'/owners/new' form has a field for creating a new pet</span><span class="delimiter">&quot;</span></span> <span class="keyword">do</span>
-<span class="linenum">25</span>      visit <span class="string"><span class="delimiter">'</span><span class="content">/owners/new</span><span class="delimiter">'</span></span>
-<span class="offending"><span class="linenum">26</span>      <span class="keyword">expect</span>(page).to have_field(<span class="string"><span class="delimiter">'</span><span class="content">pet[name]</span><span class="delimiter">'</span></span>)</span>
-<span class="linenum">27</span>    <span class="keyword">end</span></code></pre>
-      </div>
-    </dd>
+    <dd class="example passed"><span class="passed_spec_name">&#39;/owners/new&#39; form has a field for creating a new pet</span><span class='duration'>0.01439s</span></dd>
     <script type="text/javascript">moveProgressBar('20.8');</script>
-    <dd class="example failed">
-      <span class="failed_spec_name">&#39;/owners/new&#39; creates a new owner and associates an existing pet </span>
-      <span class="duration">0.01909s</span>
-      <div class="failure" id="failure_3">
-        <div class="message"><pre>  Failure/Error: check(@pet1.id)
-
-  Capybara::ElementNotFound:
-    Unable to find visible checkbox 1 that is not disabled
-  # /Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
-  # /Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/node/base.rb:81:in `synchronize&#39;
-  # /Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
-  # /Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/node/finders.rb:37:in `find&#39;
-  # /Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/node/actions.rb:300:in `block in _check_with_label&#39;
-  # /Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
-  # /Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/node/actions.rb:298:in `_check_with_label&#39;
-  # /Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/node/actions.rb:140:in `check&#39;
-  # /Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
-  # /Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
-  # ./spec/controllers/owners_controller_spec.rb:35:in `block (3 levels) in &lt;top (required)&gt;&#39;</pre></div>
-        <div class="backtrace"><pre>/Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
-/Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/node/base.rb:81:in `synchronize&#39;
-/Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
-/Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/node/finders.rb:37:in `find&#39;
-/Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/node/actions.rb:300:in `block in _check_with_label&#39;
-/Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
-/Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/node/actions.rb:298:in `_check_with_label&#39;
-/Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/node/actions.rb:140:in `check&#39;
-/Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
-/Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
-./spec/controllers/owners_controller_spec.rb:35:in `block (3 levels) in &lt;top (required)&gt;&#39;</pre></div>
-    <pre class="ruby"><code><span class="linenum">312</span>          <span class="keyword">end</span>
-<span class="linenum">313</span>          <span class="keyword">if</span> result.empty?
-<span class="offending"><span class="linenum">314</span>            raise <span class="constant">Capybara</span>::<span class="constant">ElementNotFound</span>.new(<span class="string"><span class="delimiter">&quot;</span><span class="content">Unable to find </span><span class="inline"><span class="inline-delimiter">#{</span>query.description<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>)</span>
-<span class="linenum">315</span>          <span class="keyword">end</span>
-<span class="linenum">316</span>          result.first</code></pre>
-      </div>
-    </dd>
+    <dd class="example passed"><span class="passed_spec_name">&#39;/owners/new&#39; creates a new owner and associates an existing pet </span><span class='duration'>0.04375s</span></dd>
     <script type="text/javascript">moveProgressBar('25.0');</script>
-    <dd class="example failed">
-      <span class="failed_spec_name">&#39;/owners/new&#39; creates a new owner and a new pet</span>
-      <span class="duration">0.02791s</span>
-      <div class="failure" id="failure_4">
-        <div class="message"><pre>  Failure/Error: fill_in &quot;pet[name]&quot;, :with =&gt; &quot;Caldwell&quot;
-
-  Capybara::ElementNotFound:
-    Unable to find visible field &quot;pet[name]&quot; that is not disabled
-  # /Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
-  # /Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
-  # /Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
-  # /Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/node/finders.rb:37:in `find&#39;
-  # /Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/node/actions.rb:92:in `fill_in&#39;
-  # /Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
-  # /Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
-  # ./spec/controllers/owners_controller_spec.rb:47:in `block (3 levels) in &lt;top (required)&gt;&#39;</pre></div>
-        <div class="backtrace"><pre>/Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
-/Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
-/Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
-/Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/node/finders.rb:37:in `find&#39;
-/Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/node/actions.rb:92:in `fill_in&#39;
-/Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
-/Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
-./spec/controllers/owners_controller_spec.rb:47:in `block (3 levels) in &lt;top (required)&gt;&#39;</pre></div>
-    <pre class="ruby"><code><span class="linenum">312</span>          <span class="keyword">end</span>
-<span class="linenum">313</span>          <span class="keyword">if</span> result.empty?
-<span class="offending"><span class="linenum">314</span>            raise <span class="constant">Capybara</span>::<span class="constant">ElementNotFound</span>.new(<span class="string"><span class="delimiter">&quot;</span><span class="content">Unable to find </span><span class="inline"><span class="inline-delimiter">#{</span>query.description<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>)</span>
-<span class="linenum">315</span>          <span class="keyword">end</span>
-<span class="linenum">316</span>          result.first</code></pre>
-      </div>
-    </dd>
+    <dd class="example passed"><span class="passed_spec_name">&#39;/owners/new&#39; creates a new owner and a new pet</span><span class='duration'>0.02977s</span></dd>
     <script type="text/javascript">moveProgressBar('29.1');</script>
-    <dd class="example failed">
-      <span class="failed_spec_name">&#39;/owners/new&#39; redirects to &#39;/owners/:id&#39; after form submissions</span>
-      <span class="duration">0.08998s</span>
-      <div class="failure" id="failure_5">
-        <div class="message"><pre>  Failure/Error: check(@pet1.id)
-
-  Capybara::ElementNotFound:
-    Unable to find visible checkbox 1 that is not disabled
-  # /Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
-  # /Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/node/base.rb:81:in `synchronize&#39;
-  # /Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
-  # /Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/node/finders.rb:37:in `find&#39;
-  # /Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/node/actions.rb:300:in `block in _check_with_label&#39;
-  # /Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
-  # /Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/node/actions.rb:298:in `_check_with_label&#39;
-  # /Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/node/actions.rb:140:in `check&#39;
-  # /Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
-  # /Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
-  # ./spec/controllers/owners_controller_spec.rb:60:in `block (3 levels) in &lt;top (required)&gt;&#39;</pre></div>
-        <div class="backtrace"><pre>/Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
-/Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/node/base.rb:81:in `synchronize&#39;
-/Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
-/Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/node/finders.rb:37:in `find&#39;
-/Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/node/actions.rb:300:in `block in _check_with_label&#39;
-/Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
-/Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/node/actions.rb:298:in `_check_with_label&#39;
-/Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/node/actions.rb:140:in `check&#39;
-/Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
-/Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
-./spec/controllers/owners_controller_spec.rb:60:in `block (3 levels) in &lt;top (required)&gt;&#39;</pre></div>
-    <pre class="ruby"><code><span class="linenum">312</span>          <span class="keyword">end</span>
-<span class="linenum">313</span>          <span class="keyword">if</span> result.empty?
-<span class="offending"><span class="linenum">314</span>            raise <span class="constant">Capybara</span>::<span class="constant">ElementNotFound</span>.new(<span class="string"><span class="delimiter">&quot;</span><span class="content">Unable to find </span><span class="inline"><span class="inline-delimiter">#{</span>query.description<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>)</span>
-<span class="linenum">315</span>          <span class="keyword">end</span>
-<span class="linenum">316</span>          result.first</code></pre>
-      </div>
-    </dd>
+    <dd class="example passed"><span class="passed_spec_name">&#39;/owners/new&#39; redirects to &#39;/owners/:id&#39; after form submissions</span><span class='duration'>0.03897s</span></dd>
   </dl>
 </div>
 <div id="div_group_3" class="example_group passed">
   <dl style="margin-left: 15px;">
   <dt id="example_group_3" class="passed">edit action</dt>
     <script type="text/javascript">moveProgressBar('33.3');</script>
-    <dd class="example passed"><span class="passed_spec_name">can visit &#39;/owners/:id/edit&#39; </span><span class='duration'>0.08067s</span></dd>
+    <dd class="example passed"><span class="passed_spec_name">can visit &#39;/owners/:id/edit&#39; </span><span class='duration'>0.02210s</span></dd>
+    <script type="text/javascript">makeRed('rspec-header');</script>
     <script type="text/javascript">makeRed('div_group_3');</script>
     <script type="text/javascript">makeRed('example_group_3');</script>
     <script type="text/javascript">moveProgressBar('37.5');</script>
     <dd class="example failed">
       <span class="failed_spec_name">&#39;/owners/:id/edit&#39; loads form to edit an owner and his pets</span>
-      <span class="duration">0.03227s</span>
-      <div class="failure" id="failure_6">
-        <div class="message"><pre>  Failure/Error: expect(page).to have_field(&#39;owner[name]&#39;)
-    expected #has_field?(&quot;owner[name]&quot;) to return true, got false
-  # ./spec/controllers/owners_controller_spec.rb:80:in `block (3 levels) in &lt;top (required)&gt;&#39;</pre></div>
-        <div class="backtrace"><pre>./spec/controllers/owners_controller_spec.rb:80:in `block (3 levels) in &lt;top (required)&gt;&#39;</pre></div>
-    <pre class="ruby"><code><span class="linenum">78</span>    <span class="keyword">it</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">'/owners/:id/edit' loads form to edit an owner and his pets</span><span class="delimiter">&quot;</span></span> <span class="keyword">do</span>
-<span class="linenum">79</span>      visit <span class="string"><span class="delimiter">&quot;</span><span class="content">/owners/</span><span class="inline"><span class="inline-delimiter">#{</span><span class="instance-variable">@owner</span>.id<span class="inline-delimiter">}</span></span><span class="content">/edit</span><span class="delimiter">&quot;</span></span>
-<span class="offending"><span class="linenum">80</span>      <span class="keyword">expect</span>(page).to have_field(<span class="string"><span class="delimiter">'</span><span class="content">owner[name]</span><span class="delimiter">'</span></span>)</span>
-<span class="linenum">81</span>      <span class="keyword">expect</span>(page.has_checked_field?(<span class="instance-variable">@pet</span>.id)).to eq(<span class="predefined-constant">true</span>)
-<span class="linenum">82</span>      <span class="keyword">expect</span>(page).to have_field(<span class="string"><span class="delimiter">'</span><span class="content">pet[name]</span><span class="delimiter">'</span></span>)</code></pre>
+      <span class="duration">0.03236s</span>
+      <div class="failure" id="failure_1">
+        <div class="message"><pre>  Failure/Error: expect(page.has_checked_field?(@pet.id)).to eq(true)
+
+    expected: true
+         got: false
+
+    (compared using ==)
+  # ./spec/controllers/owners_controller_spec.rb:81:in `block (3 levels) in &lt;top (required)&gt;&#39;</pre></div>
+        <div class="backtrace"><pre>./spec/controllers/owners_controller_spec.rb:81:in `block (3 levels) in &lt;top (required)&gt;&#39;</pre></div>
+    <pre class="ruby"><code><span class="linenum">79</span>      visit <span class="string"><span class="delimiter">&quot;</span><span class="content">/owners/</span><span class="inline"><span class="inline-delimiter">#{</span><span class="instance-variable">@owner</span>.id<span class="inline-delimiter">}</span></span><span class="content">/edit</span><span class="delimiter">&quot;</span></span>
+<span class="linenum">80</span>      <span class="keyword">expect</span>(page).to have_field(<span class="string"><span class="delimiter">'</span><span class="content">owner[name]</span><span class="delimiter">'</span></span>)
+<span class="offending"><span class="linenum">81</span>      <span class="keyword">expect</span>(page.has_checked_field?(<span class="instance-variable">@pet</span>.id)).to eq(<span class="predefined-constant">true</span>)</span>
+<span class="linenum">82</span>      <span class="keyword">expect</span>(page).to have_field(<span class="string"><span class="delimiter">'</span><span class="content">pet[name]</span><span class="delimiter">'</span></span>)
+<span class="linenum">83</span>    <span class="keyword">end</span></code></pre>
       </div>
     </dd>
     <script type="text/javascript">moveProgressBar('41.6');</script>
-    <dd class="example failed">
-      <span class="failed_spec_name">edit&#39;s the owner&#39;s name</span>
-      <span class="duration">0.03747s</span>
-      <div class="failure" id="failure_7">
-        <div class="message"><pre>  Failure/Error: fill_in &quot;owner[name]&quot;, :with =&gt; &quot;Carla Gremillion&quot;
-
-  Capybara::ElementNotFound:
-    Unable to find visible field &quot;owner[name]&quot; that is not disabled
-  # /Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
-  # /Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
-  # /Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
-  # /Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/node/finders.rb:37:in `find&#39;
-  # /Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/node/actions.rb:92:in `fill_in&#39;
-  # /Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
-  # /Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
-  # ./spec/controllers/owners_controller_spec.rb:87:in `block (3 levels) in &lt;top (required)&gt;&#39;</pre></div>
-        <div class="backtrace"><pre>/Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
-/Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
-/Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
-/Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/node/finders.rb:37:in `find&#39;
-/Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/node/actions.rb:92:in `fill_in&#39;
-/Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
-/Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
-./spec/controllers/owners_controller_spec.rb:87:in `block (3 levels) in &lt;top (required)&gt;&#39;</pre></div>
-    <pre class="ruby"><code><span class="linenum">312</span>          <span class="keyword">end</span>
-<span class="linenum">313</span>          <span class="keyword">if</span> result.empty?
-<span class="offending"><span class="linenum">314</span>            raise <span class="constant">Capybara</span>::<span class="constant">ElementNotFound</span>.new(<span class="string"><span class="delimiter">&quot;</span><span class="content">Unable to find </span><span class="inline"><span class="inline-delimiter">#{</span>query.description<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>)</span>
-<span class="linenum">315</span>          <span class="keyword">end</span>
-<span class="linenum">316</span>          result.first</code></pre>
-      </div>
-    </dd>
+    <dd class="example passed"><span class="passed_spec_name">edit&#39;s the owner&#39;s name</span><span class='duration'>0.04318s</span></dd>
     <script type="text/javascript">moveProgressBar('45.8');</script>
     <dd class="example failed">
       <span class="failed_spec_name">edit&#39;s the owner&#39;s pets with an existing pet</span>
-      <span class="duration">0.02569s</span>
-      <div class="failure" id="failure_8">
+      <span class="duration">0.02097s</span>
+      <div class="failure" id="failure_2">
         <div class="message"><pre>  Failure/Error: check(@shaggy.id)
 
   Capybara::ElementNotFound:
@@ -533,37 +372,7 @@ a {
       </div>
     </dd>
     <script type="text/javascript">moveProgressBar('50.0');</script>
-    <dd class="example failed">
-      <span class="failed_spec_name">edit&#39;s the owner&#39;s pets with a new pet</span>
-      <span class="duration">0.02504s</span>
-      <div class="failure" id="failure_9">
-        <div class="message"><pre>  Failure/Error: fill_in &quot;pet[name]&quot;, :with =&gt; &quot;Carlton&quot;
-
-  Capybara::ElementNotFound:
-    Unable to find visible field &quot;pet[name]&quot; that is not disabled
-  # /Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
-  # /Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
-  # /Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
-  # /Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/node/finders.rb:37:in `find&#39;
-  # /Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/node/actions.rb:92:in `fill_in&#39;
-  # /Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
-  # /Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
-  # ./spec/controllers/owners_controller_spec.rb:102:in `block (3 levels) in &lt;top (required)&gt;&#39;</pre></div>
-        <div class="backtrace"><pre>/Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/node/finders.rb:314:in `block in synced_resolve&#39;
-/Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/node/base.rb:85:in `synchronize&#39;
-/Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/node/finders.rb:302:in `synced_resolve&#39;
-/Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/node/finders.rb:37:in `find&#39;
-/Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/node/actions.rb:92:in `fill_in&#39;
-/Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/session.rb:808:in `block (2 levels) in &lt;class:Session&gt;&#39;
-/Users/seowerks/.rvm/gems/ruby-2.4.1/gems/capybara-2.17.0/lib/capybara/dsl.rb:50:in `block (2 levels) in &lt;module:DSL&gt;&#39;
-./spec/controllers/owners_controller_spec.rb:102:in `block (3 levels) in &lt;top (required)&gt;&#39;</pre></div>
-    <pre class="ruby"><code><span class="linenum">312</span>          <span class="keyword">end</span>
-<span class="linenum">313</span>          <span class="keyword">if</span> result.empty?
-<span class="offending"><span class="linenum">314</span>            raise <span class="constant">Capybara</span>::<span class="constant">ElementNotFound</span>.new(<span class="string"><span class="delimiter">&quot;</span><span class="content">Unable to find </span><span class="inline"><span class="inline-delimiter">#{</span>query.description<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span>)</span>
-<span class="linenum">315</span>          <span class="keyword">end</span>
-<span class="linenum">316</span>          result.first</code></pre>
-      </div>
-    </dd>
+    <dd class="example passed"><span class="passed_spec_name">edit&#39;s the owner&#39;s pets with a new pet</span><span class='duration'>0.03250s</span></dd>
   </dl>
 </div>
 <div id="div_group_4" class="example_group passed">
@@ -575,14 +384,14 @@ a {
   <dl style="margin-left: 15px;">
   <dt id="example_group_5" class="passed">new action</dt>
     <script type="text/javascript">moveProgressBar('54.1');</script>
-    <dd class="example passed"><span class="passed_spec_name">can visit &#39;/pets/new&#39;</span><span class='duration'>0.01824s</span></dd>
+    <dd class="example passed"><span class="passed_spec_name">can visit &#39;/pets/new&#39;</span><span class='duration'>0.01903s</span></dd>
     <script type="text/javascript">makeRed('div_group_5');</script>
     <script type="text/javascript">makeRed('example_group_5');</script>
     <script type="text/javascript">moveProgressBar('58.3');</script>
     <dd class="example failed">
       <span class="failed_spec_name"> loads form to create a new pet</span>
-      <span class="duration">0.01315s</span>
-      <div class="failure" id="failure_10">
+      <span class="duration">0.01067s</span>
+      <div class="failure" id="failure_3">
         <div class="message"><pre>  Failure/Error: expect(page).to have_field(&#39;pet[name]&#39;)
     expected #has_field?(&quot;pet[name]&quot;) to return true, got false
   # ./spec/controllers/pets_controller_spec.rb:13:in `block (3 levels) in &lt;top (required)&gt;&#39;</pre></div>
@@ -596,8 +405,8 @@ a {
     <script type="text/javascript">moveProgressBar('62.5');</script>
     <dd class="example failed">
       <span class="failed_spec_name">has a form with a checkbox for existing owners</span>
-      <span class="duration">0.01968s</span>
-      <div class="failure" id="failure_11">
+      <span class="duration">0.01976s</span>
+      <div class="failure" id="failure_4">
         <div class="message"><pre>  Failure/Error: expect(page.has_unchecked_field?(@owner1.id)).to eq(true)
 
     expected: true
@@ -616,8 +425,8 @@ a {
     <script type="text/javascript">moveProgressBar('66.6');</script>
     <dd class="example failed">
       <span class="failed_spec_name">has a field for creating a new owner</span>
-      <span class="duration">0.01159s</span>
-      <div class="failure" id="failure_12">
+      <span class="duration">0.01405s</span>
+      <div class="failure" id="failure_5">
         <div class="message"><pre>  Failure/Error: expect(page).to have_field(:owner_name)
     expected #has_field?(:owner_name) to return true, got false
   # ./spec/controllers/pets_controller_spec.rb:27:in `block (3 levels) in &lt;top (required)&gt;&#39;</pre></div>
@@ -631,8 +440,8 @@ a {
     <script type="text/javascript">moveProgressBar('70.8');</script>
     <dd class="example failed">
       <span class="failed_spec_name">creates a new pet and associates an existing owner</span>
-      <span class="duration">0.01879s</span>
-      <div class="failure" id="failure_13">
+      <span class="duration">0.01902s</span>
+      <div class="failure" id="failure_6">
         <div class="message"><pre>  Failure/Error: fill_in &quot;pet_name&quot;, :with =&gt; &quot;Michael&quot;
 
   Capybara::ElementNotFound:
@@ -663,8 +472,8 @@ a {
     <script type="text/javascript">moveProgressBar('75.0');</script>
     <dd class="example failed">
       <span class="failed_spec_name"> creates a new pet and a new owner</span>
-      <span class="duration">0.01303s</span>
-      <div class="failure" id="failure_14">
+      <span class="duration">0.01593s</span>
+      <div class="failure" id="failure_7">
         <div class="message"><pre>  Failure/Error: fill_in &quot;pet_name&quot;, :with =&gt; &quot;Pippa&quot;
 
   Capybara::ElementNotFound:
@@ -695,8 +504,8 @@ a {
     <script type="text/javascript">moveProgressBar('79.1');</script>
     <dd class="example failed">
       <span class="failed_spec_name">redirects to &#39;/pets/:id&#39; after form submissions</span>
-      <span class="duration">0.01889s</span>
-      <div class="failure" id="failure_15">
+      <span class="duration">0.02307s</span>
+      <div class="failure" id="failure_8">
         <div class="message"><pre>  Failure/Error: fill_in &quot;pet_name&quot;, :with =&gt; &quot;Joeseph&quot;
 
   Capybara::ElementNotFound:
@@ -730,14 +539,14 @@ a {
   <dl style="margin-left: 15px;">
   <dt id="example_group_6" class="passed">edit action</dt>
     <script type="text/javascript">moveProgressBar('83.3');</script>
-    <dd class="example passed"><span class="passed_spec_name">can visit &#39;/pets/:id/edit&#39; </span><span class='duration'>0.02122s</span></dd>
+    <dd class="example passed"><span class="passed_spec_name">can visit &#39;/pets/:id/edit&#39; </span><span class='duration'>0.02951s</span></dd>
     <script type="text/javascript">makeRed('div_group_6');</script>
     <script type="text/javascript">makeRed('example_group_6');</script>
     <script type="text/javascript">moveProgressBar('87.5');</script>
     <dd class="example failed">
       <span class="failed_spec_name"> loads form to edit a pet and his owner</span>
-      <span class="duration">0.01964s</span>
-      <div class="failure" id="failure_16">
+      <span class="duration">0.02084s</span>
+      <div class="failure" id="failure_9">
         <div class="message"><pre>  Failure/Error: expect(page).to have_field(&#39;pet[name]&#39;)
     expected #has_field?(&quot;pet[name]&quot;) to return true, got false
   # ./spec/controllers/pets_controller_spec.rb:79:in `block (3 levels) in &lt;top (required)&gt;&#39;</pre></div>
@@ -752,8 +561,8 @@ a {
     <script type="text/javascript">moveProgressBar('91.6');</script>
     <dd class="example failed">
       <span class="failed_spec_name">edit&#39;s the pet&#39;s name</span>
-      <span class="duration">0.01979s</span>
-      <div class="failure" id="failure_17">
+      <span class="duration">0.02180s</span>
+      <div class="failure" id="failure_10">
         <div class="message"><pre>  Failure/Error: fill_in &quot;pet_name&quot;, :with =&gt; &quot;Chewie Darling&quot;
 
   Capybara::ElementNotFound:
@@ -784,8 +593,8 @@ a {
     <script type="text/javascript">moveProgressBar('95.8');</script>
     <dd class="example failed">
       <span class="failed_spec_name">edit&#39;s the pet&#39;s owner with an existing owner</span>
-      <span class="duration">0.03743s</span>
-      <div class="failure" id="failure_18">
+      <span class="duration">0.01769s</span>
+      <div class="failure" id="failure_11">
         <div class="message"><pre>  Failure/Error: choose(@adam.id)
 
   Capybara::ElementNotFound:
@@ -822,8 +631,8 @@ a {
     <script type="text/javascript">moveProgressBar('100.0');</script>
     <dd class="example failed">
       <span class="failed_spec_name">edit&#39;s the pet&#39;s owner with a new owner</span>
-      <span class="duration">0.02257s</span>
-      <div class="failure" id="failure_19">
+      <span class="duration">0.01636s</span>
+      <div class="failure" id="failure_12">
         <div class="message"><pre>  Failure/Error: fill_in &quot;owner_name&quot;, :with =&gt; &quot;Samantha&quot;
 
   Capybara::ElementNotFound:
@@ -853,8 +662,8 @@ a {
     </dd>
   </dl>
 </div>
-<script type="text/javascript">document.getElementById('duration').innerHTML = "Finished in <strong>1.58209 seconds</strong>";</script>
-<script type="text/javascript">document.getElementById('totals').innerHTML = "24 examples, 19 failures";</script>
+<script type="text/javascript">document.getElementById('duration').innerHTML = "Finished in <strong>0.76750 seconds</strong>";</script>
+<script type="text/javascript">document.getElementById('totals').innerHTML = "24 examples, 12 failures";</script>
 </div>
 </div>
 </body>
