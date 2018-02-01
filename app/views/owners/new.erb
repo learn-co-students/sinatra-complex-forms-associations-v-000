@@ -1,13 +1,19 @@
+<h2>owners/new view</h2>
 <h1>Create a new Owner</h1>
+
+<%@pets.each do |pet|%>
+    <input type="checkbox" name="owner[pet_ids][]" value="<%=pet.id%>" id="<%=pet.id%>"><%=pet.name%></input>
+<%end%>
+
 
 <form action="/owners" method="POST">
   <label>Name:</label>
-  
+
   <br></br>
-  
+
   <input type="text" name="owner[name]">
-  
+
   <br></br>
-  
+
   <input type="submit" value="Create Owner">
 </form>
