@@ -1,2 +1,5 @@
 <h2>owners/index view</h2>
-index.erb
+<% @owners.each do |owner| %>
+  <%= owner.name %>
+  </br>
+<%end%>
