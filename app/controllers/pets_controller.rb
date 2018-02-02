@@ -19,13 +19,18 @@ class PetsController < ApplicationController
     @owner = Owner.find_by(params[:owner_name])
     if !!@owner
       @pet.owner_id = @owner.id
-    elsif !!params[:owner_name]
-      @owner = Owner.create(params[:owner_name])
+    else
+      @owner = Owner.create(name: params["owner"]["name"])
       @pet.owner_id = @owner.id
     end
     @pet.save
-    binding.pry
+
     redirect to "pets/#{@pet.id}"
+  end
+
+  get '/pets/:id/edit' do
+    @pet = Pet.find(params[:id])
+    erb :'/owners/edit'
   end
 
   get '/pets/:id' do
