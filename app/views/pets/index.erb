@@ -1,2 +1,5 @@
 <h2>pets/index view</h2>
-index.erb
+<% @pets.each do |pet| %>
+  <%= pet.name %>
+  </br>
+<%end%>
