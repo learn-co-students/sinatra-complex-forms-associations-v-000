@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'pry'
 
 describe "Pets Controller" do
   describe "new action" do
@@ -40,7 +41,7 @@ describe "Pets Controller" do
       expect(@pet.owner.name).to eq("Cricky")
     end
 
-      it " creates a new pet and a new owner" do
+    it " creates a new pet and a new owner" do
       visit '/pets/new'
       fill_in "pet_name", :with => "Pippa"
       fill_in "owner_name", :with => "Mary Nelson"
@@ -49,6 +50,7 @@ describe "Pets Controller" do
       @pet = Pet.last
       expect(@pet.name).to eq("Pippa")
       expect(@pet.owner.name).to eq("Mary Nelson")
+      binding.pry
     end
 
     it "redirects to '/pets/:id' after form submissions" do
