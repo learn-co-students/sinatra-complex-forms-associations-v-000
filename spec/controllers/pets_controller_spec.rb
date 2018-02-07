@@ -50,7 +50,7 @@ describe "Pets Controller" do
       @pet = Pet.last
       expect(@pet.name).to eq("Pippa")
       expect(@pet.owner.name).to eq("Mary Nelson")
-      binding.pry
+
     end
 
     it "redirects to '/pets/:id' after form submissions" do
