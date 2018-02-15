@@ -35,6 +35,7 @@ describe "Pets Controller" do
       fill_in "pet_name", :with => "Michael"
       check(@owner1.id)
       click_button "Create Pet"
+      binding.pry # This test must be wrong!
       @pet = Pet.last
       expect(@pet.name).to eq("Michael")
       expect(@pet.owner.name).to eq("Cricky")
