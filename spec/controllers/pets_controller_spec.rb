@@ -13,13 +13,15 @@ describe "Pets Controller" do
       expect(page).to have_field('pet[name]')
     end
 
-    it "has a form with a checkbox for existing owners" do
+    it "has a form with a select for existing owners" do
       @owner1 = Owner.create(:name => "Cricky")
       @owner2 = Owner.create(:name => "Chris")
 
       visit '/pets/new'
       expect(page.has_unchecked_field?(@owner1.id)).to eq(true)
       expect(page.has_unchecked_field?(@owner2.id)).to eq(true)
+      # expect(page.has_select?("Choose an existing owner:", options: [owner1.name, owner2.name]))
+      # Changed spec due to noted issue: https://github.com/learn-co-students/sinatra-complex-forms-associations-v-000/pull/635/files#diff-d35cb6c9d5f40567c23e40d09a45e641
     end
 
     it "has a field for creating a new owner" do
