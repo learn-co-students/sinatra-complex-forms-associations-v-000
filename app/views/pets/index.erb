@@ -1,1 +1,4 @@
-index.erb
+All of the pets!<br>
+<%@pets.each do |pet| %>
+  <%=pet.name%> belongs to <%=pet.owner.name%> <br><br>
+<%end%>

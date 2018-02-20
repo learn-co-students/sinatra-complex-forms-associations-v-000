@@ -1,1 +1,7 @@
-show.erb
+<%=@pet.name%> is awesome!<br><br>
+
+<%=@pet.name%> belongs to <%=@pet.owner.name%>
+
+<form action="/pets" method="get">
+  <input type="submit" value="Home!">
+</form>
