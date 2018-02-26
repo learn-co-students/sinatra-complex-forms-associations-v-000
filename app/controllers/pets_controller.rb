@@ -24,9 +24,9 @@ class PetsController < ApplicationController
     erb :'/pets/show'
   end
 
-  get '/owners/:id/edit' do
+  get '/pets/:id/edit' do
     @pet = Pet.find(params[:id])
-    erb :'/owners/edit'
+    erb :'/pets/edit'
   end
 
 
@@ -36,11 +36,7 @@ class PetsController < ApplicationController
     if !params[:owner][:name].empty?
     @pet.owner = Owner.create(name: params[:owner][:name])
   end
-  redirect to "owners/#{@owner.id}"
+  redirect to "pets/#{@pet.id}"
 
-
-
-
-    redirect to "pets/#{@pet.id}"
   end
 end
