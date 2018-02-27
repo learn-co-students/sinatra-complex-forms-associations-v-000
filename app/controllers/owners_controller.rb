@@ -41,7 +41,7 @@ class OwnersController < ApplicationController
   post '/owners/:id' do
     owner = Owner.find(params[:id])
 
-    if !params.has_key?(:pets)
+    if !params[:owner].has_key?("pet_ids")
       owner.pets.clear
     end
 
