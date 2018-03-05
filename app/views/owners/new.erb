@@ -3,13 +3,17 @@
 <form action="/owners" method="POST">
   <label>Enter New Owner Name:</label>
   <input type="text" name="owner[name]">
-  
-  <br></br>
+	<br />
+	<br />
   <label>Choose an existing pet: </label>
   <br></br>
 
-  <% Pet.all.each do |pet|%>
-    <input type="checkbox" name="owner[pet_ids][]" value="<%=pet.id%>" id="<%=pet.id%>"><%=pet.name%></input>
+	<% Pet.all.each do |pet|%>
+		<input 
+			type="checkbox" 
+			name="owner[pet_ids][]" 
+			value="<%=pet.id%>" 
+			id="<%= pet.id %>"><%= pet.name %></input>
   <% end %>
   <br></br>
 

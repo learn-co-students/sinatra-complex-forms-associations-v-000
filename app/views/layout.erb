@@ -1,10 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title></title>
+    <title>Pet Store</title>
   </head>
 
-  <body>
+	<body>
+	<button><a href='/pets' alt='all-pets'>All Pets</a></button>
+		<button><a href='/owners' alt='all-owners'>All Owners</a></button>
+		<button><a href='/owners/new' alt='new-owner-form'>New Owner</a></button>
+		<button><a href='/pets/new' alt='new-pet-form'>New Pet</a></button>
+		<hr />
     <%= yield %>
   </body>
 </html>
