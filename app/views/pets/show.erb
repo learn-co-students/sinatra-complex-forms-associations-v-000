@@ -1,1 +1,18 @@
-show.erb
+<h1><%=@pet.name%></h1>
+<h4>Owner:</h4>
+
+<%if @pet.owner.nil?%>
+  <%=@pet.name%> does not have an owner!
+<%else%>
+  <ul>
+    <li><%=@pet.owner.name%></li>
+  </ul>
+<%end%>
+
+  <br></br>
+
+<p><a href="/pets/<%=@pet.id%>/edit">Edit this Pet</a>
+
+  <br></br>
+
+<a href="/">Homepage</a>

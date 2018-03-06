@@ -1,1 +1,11 @@
-index.erb
+<h2>All Owners</h2>
+<label>Click on an owner to see their pets!</label>
+<br></br>
+<% @owners.each do |owner| %>
+  <ul>
+    <li><a href="/owners/<%=owner.id%>"><%=owner.name %></a></li>
+  </ul>
+<%end%>
+
+<br></br>
+<a href="/owners/new">Create a New Owner</a>
