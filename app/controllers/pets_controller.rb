@@ -25,8 +25,10 @@ class PetsController < ApplicationController
 
   get '/pets/:id/edit' do
     @pet = Pet.find(params[:id])
+    @owner = Owner.find_by_id(@pet.owner_id)
     erb :'/pets/edit'
   end
+
 
   get '/pets/:id' do
     @pet = Pet.find(params[:id])
@@ -42,12 +44,16 @@ class PetsController < ApplicationController
       @owner.save
       @pet.update(owner_id: @owner.id)
       @pet.save
+    else
+      @pet.owner_id = params[:owner][:name]
+      @pet.save
     end
     if !params[:pet_name].empty?
       @pet.update(name: params[:pet_name])
       @owner = Owner.find_by_id(params[:owner_id])
       @pet.save
     end
+    #binding.pry
     # @pet.update(name: params[:pet_name], owner_id: @owner.id)
     # @pet.update(params["owner"])
     # if !params["pet"]["name"].empty?
