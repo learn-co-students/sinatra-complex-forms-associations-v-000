@@ -1,13 +1,26 @@
 <h1>Create a new Owner</h1>
 
 <form action="/owners" method="POST">
-  <label>Name:</label>
-  
+  <label>Owner Name:</label>
+
   <br></br>
-  
-  <input type="text" name="owner[name]">
-  
+
+  <!-- Still not sure what id="" in this input section. Is it for Capybara? YES. Look at owners_controller_spec.rb.  It's looking for a field('owner_name'). Won't pass that test unless I have set id="" correctly below.  -->
+  <input type="text" name="owner[name]" id="owner_name">
+
+  <br><br>
+
+  <label>Choose an existing pet: </label><br>
+  <% Pet.all.each do |pet| %>
+    <input type="checkbox" name="owner[pet_ids][]" value="<%= pet.id %>" id="<%= pet.id %>"><%= pet.name %></input>
+  <% end %>
+
   <br></br>
-  
+
+  <label>and/or, create a new pet:</label>
+  <br>
+  <label>New Pet Name:</label><br>
+    <input type="text" name="pet[name]" id="pet_name">
+  <br><br>
   <input type="submit" value="Create Owner">
 </form>
