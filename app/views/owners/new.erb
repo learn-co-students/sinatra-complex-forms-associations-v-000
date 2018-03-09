@@ -5,17 +5,31 @@
 
   <br></br>
 
-  <input type="text" name="owner[name]">
+  <input type="text" name="owner[name]" id="owner_name">
 
   <br></br>
 
+  <label>Choose an existing pet:</label>
+
+  <br></br>
+
+<!-- Checkboxes -->
+  <!-- Note we are adding the checboxes INSIDE the <form> in order to pass the information in to the router! -->
+  <%@pets.each do |pet|%>
+    <input type="checkbox" name="owner[pet_ids][]" value="<%=pet.id%>" id="<%=pet.id%>"><%=pet.name%></input>
+  <%end%>
+
+  <br></br>
+
+<!-- Make new pet -->
+  <label>Create a new Pet:</label>
+
+  <br></br>
+
+  <label>name:</label>
+    <input type="text" name="pet[name]"></input>
+
+  <br></br>
+  
   <input type="submit" value="Create Owner">
 </form>
-<!-- 
-<%@pets.each do |pet|%>
-  <input type="checkbox" name="owner[pet_ids][]" value="<%=pet.id%>" id="<%=pet.id%>"><%=pet.name%></input>
-<%end%> -->
-
-<%@pets.each do |pet|%>
-  <input type="checkbox" name="owner[pet_ids][]" value="<%=pet.id%>" id="<%=pet.id%>"><%=pet.name%></input>
-<%end%>
