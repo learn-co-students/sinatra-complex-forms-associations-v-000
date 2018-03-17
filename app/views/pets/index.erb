@@ -1,1 +1,5 @@
 index.erb
+
+<% @pets.each do |pet| %>
+  <h3><%= pet.name %><%= ' - ' + pet.owner.name if pet.owner %></h3>
+<% end %>
