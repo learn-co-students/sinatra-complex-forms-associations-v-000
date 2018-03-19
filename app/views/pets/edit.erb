@@ -1,3 +1,21 @@
 <h1>Update Pet</h1>
 
+<form action="/pets/<%= @pet.id %>" method="POST">
+  <p><label for="pet_name">Name:</label></p>
+  <p><input type="text" name="pet_name" value="<%= @pet.name %>"></p>
 
+  <p>Choose an existing owner:</p>
+  <p><% Owner.all.each do |owner| %>
+    <input type="radio" name="owner[name]" id="<%= owner.id %>"
+        value="<%= owner.id %>" <%= 'checked' if @pet.owner == owner %>>
+      <%= owner.name %>
+    </input>
+  <% end %></p>
+
+  <p>Or add a new owner:</p>
+  <p>
+    <label for="owner_name">name: </label><input type="text" name="owner_name">
+  </p>
+
+  <p><input type="submit" value="Update Pet"></p>
+</form>
