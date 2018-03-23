@@ -6,11 +6,12 @@ class OwnersController < ApplicationController
   end
 
   get '/owners/new' do 
+    @pets = Pet.all
     erb :'/owners/new'
   end
 
   post '/owners' do 
-    
+    bidning.pry
   end
 
   get '/owners/:id/edit' do 
