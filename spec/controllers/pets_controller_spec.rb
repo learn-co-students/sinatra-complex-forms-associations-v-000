@@ -1,5 +1,6 @@
 require 'spec_helper'
 
+
 describe "Pets Controller" do
   describe "new action" do
 
