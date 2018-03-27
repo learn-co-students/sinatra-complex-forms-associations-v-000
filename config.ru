@@ -1,4 +1,8 @@
 require './config/environment'
+require 'sinatra'
+
+require_relative 'app/controllers/owners_controller'
+require_relative 'app/controllers/pets_controller'
 
 if ActiveRecord::Migrator.needs_migration?
   raise 'Migrations are pending. Run `rake db:migrate` to resolve the issue.'
