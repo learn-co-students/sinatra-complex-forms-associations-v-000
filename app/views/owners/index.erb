@@ -1,1 +1,3 @@
-index.erb
+<% @owners.all.each do |x| %>
+<p><%= x.name%></br></p>
+<% end %>
