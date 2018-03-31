@@ -1,1 +1,5 @@
-index.erb
+<h1>Pets</h1>
+<%= @pets.each do |pet| %>
+<p><% pet.name %></p>
+<p><% pet.owner.name %></p>
+<% end %>
