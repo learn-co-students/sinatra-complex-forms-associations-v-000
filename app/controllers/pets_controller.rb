@@ -39,3 +39,6 @@ class PetsController < ApplicationController
     redirect to "pets/#{@pet.id}"
   end
 end
+
+#<input type="checkbox" name="pet[owner_id]" value="<%=owner.id%>" id="<%=owner.name%>"
+ #<%='checked' if @pet.owner.name == owner.name %>><%=owner.name%></input>
