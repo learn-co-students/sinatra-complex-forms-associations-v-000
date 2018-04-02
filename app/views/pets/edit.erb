@@ -13,7 +13,7 @@
     <br></br>
 
     <%Owner.all.each do |owner|%>
-      <input type="checkbox" name="owner_name" id="owner_name" value="<%=owner.name%>" 'checked'><%=owner.name%></input>
+      <input type="checkbox" name="owner_name" id="owner_name" value="<%=owner.name%>" <%='checked' if owner.pets.include?(@pet) %>><%=owner.name%></input>
     <%end%>
 
 
