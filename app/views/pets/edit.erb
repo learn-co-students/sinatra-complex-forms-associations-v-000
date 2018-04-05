@@ -6,9 +6,7 @@
     <input type="text" name="pet[name]" id="pet_name" value="<%=@pet.name%>">
     <br></br>
 
-  <label> Owner Name: </label>
-    <br></br>
-    <input type="text" name="owner[name]" id="owner_name" value="<%=@pet.owner.name%>">
+
   <label>Choose an Existing Owner:</label>
     <br></br>
     <%@owner.each do |owner|%>
