@@ -1,3 +1,14 @@
-<h1>Update Pet</h1>
+<h1>Edit a Pet and/or their Owner</h1>
 
+<form action="/pets/<%=@pet.id%>" method="POST">
+  <label>Pet Name </label>
+    <br></br>
+    <input type="text" name="pet_name" id="pet_name" value="<%=@pet.name%>">
+    <input type="submit" value="Update Pet">
+    <br></br>
+  <label>Owner Name </label>
+    <br></br>
+    <input type="text" name="owner_name" id="owner_name" value="<%=@pet.owner.name%>">
+    <input type="submit" value="Update Owner">
 
+</form>
