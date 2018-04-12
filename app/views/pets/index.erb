@@ -1,1 +1,7 @@
-index.erb
+<p>Create a <a href="/pets/new">new pet</a> or view all <a href="/owners">owners</a></p>
+
+<% @pets.each.with_index do |pet, i| %>
+  <h2>Pet # <%= i +1 %></h2>
+  <a href="/pets/<%= pet.id %>/edit">Update</a>
+  <p>Pet: <%= pet.name %></p>
+<% end %>

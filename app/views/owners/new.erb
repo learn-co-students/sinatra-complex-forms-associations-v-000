@@ -1,13 +1,36 @@
 <h1>Create a new Owner</h1>
 
-<form action="/owners" method="POST">
-  <label>Name:</label>
-  
+<!-- iterate over collection of Pet objects and generate a checkbox for each pet-->
+<!-- array of pet IDs is stored inside the "owner" hash -->
+<!-- associate the pets that have these IDs with the new owner -->
+<!-- give checkbox value of given pet's ID -->
+<!-- give checkbox id of given pet's ID - Capybara test -->
+<!-- use ERB to render the given pet's name -->
+
+<form action="/owners" method="POST"><br>
+  <label>Owner name:</label>
+
   <br></br>
-  
-  <input type="text" name="owner[name]">
-  
+
+  <input type="text" name="owner[name]" id="pet_name">
+
   <br></br>
-  
+
+  <label>hoose an existing pet:</label>
+
+  <br></br>
+
+  <% @pets.each do |pet| %>
+      <input type="checkbox" name="owner[pet_ids][]" value="<%=pet.id%>" id="<%=pet.id%>"><%=pet.name%></input>
+  <% end %>
+
+  <br><br>
+
+  <label>and/or create a new pet:</label>
+  <br></br>
+    <label>Pet name:</label>
+    <input  type="text" name="pet[name]"></input>
+  <br></br>
+
   <input type="submit" value="Create Owner">
 </form>
