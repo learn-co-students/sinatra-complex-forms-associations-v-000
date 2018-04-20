@@ -11,7 +11,10 @@ class OwnersController < ApplicationController
   end
 
   post '/owners' do
+    # create a new owner
     @owner = Owner.create(params[:owner])
+
+    # control for creating a new pet (if pet and name is empty)
     if !params["pet"]["name"].empty?
       @owner.pets << Pet.create(name: params["pet"]["name"])
     end
@@ -25,13 +28,17 @@ class OwnersController < ApplicationController
   end
 
   get '/owners/:id' do
+    binding.pry
     @owner = Owner.find(params[:id])
     erb :'/owners/show'
   end
 
+# this is updating
   post '/owners/:id' do
     @owner = Owner.find(params[:id])
+    # update effect
     @owner.update(params["owner"])
+
     if !params["pet"]["name"].empty?
       @owner.pets << Pet.create(name: params["pet"]["name"])
     end
