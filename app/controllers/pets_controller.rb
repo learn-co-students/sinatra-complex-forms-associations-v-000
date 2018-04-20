@@ -6,16 +6,16 @@ class PetsController < ApplicationController
   end
 
   get '/pets/new' do
-    @owner = Owner.all
+    @owners = Owner.all
     erb :'/pets/new'
   end
 
   post '/pets' do
-    @pets = Pet.create(params[:pet])
-    if !params["owner"]["name"].empty?
-      @pets.owner << Owner.create(name: params["owner"]["name"])
+    @pet = Pet.create(params[:pet])
+    if !params["owner"]["name"].empty? # if little boxes are filled with name alredy
+      @pet.owner = Owner.create(name: params["owner"]["name"])
     end
-    @pets.save
+    @pet.save
     redirect to "pets/#{@pet.id}"
   end
 
@@ -24,11 +24,14 @@ class PetsController < ApplicationController
     erb :'/pets/show'
   end
 
+# updating part of the code
   post '/pets/:id' do
     @pet = Pet.find(params[:id])
     @pet.update(params["pet"])
+
     if !params["pet"]["name"].empty?
-      @pet.owner << Owner.create(name: params["owner"]["name"])
+      # = because a cat only has 1 owner
+      @pet.owner = Owner.create(name: params["owner"]["name"])
      end
     redirect to "pets/#{@pet.id}"
   end
