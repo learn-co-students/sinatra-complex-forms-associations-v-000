@@ -1,5 +1,5 @@
 class OwnersController < ApplicationController
-
+ # All the owner and pets are loaded automaticly from our data base.
   get '/owners' do
     @owners = Owner.all
     erb :'/owners/index'
