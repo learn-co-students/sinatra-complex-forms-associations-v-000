@@ -7,10 +7,9 @@
   <br></br>
  <h2>Choose an existing owner:</h2>
   <br></br>
-  <%@owners.each do |o| %>
-  <input type="checkbox" name="pet[owner_id]" value="<%=o.id%>" id="<%=o.name%>"><%=o.name%></input>
+  <%Owner.all.each do |owner| %>
+  <input type="checkbox" name="pet[owner_id]" value="<%=owner.id%>" id="<%=owner.id%>"><%=owner.name%></input>
     <% end %>
-  <br></br>
   <br></br>
   <h2>and/or, create a new owner:</h2>
   <br></br>
