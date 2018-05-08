@@ -1,0 +1,51 @@
+[33m9930e76[m Merge pull request #34 from learn-co-curriculum/wip-consistent-field-names [31m(Steven G. Harms, 10 weeks ago)[m
+[33mf480437[m Update test to verify owner against owner id [31m(Steven G. Harms, 10 weeks ago)[m
+[33m80e816c[m Normalize to field name pet_name [31m(Steven G. Harms, 10 weeks ago)[m
+[33mdf3cfb4[m Merge pull request #30 from DakotaLMartinez/patch-1 [31m(Gabe Jackson, 9 months ago)[m
+[33m5104276[m fix require statement in config.ru [31m(Dakota Lee Martinez, 11 months ago)[m
+[33mcfaec6d[m updated readme and spec so that using radio buttons for owners when editing a pet works rather than checkboxes [31m(Cernan Bernardo, 1 year, 2 months ago)[m
+[33m14886c6[m Merge pull request #26 from gooryalhamed/gooryalhamed-1482332992 [31m(Cernan Bernardo, 1 year, 2 months ago)[m
+[33mf11c615[m Merge pull request #23 from nicolefederici/nicolefederici-1474171706 [31m(Cernan Bernardo, 1 year, 2 months ago)[m
+[33m4c3ba6e[m correct the owner_id of two created pets(Maddy and Nona) [31m(Yarda, 1 year, 5 months ago)[m
+[33madbb102[m In the first paragraph, you say, "If a song has many genres". I think you mean, "if a genre has many songs", so I changed it. Also, the correct preposition that follows "associate" is "with" not "to", so I changed that throughout this README. [31m(Nicole Federici, 1 year, 8 months ago)[m
+[33m5fa73ce[m Merge pull request #21 from gj/patch-1 [31m(AnnJohn, 1 year, 9 months ago)[m
+[33mc483452[m grammar/spelling fixes; remove dupe Learn links [31m(gabe, 1 year, 9 months ago)[m
+[33me98e1ec[m Merge pull request #18 from jnoconor/patch-1 [31m(Avidor Turkewitz, 1 year, 9 months ago)[m
+[33mbabf44c[m add capybara back in [31m(jnoconor, 1 year, 10 months ago)[m
+[33md215f82[m Remove duplicate dependencies from Gemfile [31m(Charles Pletcher, 1 year, 10 months ago)[m
+[33m62b39ff[m Merge pull request #16 from devinburnette/devinburnette-1462769425 [31m(AnnJohn, 2 years ago)[m
+[33m95e46e5[m fixed typo [31m(Devin Burnette, 2 years ago)[m
+[33m0c739dd[m Merge pull request #13 from Smulligan85/Smulligan85-1457385727 [31m(AnnJohn, 2 years, 2 months ago)[m
+[33m9f441ed[m Merge pull request #14 from lcorr8/lcorr8-1457555334 [31m(AnnJohn, 2 years, 2 months ago)[m
+[33m0ab36b2[m Merge pull request #15 from the-widget/the-widget-1458253756 [31m(AnnJohn, 2 years, 2 months ago)[m
+[33m80794a0[m fix typo [31m(Brennen Awana, 2 years, 2 months ago)[m
+[33me0edf41[m removed duplicate word [31m(Laura, 2 years, 2 months ago)[m
+[33me82f52b[m Merge pull request #12 from bacitracin/bacitracin-1456888797 [31m(Victoria Friedman, 2 years, 2 months ago)[m
+[33mdfc8f85[m Merge pull request #9 from pajamaw/pajamaw-1455660083 [31m(Victoria Friedman, 2 years, 2 months ago)[m
+[33m625ce23[m Fix typo to #update [31m(Sean Mulligan, 2 years, 2 months ago)[m
+[33m27de58d[m typo [31m(Tracy, 2 years, 2 months ago)[m
+[33mf979490[m Merge pull request #11 from authorbeard/authorbeard-1456524869 [31m(AnnJohn, 2 years, 2 months ago)[m
+[33m2af085a[m Updated redirect in 'post /owners'; changed "#{owner_id}" to "{owner.id}" [31m(Michael Nolan, 2 years, 2 months ago)[m
+[33mefa83ea[m Merge pull request #8 from jaeku/jaeku-1455513613 [31m(AnnJohn, 2 years, 2 months ago)[m
+[33m7a98a5c[m Merge pull request #7 from preetdha/preetdha-1455481509 [31m(AnnJohn, 2 years, 2 months ago)[m
+[33mb1619aa[m  pet.name ->pet.id readme fix [31m(PJ Wickwire, 2 years, 3 months ago)[m
+[33mac92dea[m 'an field' correct to 'a field' (grammar) [31m(jaeku, 2 years, 3 months ago)[m
+[33m6167132[m Updated README.md [31m(Preet Dha, 2 years, 3 months ago)[m
+[33m942e20e[m optimize learn link [processing skip] [31m(Adam Jonas, 2 years, 3 months ago)[m
+[33maffbd16[m Merge pull request #6 from learn-co-curriculum/wip [31m(Sophie DeBenedetto, 2 years, 4 months ago)[m
+[33m263f4cb[m added meta data [31m(SOPHIE DEBENEDETTO, 2 years, 4 months ago)[m
+[33mfeb85b6[m Merge pull request #5 from learn-co-curriculum/wip [31m(Sophie DeBenedetto, 2 years, 4 months ago)[m
+[33mac704ea[m Delete schema.rb [31m(Sophie DeBenedetto, 2 years, 4 months ago)[m
+[33m398ff06[m Delete development.sqlite [31m(Sophie DeBenedetto, 2 years, 4 months ago)[m
+[33m1eb875a[m fixed broken tests that were using incorrect selectors, turn off active record logging to terminal when rspec runs, add minor clarification to readme [31m(SOPHIE DEBENEDETTO, 2 years, 4 months ago)[m
+[33me024ce9[m tags [31m(vicfriedman, 2 years, 4 months ago)[m
+[33md946278[m update readme [31m(vicfriedman, 2 years, 4 months ago)[m
+[33ma1c8260[m pets tests [31m(vicfriedman, 2 years, 4 months ago)[m
+[33mce376e7[m typo [31m(vicfriedman, 2 years, 4 months ago)[m
+[33m1fbc93d[m Merge pull request #3 from kaylee42/kaylee42-1451498043 [31m(AnnJohn, 2 years, 4 months ago)[m
+[33mfe6501c[m typo [31m(Kaylee Knowles, 2 years, 4 months ago)[m
+[33m3700b63[m clarify instructions [31m(Sophie DeBenedetto, 2 years, 4 months ago)[m
+[33m61284dc[m Merge pull request #2 from SchuylerMaclay/SchuylerMaclay-1451433787 [31m(Sophie DeBenedetto, 2 years, 4 months ago)[m
+[33m6b44241[m Fixed code block formatting [31m(Schuyler Maclay, 2 years, 4 months ago)[m
+[33ma573c60[m removed solution [31m(SOPHIE DEBENEDETTO, 2 years, 4 months ago)[m
+[33ma03761d[m working forms for owner class and complete readme [31m(SOPHIE DEBENEDETTO, 2 years, 4 months ago)[m
