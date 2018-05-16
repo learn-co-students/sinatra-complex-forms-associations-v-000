@@ -77,6 +77,7 @@ describe "Pets Controller" do
     it " loads form to edit a pet and his owner" do
       visit "/pets/#{@pet.id}/edit"
       expect(page).to have_field('pet_name')
+      
       expect(page.has_checked_field?(@owner.id)).to eq(true)
       expect(page).to have_field('owner[name]')
     end
