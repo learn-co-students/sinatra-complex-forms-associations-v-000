@@ -69,8 +69,14 @@ describe "Pets Controller" do
       @pet = Pet.create(:name => "Chewie", :owner_id => @owner.id)
     end
 
-    it "can visit '/pets/:id/edit' " do 
-      get "/owners/#{@pet.id}/edit"
+		it "can visit '/pets/:id/edit' " do
+			
+			# this test does not make sense with description
+			get "/owners/#{@pet.id}/edit"
+			# would make more sense to do this:     get "/owners/#{@pet.owner_id}/edit"
+			# and then update the description to: 	it "can visit '/owners/:id/edit' " 
+			# we should change the test to: get "/pets/#{@pet.id}/edit"
+
       expect(last_response.status).to eq(200)
     end
 
