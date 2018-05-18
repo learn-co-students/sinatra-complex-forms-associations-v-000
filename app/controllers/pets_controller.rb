@@ -19,13 +19,17 @@ class PetsController < ApplicationController
     end
     @pet = Pet.create(name: params[:pet_name], owner_id: @owner.id)
     # puts "Pet = #{@pet.name} owner = #{@pet.owner_id}|| Owner = #{@owner.name} || Owner id = #{@owner.id}"
-
     redirect to "pets/#{@pet.id}"
   end
 
   get '/pets/:id' do
     @pet = Pet.find(params[:id])
     erb :'/pets/show'
+  end
+
+  get '/pets/:id/edit' do
+    @pet = Pet.find(params[:id])
+    erb :'/pets/edit'
   end
 
   post '/pets/:id' do
