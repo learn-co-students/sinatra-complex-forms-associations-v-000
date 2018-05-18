@@ -33,7 +33,9 @@ class PetsController < ApplicationController
   end
 
   post '/pets/:id' do
-
+    puts "Params = #{params}"
+    @pet = Pet.find(params[:id])
+    @pet.update(name: params[:pet_name])
     redirect to "pets/#{@pet.id}"
   end
 end
