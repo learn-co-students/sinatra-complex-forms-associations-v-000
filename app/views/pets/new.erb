@@ -3,20 +3,24 @@
 <form action="/pets" method="POST">
   <label>Name:</label>
   <br></br>
-  <input type="text" name="pet[name]">
+  <input type="text" id="pet_name" name="pet[name]">
   <br></br>
 
   <label>Choose an existing owner:</label>
   <br></br>
+  <!-- shouldn't this be a radio button?  Doesn't checkbox allow me to select multiple owners violating model "belongs to" ?
   <%@owners.each do |owner|%>
-      <input type="radio" name="pet[owner_id]" value="<%=owner.id%>" id="<%=owner.id%>"><%=owner.name%></input>
+      <input type="radio" name="owner_id" value="<%=owner.id%>" id="<%=owner.id%>"><%=owner.name%></input>
+  <%end%>-->
+  <%@owners.each do |owner|%>
+      <input type="checkbox" name="pet[owner_id]" value="<%=owner.id%>" id="<%=owner.id%>"><%=owner.name%></input>
   <%end%>
   <br></br>
 
   <label>or create a new owner:</label>
   <br></br>
   <label>name:</label>
-  <input  type="text" name="owner[name]"></input>
+  <input  type="text" id="owner_name" name="owner_name"></input>
   <br></br>
 
   <input type="submit" value="Create Pet">

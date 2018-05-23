@@ -4,12 +4,12 @@
 <form action="/pets/<%=@pet.id%>" method="POST">
   <label>Name:</label>
   <br></br>
-  <input type="text" name="pet[name]" id="pet_name" value="<%=@pet.name%>">
+  <input type="text" id="pet_name" name="pet[name]" value="<%=@pet.name%>">
   <br></br>
 
   <label>Choose an existing owner:</label>
   <br></br>
-  <%Owner.all.each do |pet|%>
+  <%@owners.each do |owner|%>
     <input type="radio" name="pet[owner_id]" id="<%= owner.id%>" value="<%=owner.id%>" <%='checked' if @pet.owner_id == owner.id %>><%=owner.name%></input>
   <%end%>
   <br></br>
@@ -17,6 +17,7 @@
   <label>or create a new owner:</label>
   <br></br>
   <label>name:</label>
+  <!-- test seems to be looking for [] but [] not really needed -->
     <input  type="text" name="owner[name]" id="owner_name"></input>
   <br></br>
 
