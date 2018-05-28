@@ -1,1 +1,5 @@
-index.erb
+<% @pets.each.with_index(1) do |pet,i| %>
+
+<p><%="#{i}"%>. <%=pet.name%></p>
+
+<% end %>
