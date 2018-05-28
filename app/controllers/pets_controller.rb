@@ -40,7 +40,4 @@ class PetsController < ApplicationController
     @pet = Pet.find(params[:id])
     erb :'/pets/edit'
   end
-
-
-
 end
