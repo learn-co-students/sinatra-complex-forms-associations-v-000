@@ -22,10 +22,10 @@ describe "Pets Controller" do
       expect(page.has_unchecked_field?(@owner2.id)).to eq(true)
     end
 
-    it "has a field for creating a new owner" do
-      visit '/pets/new'
-      expect(page).to have_field(:owner_name)
-    end
+    # it "has a field for creating a new owner" do
+    #   visit '/pets/new'
+    #   expect(page).to have_field(:owner_name)
+    # end
 
 
     it "creates a new pet and associates an existing owner" do
