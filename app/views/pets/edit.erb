@@ -8,9 +8,17 @@
       <input type="text" name="pet_name" id="pet_name"></input>
 
       <h2>Owners: </h2>
+       <!-- <h4><%=@pet.owner.name%></h4>
+       <input type="radio" name="owner[name]" value="<%=@pet.owner.name%>" id="<%=@pet.owner.id%>"></input> -->
+
       <%@owners.each do |owner|%>
-      <h4><%=owner.name%></h4>
-          <input type="radio" name="owner[name]" value="<%=owner.name%>" id="<%=owner.id%>" <%= 'checked' if @pet.owner_id == owner.id %>></input>
+          <%if owner.id == @pet.owner_id%>
+              <h4><%=@pet.owner.name%></h4>
+              <input type="text"name="owner[name]" value="<%=@pet.owner.name%>" id="<%=@pet.owner.id%>" checked></input>
+          <%else%>
+              <h4><%=owner.name%></h4>
+                  <input type="radio" name="owner_name" value="<%=owner.name%>" id="<%=owner.id%>"></input>
+          <%end%>
       <%end%>
       <br>
 

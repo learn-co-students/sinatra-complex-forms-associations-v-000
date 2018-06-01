@@ -30,16 +30,24 @@ class PetsController < ApplicationController
     get '/pets/:id/edit' do
       @pet = Pet.find(params[:id])
       @owners = Owner.all
+    #   binding.pry
       erb :'pets/edit'
    end
 
    post '/pets/:id' do
-       binding.pry
+    #    binding.pry
       @pet = Pet.find(params[:id])
       @pet.update(:name => params['pet_name'])
-      @owner = Owner.find(@pet.owner_id)
-      @owner.update(:name => params['owner[name]'])
-      binding.pry
+      if params['owner']['name'] != nil && !params['owner']['name'].empty?
+          binding.pry
+          @pet.owner.update(:name => params['owner']['name'])
+      end
+      if  params['owner_name'] != nil && !params['owner_name'].empty?
+          @owner = Owner.find_by(:name => params['owner_name'])
+          binding.pry
+          @pet.update(:owner_id => @owner.id)
+      end
+    #   binding.pry
      redirect "pets/#{@pet.id}"
    end
 
