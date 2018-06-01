@@ -14,10 +14,10 @@
       <%@owners.each do |owner|%>
           <%if owner.id == @pet.owner_id%>
               <h4><%=@pet.owner.name%></h4>
-              <input type="text"name="owner[name]" value="<%=@pet.owner.name%>" id="<%=@pet.owner.id%>" checked></input>
+              <input type="text"name="owner_name"  id="<%=@pet.owner.id%>" checked></input>
           <%else%>
               <h4><%=owner.name%></h4>
-                  <input type="radio" name="owner_name" value="<%=owner.name%>" id="<%=owner.id%>"></input>
+                  <input type="radio" name="owner[name]" value="<%=owner.name%>" id="<%=owner.id%>"></input>
           <%end%>
       <%end%>
       <br>
