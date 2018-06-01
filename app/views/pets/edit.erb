@@ -3,4 +3,16 @@
 
 <form action="/pets/<%= @pet.id%>" method="post">
 
+    <h2>Pet Name: </h2>
+    <h3><%=@pet.name%></h3>
+      <input type="text" name="pet_name" id="pet_name"></input>
+
+      <h2>Owners: </h2>
+      <%@owners.each do |owner|%>
+      <h4><%=owner.name%></h4>
+          <input type="radio" name="owner[name]" value="<%=owner.name%>" id="<%=owner.id%>" <%= 'checked' if @pet.owner_id == owner.id %>></input>
+      <%end%>
+      <br>
+
+      <input type="submit" name="Update Pet" value="Update Pet">
 </form>
