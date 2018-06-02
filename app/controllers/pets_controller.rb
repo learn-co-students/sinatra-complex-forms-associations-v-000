@@ -21,7 +21,6 @@ class PetsController < ApplicationController
     @pet.owner = @owner
     @pet.save
     @owner.save
-    binding.pry
     redirect to "pets/#{@pet.id}"
   end
 
@@ -35,7 +34,4 @@ class PetsController < ApplicationController
     redirect to "pets/#{@pet.id}"
   end
 
-  helpers do
-
-  end
 end
