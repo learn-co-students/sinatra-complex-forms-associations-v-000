@@ -35,12 +35,16 @@ class PetsController < ApplicationController
     erb :'pets/edit'
   end
 
-  # post "/pets/:id" do
-  # end
-
-  patch "/pets/:id" do
-    binding.pry
-    params
+  post '/pets/:id' do
+    # binding.pry
+    params.delete(:captures)
+    @pet = Pet.find(params[:id])
+    if params[:owner_name].empty?
+      @owner = Owner.find_by(name: params[:owner][:name])
+    else
+      @owner = Owner.create(name: params[:owner_name])
+    end
+    @pet.update(name: params[:pet][:name], owner: @owner)
     redirect to "pets/#{@pet.id}"
   end
 
