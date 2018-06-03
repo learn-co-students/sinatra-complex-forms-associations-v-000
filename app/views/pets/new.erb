@@ -1,11 +1,11 @@
 <h1>Create a new Pet</h1>
 
-<br></br>
-
-<form>
-  <input action="/pets" method="POST"
+<form action="/pets" method="POST">
   <label>Name:</label>
-  <input type="text" name="pet[name]" id="pet_name">
+
+  <br></br>
+
+  <input type="text" name="pet[name]" id='pet_name'>
 
   <br></br>
 
@@ -13,21 +13,21 @@
 
   <br></br>
 
-  <%Owner.all.each do |owner|%>
-    <input type="radio" name="pet[owner_id][]" id="<%=owner.id%>" value="<%=owner.id%>"><%=owner.name%>
+    <%@owners.each do |owner|%>
+    <input type="checkbox" name="pet[owner_id]" value="<%=owner.id%>" id="<%=owner.id%>"><%=owner.name%></input>
   <%end%>
 
   <br></br>
 
-  <label>and/or, create a new owner:</label>
+   <label>and/or, create a new owner:</label>
 
-  <br></br>
+    <br></br>
 
-  <label>name:</label>
+    <label>name:</label>
+      <input  type="text" name="owner[name]" id='owner_name'></input>
 
-  <input type="text" name="owner[name]">
+    <br></br>
 
-  <br></br>
+  <input type="submit" value="Create Pet">
 
-  <input type="submit" value="Create Pet" name="submit" id="submit">
 </form>
