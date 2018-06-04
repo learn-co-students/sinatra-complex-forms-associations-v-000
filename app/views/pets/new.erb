@@ -9,10 +9,16 @@
     <br></br>
     <% @owners.each do |owner| %>
         <label for="<%= owner.id %>"><%= owner.name %></label>
-        <input type="radio" name="pet[owner_id]" id="<%= owner.id %>" value="<%= owner.id %>">
+        <input type="checkbox" name="pet[owner_id]" id="<%= owner.id %>" value="<%= owner.id %>">
     <% end %>
-    
-    <input type="submit" value="Submit">
+
+    <br></br>
+
+    ...Or make a new one:
+    <label for="owner_name">Name: </label>
+    <input type="text" name="owner[name]" id="owner_name">
+
+    <input type="submit" value="Create Pet">
 
     
 
