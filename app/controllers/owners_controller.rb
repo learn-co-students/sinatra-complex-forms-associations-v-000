@@ -12,20 +12,28 @@ class OwnersController < ApplicationController
 
   post '/owners' do
     @owner = Owner.create(params[:owner])
+    if params[:pet][:name] != ""
+      @owner.pets << Pet.create(params[:pet])
+    end
+    @owner.save
     redirect "/owners/#{@owner.id}"
   end
 
   get '/owners/:id/edit' do
-    @owner = Owner.find(params[:id])
+    @owner = Owner.find_by_id(params[:id])
     erb :'/owners/edit'
   end
 
   get '/owners/:id' do
-    @owner = Owner.find(params[:id])
+    @owner = Owner.find_by_id(params[:id])
     erb :'/owners/show'
   end
 
   post '/owners/:id' do
-
+    @owner = Owner.find_by_id(params[:id])
+    @owner.update(params[:owner])
+    if params[:pet][:name] != ""
+      @owner.pets << Pet.create(params[:pet])
+    end
   end
 end
