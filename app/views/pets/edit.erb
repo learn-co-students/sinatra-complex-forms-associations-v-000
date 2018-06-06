@@ -13,15 +13,15 @@
   <br></br>
 
   <%Owner.all.each do |owner|%>
-    <input type="checkbox" name="owner[:id]" id="<%= owner.id%>" value="<%=owner.id%>" <%='checked' if owner.pets.include?(@pet) %>><%=owner.name%></input>
+    <input type="checkbox" name="pet[owner_id]" id="<%= owner.id%>" value="<%=owner.id%>" <%='checked' if owner.pets.include?(@pet) %>><%=owner.name%></input>
   <%end%>
 
   <br></br>
 
-  <label>and/or, create a new pet:</label>
+  <label>and/or, create a new owner:</label>
   <br></br>
   <label>name:</label>
-    <input  type="text" name="pet[name]" id="pet_name"></input>
+    <input  type="text" name="owner[name]" id="owner_name"></input>
   <br></br>
-  <input type="submit" value="Update Owner">
+  <input type="submit" value="Update Pet">
 </form>
