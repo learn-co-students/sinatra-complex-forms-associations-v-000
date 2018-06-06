@@ -5,7 +5,7 @@
   <input type="text" name="pet_name">
   <h3>Who does this pet belong to?</h3>
   <% @owners.each do |owner| %>
-  <input type='checkbox' name="pet[owner_id][]" value="<%=owner.id%>" id='<%=owner.id%>'><%=owner.name%></input></br>
+  <input type='checkbox' name="owner_id" value="<%=owner.id%>" id='<%=owner.id%>'><%=owner.name%></input></br>
   <% end %>
   <p>Or create a new owner.</p>
   <input type="text" name='owner_name'>
