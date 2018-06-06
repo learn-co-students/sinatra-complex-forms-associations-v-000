@@ -29,12 +29,10 @@ class PetsController < ApplicationController
 
   post '/pets/:id' do
     @pet = Pet.find(params[:id])
-    # @pet.name = params["pet"]["name"]
-    # @pet.owner_id = params["pet"]["owner_id"]
     @pet.update(params["pet"])
-    # @pet.save
-    if !params["pet"]["owner_id"].nil?
-      @owner = Owner.create(params["owner"]["name"])
+
+    if !params["owner"]["name"].nil?
+      @owner = Owner.create(params["owner"])
       @pet.owner_id = @owner.id
       @owner.pets << @pet
     end
