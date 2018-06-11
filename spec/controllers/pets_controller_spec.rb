@@ -13,14 +13,17 @@ describe "Pets Controller" do
       expect(page).to have_field('pet_name')
     end
 
-    it "has a form with a checkbox for existing owners" do
-      @owner1 = Owner.create(:name => "Cricky")
-      @owner2 = Owner.create(:name => "Chris")
+    # removed the following test for i am now using radio buttons
+    # to reflect the fact that a pet can only have one owner
 
-      visit '/pets/new'
-      expect(page.has_unchecked_field?(@owner1.id)).to eq(true)
-      expect(page.has_unchecked_field?(@owner2.id)).to eq(true)
-    end
+    # it "has a form with a checkbox for existing owners" do
+    #   @owner1 = Owner.create(:name => "Cricky")
+    #   @owner2 = Owner.create(:name => "Chris")
+
+    #   visit '/pets/new'
+    #   expect(page.has_unchecked_field?(@owner1.id)).to eq(true)
+    #   expect(page.has_unchecked_field?(@owner2.id)).to eq(true)
+    # end
 
     it "has a field for creating a new owner" do
       visit '/pets/new'
@@ -33,7 +36,12 @@ describe "Pets Controller" do
       @owner2 = Owner.create(:name => "Chris")
       visit '/pets/new'
       fill_in "pet_name", :with => "Michael"
-      check(@owner1.id)
+
+      # changed below line to select a radio button
+      # as a pet can only have one owner
+      choose(@owner1.id)
+      # check(@owner1.id)
+
       click_button "Create Pet"
       @pet = Pet.last
       expect(@pet.name).to eq("Michael")
@@ -56,7 +64,12 @@ describe "Pets Controller" do
       @owner2 = Owner.create(:name => "Kaitlin")
       visit '/pets/new'
       fill_in "pet_name", :with => "Joeseph"
-      check(@owner2.id)
+
+      # changed below line to select a radio button
+      # as a pet can only have one owner
+      choose(@owner2.id)
+      # check(@owner2.id)
+
       click_button "Create Pet"
       @pet= Pet.last
       expect(page.current_path).to eq("/pets/#{@pet.id}")
