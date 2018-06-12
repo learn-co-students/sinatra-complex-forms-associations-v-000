@@ -5,7 +5,7 @@
 
   <br></br>
 
-  <input type="text" name="pet_name" id="pet_name" value="<%= @pet.name %>"
+  <input type="text" name="pet_name" id="pet_name" value="<%= @pet.name %>">
 
   <br></br>
 
@@ -14,7 +14,7 @@
   <br></br>
 
   <%Owner.all.each do |owner|%>
-    <input type="checkbox" name="owner_id" value="<%= owner.id %>"
+    <input type="radio" name="owner[id][]" value="<%= owner.id %>" id="<%= owner.id %>"
     <%='checked' if owner.name == @pet.owner.name %>><%=owner.name%></input>
   <%end%>
 
@@ -23,7 +23,7 @@
     <label>and/or, create a new owner:</label>
     <br></br>
     <label>name:</label>
-      <input  type="text" name="owner_name"></input>
+      <input  type="text" name="owner_name" id="owner[name]"></input>
     <br></br>
   <input type="submit" value="Update Pet">
 </form>
