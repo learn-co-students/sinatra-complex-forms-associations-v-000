@@ -6,12 +6,20 @@
   <p>Choose an existing owner:</p>
 
   <%Owner.all.each do |owner| %>
+<<<<<<< HEAD
   <input type="checkbox" name="pet[owner_id]" id="<%=owner.id%>" value="<%=owner.id%>"><%=owner.name%></input>
+=======
+  <input type="checkbox" name="pet[owner_id][]" id="<%=owner.id%>" value="<%=owner.id%>"><%=owner.name%></input>
+>>>>>>> 4cec610b577d23bdfdd5b4a043faba64eafac63c
 <%end%>
 
 <br></br>
 
+<<<<<<< HEAD
 and/or create a new owner:
+=======
+and/or create a new pet:
+>>>>>>> 4cec610b577d23bdfdd5b4a043faba64eafac63c
 <br></br>
 name: <input type="text" name="owner_name" value=""></input>
 
