@@ -1,2 +1,23 @@
 <h1>Create a new Pet</h1>
+<form action="/pets" method="POST">
+  <label>Name:</label>
 
+  <br></br>
+
+  <input type="text" name="pet[name]" id="pet_name">
+
+  <br></br>
+  <label>Choose an existing owner:</label>
+  <%@owners.each do |owner|%>
+                            <!-- LOOK! vvv We want the params hash to include an owner hash and that hash to include a pet_ids array-->
+    <input type="checkbox" name="pet[owner_id]" value="<%=owner.id%>" id="<%=owner.id%>"><%=owner.name%></input>
+  <%end%>
+
+  <br />
+  <label>and/or, create a new owner:</label>
+  <br />
+  <input type="text" name="owner[name]" id="owner_name" />
+  <br />
+
+  <input type="submit" value="Create Pet">
+</form>
