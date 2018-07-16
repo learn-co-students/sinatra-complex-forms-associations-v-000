@@ -1,1 +1,5 @@
-index.erb
+<ul>
+    <% @pets.each do |pet| %>
+        <li> <%= pet.name %> - <%= pet.owner.name %> </li>
+    <% end %>
+</ul>
