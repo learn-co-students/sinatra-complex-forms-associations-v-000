@@ -14,7 +14,7 @@
   <br></br>
 
   <%Owner.all.each do |owner|%>
-    <input type="checkbox" name="owner[id]" id="<%=owner.id%>" value="<%=owner.id%>" <%='checked' if @pet.owner.name.include?(owner.name) %>><%=owner.name%></input>
+    <input type="radio" name="owner[id]" id="<%=owner.id%>" value="<%=owner.id%>" <%='checked' if @pet.owner && @pet.owner.name.include?(owner.name) %>><%=owner.name%></input>
   <%end%>
 
   <br></br>
@@ -24,5 +24,5 @@
   <label>name:</label>
     <input  type="text" name="owner[name]" id="owner_name"></input>
   <br></br>
-  <input type="submit" value="Update Pet">
+  <input type="submit" value="Update Pet"></input>
 </form>
