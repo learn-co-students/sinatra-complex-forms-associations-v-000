@@ -1,1 +1,5 @@
-show.erb
+
+Pet name: <%=@pet.name%><br>
+Owner name: <%if @pet.owner%>
+              <%=@pet.owner.name%>
+            <%end%>
