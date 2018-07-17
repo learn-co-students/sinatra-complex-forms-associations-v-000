@@ -11,7 +11,7 @@
 
   <% Owner.all.each do |o| %>
 
-  <input type="checkbox" name="owner[name]" id="<%= o.id %>" value="<%= o.id %>"<%= 'checked' if @pet.owner == o %>><%= o.name %></input>
+  <input  type="checkbox" name="owner[name]" id="<%= o.id %>"  value="<%= o.id %>"<%= 'checked' if @pet.owner == o %>><%= o.name %></input>
   <% end %>
   <br></br>
 
