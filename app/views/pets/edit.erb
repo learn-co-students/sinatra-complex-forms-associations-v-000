@@ -4,17 +4,17 @@
 
 
 <form action="/pets/<%=@pet.id%>" method="POST">
+   <input id="hidden" type="hidden" name="_method" value="patch">
   <label>Name:</label>
 
   <br></br>
 
-  <input type="text" name="pet_name" id="pet_name" value="<%=@pet.name%>" >
+<input type="text" name="pet[name]" value="<%=@pet.name%>" >
 
   <br></br>
 
   <%@owners.each do |owner|%>
     <input type="checkbox" name="pet[owner_id][]" value="<%=owner.id%>" id="<%=owner.id%>"><%=owner.name%></input>
-
 <%end%>
 
 <br></br>
@@ -24,5 +24,5 @@ and/or, create a new owner:
       <input  type="text" name="owner_name"></input>
     <br></br>
 
-  <input type="submit" value="Create Pet">
+  <input type="submit" value="Update Pet">
 </form>
