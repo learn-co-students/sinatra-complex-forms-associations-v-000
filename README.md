@@ -7,7 +7,7 @@
 
 ## Introduction
 
-As the relationships we build between our models grow and become more complex, we need to build ways for our users to interact with those models in all of their complexity. If a genre has many songs, then a user should be able to create a new song *and* select from a list of existing genres and/or create a new genre to be associated with that song, all at the same time. In other words, if our models are associated in a certain way, our users should be able to create and edit instances of those models in ways that reflect those associations.
+As the relationships we build between our models grow and become more complex, we need to build ways for our users to interact with those models in all of their complexity. If a genre has many songs, then a user should be able to create a new song *and* select from a list of existing genres and/or create a new genre to be associated with that song, all at the same time. In other words, if our models are associated in a certain way, our users should be able to create and edit instances of those models in ways that reflect those associations.  
 
 In order to achieve this, we'll have to build forms that allow for a user to create and edit not just the given object but any and all objects that are associated with it.
 
@@ -343,7 +343,7 @@ And that's it!
 
 ### Creating and Updating Pets with Associated Owners
 
-Now that we've walked through these features together for the `Owner` model, take some time and try to build out the same functionality for `Pet`. The form to create a new pet should allow a user to select from the list of available owners and/or create a new owner, and the form to edit a given pet should allow the user to select a new owner or create a new owner. Note that if a new owner is created it would override any existing owner that is selected. 
+Now that we've walked through these features together for the `Owner` model, take some time and try to build out the same functionality for `Pet`. The form to create a new pet should allow a user to select from the list of available owners and/or create a new owner, and the form to edit a given pet should allow the user to select a new owner or create a new owner. Note that if a new owner is created it would override any existing owner that is selected.
 
 Make sure you run the tests to check your work.
 
