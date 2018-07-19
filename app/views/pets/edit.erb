@@ -14,7 +14,8 @@
   <br></br>
 
   <%@owners.each do |owner|%>
-    <input type="checkbox" name="pet[owner_id][]" value="<%=owner.id%>" id="<%=owner.id%>" <%='checked' if @pet.owner_id == owner.id %>><%=owner.name%></input>
+
+    <input type="radio" name="pet[owner_id]" value="<%=owner.id%>" id="<%=owner.id%>" <%='checked' if @pet.owner_id == owner.id %>><%=owner.name%></input>
 <%end%>
 
 <br></br>
