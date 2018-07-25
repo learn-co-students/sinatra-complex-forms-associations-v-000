@@ -1,7 +1,6 @@
 <h1><%=@pet.name%></h1>
-<h4>Owners:</h4>
+<h4>Owner:</h4>
 <ul>
-  <%@pet.owners.each do |owner|%>
-  <li><%=owner.name%></li>
+  <%@pet.owner.name%>
   <%end%>
 </ul>
