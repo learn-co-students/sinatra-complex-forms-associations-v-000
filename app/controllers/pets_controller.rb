@@ -26,15 +26,23 @@ class PetsController < ApplicationController
     redirect to "pets/#{@pet.id}"
   end
 
+  get '/pets/:id/edit' do
+    @owners = Owner.all
+    @pet = Pet.find(params[:id])
+    erb :'/pets/edit'
+  end
+
   get '/pets/:id' do
     @pet = Pet.find(params[:id])
     erb :'/pets/show'
   end
 
+
+
   post '/pets/:id' do
 
- end
 
     redirect to "pets/#{@pet.id}"
   end
+
 end
