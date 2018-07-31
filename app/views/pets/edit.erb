@@ -13,7 +13,7 @@
   <br></br>
 
 <%@owners.each do |owner|%>
-<input type="radio" name="owner[name]" value="<%=owner.id%>" <%=checked if @pet.owner != nil && @pet.owner.id == owner.id%>> <%=owner.name%>
+<input type="radio" name="pet[owner_id]" id="<%=owner.id%>" value="<%=owner.id%>" <%='checked' if @pet.owner != nil && @pet.owner.id == owner.id%>> <%=owner.name%>
 <%end%>
 
 
