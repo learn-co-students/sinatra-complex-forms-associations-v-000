@@ -1,1 +1,3 @@
-show.erb
+<h1><%=@pet.name%></h1>
+<h4>Owner: <%= Owner.find(@pet.owner_id).name %></h4>
+
