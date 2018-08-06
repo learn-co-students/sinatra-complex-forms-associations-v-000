@@ -1,1 +1,15 @@
-show.erb
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Show Pet</title>
+  </head>
+  <body>
+    <h1><%= @pet.name %></h1>
+    <% if @pet.owner %>
+      <h2>Owner: <%= @pet.owner.name %></h2>
+    <% else %>
+      <h2>No owner</h2>
+    <% end %>
+  </body>
+</html>
