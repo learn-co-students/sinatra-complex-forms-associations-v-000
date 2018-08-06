@@ -12,10 +12,20 @@ class PetsController < ApplicationController
 
   post '/pets' do
     @pet = Pet.create(params[:pet])
-    # binding.pry
+#     binding.pry
+#     [1] pry(#<PetsController>)> @pet
+# => #<Pet:0x000000034ab188 id: 1, name: "Michael", owner_id: nil>
+# [2] pry(#<PetsController>)> params
+# => {"pet"=>{"name"=>"Michael"},
+#  "owner"=>{"name"=>["1"]},
+#  "owner_name"=>"",
+#  "captures"=>[]}
     if !params["pet"]["owner_name"].empty?
-      @owner.pets << Pet.create(name: params["pet"]["name"])
-      # @pet.owner =
+      # @owner.pets << Pet.create(name: params["pet"]["name"])
+      @owner.pets << Pet.create(params[:pet])
+      binding.pry
+
+      @pet.owner = ["pet"]["owner_name"]
     end
     @owner.save
     redirect to "pets/#{@pet.id}"
