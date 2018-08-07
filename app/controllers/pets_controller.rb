@@ -34,14 +34,16 @@ class PetsController < ApplicationController
   end
 
   post '/pets/:id' do
-    #binding.pry
-    @pet = Pet.find(params[:id])
-    @pet.update(params["owner"])
 
-    if !params["pet"]["name"].empty?
-      @owner.pets << Pet.create(name: params["pet"]["name"])
+    @pet = Pet.find_by_id(params[:id])
+    @pet.update(name: params["pet_name"], owner_id: params[:pet][:owner_id])
+
+    if !params["owner"]["name"].empty?
+      #binding.pry
+      @owner = Owner.create(name: params[:owner][:name])
+      @pet[:owner_id] = @owner.id
     end
-
+    @pet.save
     redirect to "pets/#{@pet.id}"
   end
 end
