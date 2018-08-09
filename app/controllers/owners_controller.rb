@@ -39,8 +39,4 @@ class OwnersController < ApplicationController
     redirect to "owners/#{@owner.id}"
   end
 
-  get '/pets/new' do
-    @pets = Pet.all
-    erb :'owners/new'
-  end
 end
