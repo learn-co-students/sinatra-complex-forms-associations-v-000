@@ -4,7 +4,7 @@
   <p><label>Choose an existing owner:</label></p>
 
   <%Owner.all.each do |owner|%>
-    <input type="checkbox" name="owner[name][]" id="<%=owner.id%>"
+    <input type="checkbox" name="pet[owner_id]" id="<%=owner.id%>"
      value="<%=owner.id%>"><%=owner.name%></input>
   <%end%>
 <br>
