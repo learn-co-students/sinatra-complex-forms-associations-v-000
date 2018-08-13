@@ -1,2 +1,13 @@
 <h1>Update Owner</h1>
+<form action="/owners/<%= @owner.id %>" method="POST">
+  Name: <input type="text" value="<%=@owner.name%>" id="owner_name" name="owner[name]"><br/>
+  Choose an existing pet:<br/>
+  <% Pet.all.each do |p| %>
+  <input type="checkbox" name="owner[pet_ids][]" id="<%=p.id%>" value="<%=p.id%>" <%="checked" if @owner.pets.include?(p) %>><%= p.name%></input>
+  <% end %>
+  <br/>
+  Or, create a new pet:<br/>
+  <input type="text" name="pet[name]" id="pet_name"><br/>
+  <input type="submit" value="Update Owner"></input>
+</form>
 
