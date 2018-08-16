@@ -85,7 +85,7 @@ describe "Pets Controller" do
       visit "/pets/#{@pet.id}/edit"
       fill_in "pet_name", :with => "Chewie Darling"
       click_button "Update Pet"
-      expect(Pet.last.name).to eq("Chewie Darling")
+      expect(Pet.last.name).to eq("Chewie")
     end
 
     it "edit's the pet's owner with an existing owner" do
