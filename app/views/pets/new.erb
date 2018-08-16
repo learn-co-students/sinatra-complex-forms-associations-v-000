@@ -9,7 +9,6 @@
 
   <br></br>
   <%@owners.each do |owner|%>
-  	<%#binding.pry%>
     <input type="checkbox" name="pet[owner_id]" value="<%=owner.id%>" id="<%=owner.id%>"><%=owner.name%></input>
   <%end%><br><br>
   and/or, create a new owner:
