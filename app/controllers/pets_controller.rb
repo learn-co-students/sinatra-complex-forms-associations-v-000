@@ -26,8 +26,8 @@ class PetsController < ApplicationController
     erb :'/pets/show'
   end
 
-  post '/pets/:id' do
-
+  get '/pets/:id/edit' do
+    erb :'pets/edit'
     redirect to "pets/#{@pet.id}"
   end
 end
