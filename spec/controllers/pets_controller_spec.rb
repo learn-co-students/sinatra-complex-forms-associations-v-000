@@ -103,7 +103,6 @@ describe "Pets Controller" do
     #   expect(Pet.last.owner.name).to eq("Samantha")
     # end
 
-
   end
 
 end
