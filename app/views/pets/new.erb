@@ -10,19 +10,21 @@
   <br></br>
 
   <label>Choose an existing owner:</label>
+  <br></br>
+
+  <% @owners.each do |owner| %>
+    <input type="checkbox" name="pet[owner_id]" value="<%=owner.id%>" id="<%=owner.id%>">
+    <%=owner.name%>
+    </input>
+  <% end %>
+
+  <br></br>
+  <label>and/or, create a new owner:</label>
+  <br></br>
+  <label>Name:</label>
+    <input type="text" name="owner[name]" id="owner_name"></input>
 
   <br></br>
 
-  <%Owner.all.each do |owner|%>
-    <input type="checkbox" name="pet[pet_ids][]" id="<%=owner.id%>" value="<%=owner.id%>"><%=owner.name%></input>
-  <%end%>
-
-  <br></br>
-
-    <label>and/or, create a new owner:</label>
-    <br></br>
-    <label>name:</label>
-      <input  type="text" name="owner[name]" id="owner_name"></input>
-    <br></br>
   <input type="submit" value="Create Pet">
 </form>
