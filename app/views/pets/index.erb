@@ -1,1 +1,7 @@
-index.erb
+<h1>All Pets & Owners</h1>
+<ul>
+  <% Pet.all.each do |pet|%>
+   <li>Pet Name: <%=pet.name%></li>
+   <li>Owner Name: <%= pet.owner ? pet.owner.name : "None"  %></li>
+  <%end%>
+</ul>
