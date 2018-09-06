@@ -28,8 +28,8 @@ class OwnersController < ApplicationController
     erb :'/owners/show'
   end
 
-  patch '/owners/:id' do 
-    binding.pry
+  post '/owners/:id' do 
+    @owner = Owner.find(params[:id])
     if !params[:owner].keys.include?("pet_ids")
       params[:owner]["pet_ids"] = []
     end
