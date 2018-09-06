@@ -11,7 +11,9 @@ class PetsController < ApplicationController
 
   post '/pets' do 
     @pet = Pet.create(params[:pet])
-    if !params["owner"]["name"].empty?
+    if Owner.find_by_id(params["pet"]["owner_id"])
+      @pet.owner = Owner.find_by_id(params["pet"]["owner_id"])
+    else
       @pet.owner = Owner.create(name: params["owner"]["name"])
     end
     @pet.save
@@ -23,10 +25,11 @@ class PetsController < ApplicationController
     erb :'/pets/show'
   end
 
-  post '/pets/:id' do 
+    post '/pets/:id' do 
     @pet = Pet.find(params[:id])
-    @pet.update(params["pet"])
-    if !params["owner"]["name"].empty?
+    if params["owner"]["name"] == ""
+      @pet.update(params[:pet])
+    else
       @pet.owner = Owner.create(name: params["owner"]["name"])
     end
     @pet.save
