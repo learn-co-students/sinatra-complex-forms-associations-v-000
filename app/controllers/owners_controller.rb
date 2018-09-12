@@ -32,7 +32,7 @@ class OwnersController < ApplicationController
     erb :'/owners/show'
   end
 
-  patch '/owners/:id' do
+  post '/owners/:id' do
     puts "im here"
     @owner = Owner.find(params[:id])
 
