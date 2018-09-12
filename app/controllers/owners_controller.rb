@@ -33,7 +33,6 @@ class OwnersController < ApplicationController
   end
 
   post '/owners/:id' do
-    puts "im here"
     @owner = Owner.find(params[:id])
 
     ####### the following bug fix is required so that it's possible to remove ALL previous pets from owner.
