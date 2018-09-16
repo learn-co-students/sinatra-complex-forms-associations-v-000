@@ -18,17 +18,17 @@ class OwnersController < ApplicationController
   end
 
   get '/owners/:id/edit' do
-    @owner = Owner.find(params[:id])
+    @owner = Owner.find(params['id'])
     erb :'/owners/edit'
   end
 
   get '/owners/:id' do
-    @owner = Owner.find(params[:id])
+    @owner = Owner.find(params['id'])
     erb :'/owners/show'
   end
 
   patch '/owners/:id' do
-    @owner = Owner.find(params[:id])
+    @owner = Owner.find(params['id'])
     ####### bug fix
     if !params["owner"].keys.include?("pet_ids")
     params["owner"]["pet_ids"] = []
