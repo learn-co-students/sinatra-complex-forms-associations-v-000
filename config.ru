@@ -12,6 +12,7 @@ end
 # end
 
 use PetsController
-use OwnersController
+# use OwnersController
 use Rack::MethodOverride
-run ApplicationController
+# run ApplicationController
+run OwnersController
