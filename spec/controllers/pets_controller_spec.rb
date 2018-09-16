@@ -33,8 +33,9 @@ describe "Pets Controller" do
       @owner2 = Owner.create(:name => "Chris")
       visit '/pets/new'
       fill_in "pet_name", :with => "Michael"
-      check(@owner1.id)
+      choose(@owner1.id)
       click_button "Create Pet"
+      # binding.pry
       @pet = Pet.last
       expect(@pet.name).to eq("Michael")
       expect(@pet.owner.name).to eq("Cricky")
@@ -56,7 +57,7 @@ describe "Pets Controller" do
       @owner2 = Owner.create(:name => "Kaitlin")
       visit '/pets/new'
       fill_in "pet_name", :with => "Joeseph"
-      check(@owner2.id)
+      choose(@owner2.id)
       click_button "Create Pet"
       @pet= Pet.last
       expect(page.current_path).to eq("/pets/#{@pet.id}")
