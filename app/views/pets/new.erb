@@ -9,21 +9,14 @@
 
   <br></br>
 
-  <label>Choose an existing owner:</label>
-
-  <br></br>
-
   <%Owner.all.each do |owner|%>
-  <% # binding.pry %>
-    <input type="radio" name="pet[owner_ids][]" id="<%=owner.id%>" value="<%=owner.id%>"><%=owner.name%></input>
+    <input type="radio" name="pet[owner_id]" id="<%= owner.id %>" value="<%=owner.id%>"><%=owner.name%></input>
   <%end%>
 
   <br></br>
-
-    <label>and/or, create a new owner:</label>
-    <br></br>
     <label>name:</label>
-      <input  type="text" id="owner_name" name="owner[name]"></input>
+      <input  type="text" name="owner[name]" id="owner_name"></input>
     <br></br>
+
   <input type="submit" value="Create Pet">
 </form>
