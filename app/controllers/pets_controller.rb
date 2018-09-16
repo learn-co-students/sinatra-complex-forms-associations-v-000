@@ -18,6 +18,7 @@ class PetsController < ApplicationController
     end
     # binding.pry
     @pet.save
+    # binding.pry
     redirect "/pets/#{@pet.id}"
   end
 

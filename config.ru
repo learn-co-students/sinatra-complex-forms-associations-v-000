@@ -11,7 +11,7 @@ end
 #   use class_name
 # end
 # use OwnersController
+use ApplicationController
 use PetsController
 use Rack::MethodOverride
-# run ApplicationController
 run OwnersController
