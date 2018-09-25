@@ -18,7 +18,7 @@ class PetsController < ApplicationController
     binding.pry
     if !params["owner"]["name"].empty?
       @pet.owner = Owner.new(name: params["owner"]["name"])
-      @owner.save
+      @pet.owner.save
     end
     redirect to "pets/#{@pet.id}"
   end
