@@ -11,12 +11,12 @@
   <br></br>
   <p>Choose an existing owner:</p>
   <% @owners.each do |owner| %>
-    <input type="checkbox" name="pet[owner][]" value="<%=owner.id%>" id="<%=owner.id%>"><%=owner.name%></input>
+    <input type="checkbox" name="pet[owner]" value="<%=owner.id%>" id="<%=owner.id%>"><%=owner.name%></input>
   <% end %>
   <br></br>
     <label>name:</label>
       <input  type="text" name="owner[name]" id="owner_name"></input>
     <br></br>
 
-  <input type="submit" value="Create Pet">
+  <input type="submit" value="Create Pet" id="submit">
 </form>
