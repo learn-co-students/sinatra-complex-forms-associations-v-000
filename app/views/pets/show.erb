@@ -1,1 +1,9 @@
-show.erb
+<h1>Pet: <%=@pet.name%></h1>
+<% if @pet.owner %>
+  <h4>Owner: <%=@pet.owner.name%></h4>
+<% else %>
+  <h4>Available for adoption</h4>
+<% end %>
+
+<!-- Link to Edit -->
+<p>Return to <a href="/pets">Pets Index</a> or <a href="/pets/<%= @pet.id %>/edit">Edit Pet</a></p>
