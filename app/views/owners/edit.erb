@@ -2,6 +2,7 @@
 
 
 <form action="/owners/<%=@owner.id%>" method="POST">
+  <input id="hidden" type="hidden" name="_method" value="patch">
   <label>Name:</label>
   
   <br></br>
@@ -15,7 +16,7 @@
   <br></br>
   
   <%Pet.all.each do |pet|%>
-    <input type="checkbox" name="owner[pet_ids][]" value="<%=pet.id%>" id="<%=pet.name%>" <%='checked' if @owner.pets.include?(pet) %>><%=pet.name%></input>
+    <input type="checkbox" name="owner[pet_ids][]" value="<%=pet.id%>" id="<%=pet.id%>" <%='checked' if @owner.pets.include?(pet) %>><%=pet.name%></input>
   <%end%>
   
   <br></br>
