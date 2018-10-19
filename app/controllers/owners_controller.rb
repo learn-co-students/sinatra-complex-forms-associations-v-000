@@ -29,10 +29,6 @@ class OwnersController < ApplicationController
     erb :'/owners/show'
   end
 
-
-
-
-
   post '/owners/:id' do
    if !params[:owner].keys.include?("pet_ids")
      params[:owner]["pet_ids"] = []
@@ -44,5 +40,4 @@ class OwnersController < ApplicationController
   end
   redirects "owners/#{@owner.id}"
   end
-
 end
