@@ -19,27 +19,25 @@ class PetsController < ApplicationController
     redirect to "pets/#{@pet.id}"
   end
 
-  get '/pets/:id/edit' do
-    @pet = Pet.find(params[:id])
-    erb :'/pets/edit'
-  end
-
   get '/pets/:id' do
     @pet = Pet.find(params[:id])
     erb :'/pets/show'
   end
 
+  get '/pets/:id/edit' do
+    @pet = Pet.find(params[:id])
+    erb :'/pets/edit'
+  end
+
 
     post '/pets/:id' do
 
-      if !params[:pet].keys.include?("owner_id")
-        params[:pet][":owner_id"] = []
-      end
       @pet = Pet.find_by_id(params[:id])
       @pet.update(params["pet"])
       if !params["owner"]["name"].empty?
-        @pet.owner << Owner.create(name: params["owner"]["name"])
+        @pet.owner = Owner.create(name: params["owner"]["name"])
       end
-      redirect  "pets/#{@pet.id}"
+      @pet.save
+      redirect to "/pets/#{@pet.id}"
     end
 end

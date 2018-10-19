@@ -19,15 +19,17 @@ class OwnersController < ApplicationController
   redirect to "owners/#{@owner.id}"
   end
 
+  get '/owners/:id' do
+    @owner = Owner.find(params[:id])
+    erb :'/owners/show'
+  end
+
   get '/owners/:id/edit' do
     @owner = Owner.find(params[:id])
     erb :'/owners/edit'
   end
 
-  get '/owners/:id' do
-    @owner = Owner.find(params[:id])
-    erb :'/owners/show'
-  end
+
 
   post '/owners/:id' do
    if !params[:owner].keys.include?("pet_ids")
