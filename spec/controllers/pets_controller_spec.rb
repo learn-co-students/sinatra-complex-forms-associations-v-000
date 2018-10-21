@@ -70,9 +70,9 @@ describe "Pets Controller" do
     end
 
     it "can visit '/owners/:id/edit' " do
-      get "/owners/#{@owner.id}/edit"
-      expect(last_response.status).to eq(200)
-    end
+        get "/owners/#{@pet.id}/edit"
+        expect(last_response.status).to eq(200)
+      end
 
     it " loads form to edit a pet and his owner" do
       visit "/pets/#{@pet.id}/edit"
