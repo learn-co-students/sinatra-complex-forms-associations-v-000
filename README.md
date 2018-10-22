@@ -7,7 +7,7 @@
 
 ## Introduction
 
-As the relationships we build between our models grow and become more complex, we need to build ways for our users to interact with those models in all of their complexity. If a genre has many songs, then a user should be able to create a new song *and* select from a list of existing genres and/or create a new genre to be associated with that song, all at the same time. In other words, if our models are associated in a certain way, our users should be able to create and edit instances of those models in ways that reflect those associations.
+As the relationships we build between our models grow and become more complex, we need to build ways for our users to interact with those models in all of their complexity. If a genre has many songs, then a user should be able to create a new song *and* select from a list of existing genres and/or create a new genre to be associated with that song, all at the same time. In other words, if our models are associated in a certain way, our users should be able to create and edit instances of those models in ways that reflect those associations. 
 
 In order to achieve this, we'll have to build forms that allow for a user to create and edit not just the given object but any and all objects that are associated with it.
 
