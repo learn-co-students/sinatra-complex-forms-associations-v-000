@@ -1,8 +1,8 @@
 require './config/environment'
 
-if ActiveRecord::Migrator.needs_migration?
-  raise 'Migrations are pending. Run `rake db:migrate` to resolve the issue.'
-end
+#if ActiveRecord::Migrator.needs_migration?
+#  raise 'Migrations are pending. Run `rake db:migrate` to resolve the issue.'
+#end
 
 # auto-add controllers
 Dir[File.join(File.dirname(__FILE__), "app/controllers", "*.rb")].collect {|file| File.basename(file).split(".")[0] }.reject {|file| file == "application_controller" }.each do |file|
