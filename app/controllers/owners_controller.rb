@@ -1,4 +1,5 @@
 class OwnersController < ApplicationController
+  require 'pry'
 
   get '/owners' do
     @owners = Owner.all
@@ -19,6 +20,7 @@ class OwnersController < ApplicationController
   end
 
   get '/owners/:id/edit' do
+    #binding.pry
     @owner = Owner.find(params[:id])
     erb :'/owners/edit'
   end
