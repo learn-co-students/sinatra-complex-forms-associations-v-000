@@ -26,9 +26,10 @@ class PetsController < ApplicationController
 
 
   get '/pets/:id/edit' do
-    # binding.pry
+
     @pet = Pet.find(params[:id])
     @owners = Owner.all
+    binding.pry
     erb :'/pets/edit'
   end
 
@@ -40,6 +41,9 @@ class PetsController < ApplicationController
 
 
   patch '/pets/:id' do
+    @pet = Pet.find_by(:id => params[:id])
+    @pet.name = params[:pet][:name]
+    @pet.save
 
     redirect to "pets/#{@pet.id}"
   end
