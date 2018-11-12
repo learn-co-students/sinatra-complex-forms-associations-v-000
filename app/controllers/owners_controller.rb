@@ -12,13 +12,12 @@ class OwnersController < ApplicationController
 
   post '/owners' do
     @owner = Owner.create(params[:owner])
-    unless params["pet"]["name"].empty?
-      @owner.pets << Pet.create(name: params["pet"]["name"])
-    end
+    @owner.pets << Pet.create(name: params["pet"]["name"]) unless params["pet"]["name"].empty?
     redirect "owners/#{@owner.id}"
   end
 
   get '/owners/:id/edit' do
+    @pets = Pet.all
     @owner = Owner.find(params[:id])
     erb :'/owners/edit'
   end
