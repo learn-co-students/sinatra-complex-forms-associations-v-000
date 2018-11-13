@@ -30,11 +30,16 @@ class PetsController < ApplicationController
   end
 
   get '/pets/:id/edit' do
+    @pets = Pet.all
+    @pet = Pet.find(params[:id])
+    @owners = Owner.all
     erb :'/pets/edit'
   end
 
   patch '/pets/:id' do
-
+    @pet = Pet.find(params[:id])
+    @pet.update(params["pet"])
     redirect to "pets/#{@pet.id}"
   end
+
 end
