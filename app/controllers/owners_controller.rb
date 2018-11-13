@@ -9,9 +9,9 @@ class OwnersController < ApplicationController
   end
 
   post '/owners' do
-    @owner = Owner.create(params[:owner])
-    @owner.pets << Pet.create(name: params["pet"]["name"]) unless params["pet"]["name"].empty?
-    redirect "owners/#{@owner.id}"
+    Owner.create(params[:owner])
+    newest_owner.pets << Pet.create(name: params[:pet][:name]) unless params[:pet][:name].empty?
+    redirect "owners/#{newest_owner.id}"
   end
 
   get '/owners/:id/edit' do
@@ -23,8 +23,6 @@ class OwnersController < ApplicationController
   end
 
   patch '/owners/:id' do
-    params[:owner]["pet_ids"] = [] unless params[:owner].keys.include?("pet_ids")
-
     current_owner.update(params[:owner])
     current_owner.pets << Pet.create(name: params[:pet][:name]) unless params[:pet][:name].empty?
     redirect "owners/#{current_owner.id}"

@@ -9,10 +9,9 @@ class PetsController < ApplicationController
   end
 
   post '/pets' do
-    @pet = Pet.create(params[:pet])
-    @pet.owner = Owner.create(name: params[:owner_name]) unless params[:owner_name].empty?
-    @pet.save
-    redirect to "pets/#{@pet.id}"
+    Pet.create(params[:pet])
+    Owner.create(name: params[:owner_name]).pets << newest_pet unless params[:owner_name].empty?
+    redirect to "pets/#{newest_pet.id}"
   end
 
   get '/pets/:id' do

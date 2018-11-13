@@ -8,12 +8,20 @@ class ApplicationController < Sinatra::Base
       Owner.all
     end
 
+    def newest_owner
+      Owner.last
+    end
+
     def current_owner
       Owner.find_by(params[:id])
     end
 
     def all_pets
       Pet.all
+    end
+
+    def newest_pet
+      Pet.last
     end
 
     def current_pet
