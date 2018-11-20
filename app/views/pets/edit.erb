@@ -1,12 +1,12 @@
 <h1>Update Pet</h1>
 
-<form action="pets/<%=@pet.id%>" method="POST">
+<form action="/pets/<%=@pet.id%>" method="POST">
   <input id="hidden" type="hidden" name="_method" value="patch">
   <label>Name:</label>
-
+<%#binding.pry%>
   <br></br>
 
-  <input type="text" name="pet_name" id = "pet_name" value="<%=@pet.name%>">
+  <input type="text" name="pet_name" id = "pet_name" value="pet_name">
 
   <br></br>
 
