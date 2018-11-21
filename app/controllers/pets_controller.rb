@@ -36,11 +36,12 @@ class PetsController < ApplicationController
   end
 
   patch '/pets/:id' do
-    binding.pry
+    #binding.pry
     #if !params[:pet].keys.include?("owner_id")
       #binding.pry
       #params[:pet]["owner_id"] = []
     #end
+    @owners = Owner.all
     @pet = Pet.find(params[:id])
     #binding.pry
     @pet.update(params["pet"])
