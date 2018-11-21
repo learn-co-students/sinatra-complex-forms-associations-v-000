@@ -1,7 +1,8 @@
+
 <h1>Update Owner</h1>
 
 <form action="/owners/<%=@owner.id%>" method="POST">
-  <input id="hidden" type="hidden" name="_method" value="patch">
+  <input type="hidden" name="_method" value="patch">
   <label>Name:</label>
 
   <br></br>
@@ -12,22 +13,18 @@
 
   <label>Choose an existing pet:</label>
 
-  <br><br>
+  <br></br>
 
-  <% @pets.each do |pet|%>
-
-    <input type="checkbox" name="owner[pet_ids][]" value="<%=pet.id%>"
-    <%='checked' if @owner.pets.include?(pet) %>><%=pet.name%> </input>
-
-    <%end%>
+  <%@pets.each do |pet|%>
+    <input type="checkbox" name="owner[pet_ids][]" value="<%=pet.id%>" id="<%=pet.id%>" <%='checked' if @owner.pets.include?(pet) %>><%=pet.name%></input>
+  <%end%>
 
   <br></br>
 
-    <label>and/or, create a new pet:</label>
-    <label> Name:</label>
+  <label>and/or, create a new pet:</label>
+  <br></br>
+  <label>name:</label>
     <input  type="text" name="pet[name]" id="pet_name"></input>
   <br></br>
-    <input type="submit" value="Update Owner">
-  </form>
-
-<!-- if owner's list of pets already includes in the pet of the current iteration of the pets.each array, then mark the checkbox next to checkbox-->
+  <input type="submit" value="Update Owner">
+</form>
