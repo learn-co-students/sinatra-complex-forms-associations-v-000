@@ -10,6 +10,12 @@
 
   <br></br>
 
+  <label>Current Owner:</label>
+
+  <%@owners.each do |owner| %>
+  <%#binding.pry%>
+    <input type="checkbox" name="pet[owner_id]" id="<%=@owner.id%>" value="<%=@owner.id%>" <%='checked' if @owner %>><%=@owner.name%></input>
+  <%end%>
   <label>Choose an existing owner:</label>
 
   <br></br>
