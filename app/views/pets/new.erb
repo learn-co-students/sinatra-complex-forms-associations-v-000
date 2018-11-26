@@ -2,7 +2,7 @@
 <form method="post" action="/pets">
   <label for="pet_name">Pet Name: </label><input type="text" name="pet[name]" id="pet_name"/>
   <br>Choose and Existing Owner:
-  <% @owners.each do |owner| %>
+  <% Owner.all.each do |owner| %>
   <input type="checkbox" name="pet[owner_id]" value="<%=owner.id%>" id="<%=owner.id%>"><%=owner.name%></input>
   <% end %>
   <br><br>
