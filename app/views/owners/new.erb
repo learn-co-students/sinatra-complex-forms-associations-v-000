@@ -5,9 +5,10 @@
   
   <br>
   
-  <input type="text" name="owner[name]">
+  <input type="text" name="owner[name]" id="owner_name">
   
   <br></br>
+<<<<<<< HEAD
   <%@pets.each do |pet| %>
     <input type="checkbox" name="owner[pet_ids][]" value="<%=pet.id%>" id="<%=pet.id%>"><%=pet.name%></input>
     <% end %>
@@ -18,6 +19,18 @@
     <label>Pet Name:</label>
       <input  type="text" name="pet[name]"></input>
     <br></br>
+=======
+
+  <%Pet.all.each do |pet|%>
+    <input type="checkbox" name="owner[pet_ids][]" id="<%= pet.name %>" value="<%=pet.id%>"><%=pet.name%></input>
+  <%end%>
+
+  <br></br>
+    <label>name:</label>
+      <input  type="text" name="pet[name]" id="pet_name"></input>
+    <br></br>
+
+>>>>>>> 2dc5010ed581ce2b454fb9eab0955003f1ef6dd9
   <input type="submit" value="Create Owner">
 
 </form>
