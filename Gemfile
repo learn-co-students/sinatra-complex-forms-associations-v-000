@@ -15,3 +15,17 @@ gem 'sqlite3'
 gem 'thin'
 gem 'tux'
 gem 'capybara'
+gem 'rake'
+gem 'require_all'
+gem 'sqlite3'
+gem 'thin'
+gem 'shotgun'
+gem 'pry'
+
+group :test do
+      gem "tux"
+      gem 'rspec'
+      gem 'capybara'
+      gem 'rack-test'
+      gem 'database_cleaner', git: 'https://github.com/bmabey/database_cleaner.git'
+    end
