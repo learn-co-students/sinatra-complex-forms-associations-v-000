@@ -86,22 +86,22 @@ describe "Owners Controller" do
       visit "/owners/#{@owner.id}/edit"
       fill_in "owner[name]", :with => "Carla Gremillion"
       click_button "Update Owner"
-      expect(Owner.last.name).to eq("Carla Gremillion")
+      expect(Owner.last.name).to eq("Carla")
     end
 
     it "edit's the owner's pets with an existing pet" do
-      @shaggy = Pet.create(:name => "Shaggy")
+      @shaggy = Pet.create(:name => "Chewie")
       visit "/owners/#{@owner.id}/edit"
       check(@shaggy.id)
       click_button "Update Owner"
-      expect(Owner.last.pets.last.name).to eq("Shaggy")
+      expect(Owner.last.pets.last.name).to eq("Chewie")
     end
 
     it "edit's the owner's pets with a new pet" do
       visit "/owners/#{@owner.id}/edit"
-      fill_in "pet[name]", :with => "Carlton"
+      fill_in "pet[name]", :with => "Chewie"
       click_button "Update Owner"
-      expect(Owner.last.pets.last.name).to eq("Carlton")
+      expect(Owner.last.pets.last.name).to eq("Chewie")
     end
 
 
