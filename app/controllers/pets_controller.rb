@@ -12,6 +12,7 @@ class PetsController < ApplicationController
   end
 
   post '/pets' do
+    binding.pry
     if !params[:pet][:owner_id].empty?
       @pet = Pet.create(name: params[:pet][:name], owner_id: params[:pet][:owner_id].join)
     else
