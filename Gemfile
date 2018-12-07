@@ -10,8 +10,15 @@ gem 'require_all'
 gem 'rspec'
 gem 'shotgun'
 gem 'sinatra'
-gem 'sinatra-activerecord', :require => 'sinatra/activerecord'
 gem 'sqlite3'
+gem 'sinatra-activerecord', :require => 'sinatra/activerecord'
 gem 'thin'
-gem 'tux'
-gem 'capybara'
+
+    
+group :test do
+      gem "tux"
+      gem 'rspec'
+      gem 'capybara'
+      gem 'rack-test'
+      gem 'database_cleaner', git: 'https://github.com/bmabey/database_cleaner.git'
+    end
