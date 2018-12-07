@@ -12,13 +12,13 @@ class PetsController < ApplicationController
   end
 
   post '/pets' do
-    binding.pry
-    if !params[:pet][:owner_id].empty?
-      @pet = Pet.create(name: params[:pet][:name], owner_id: params[:pet][:owner_id].join)
-    else
-      @owner = Owner.create(name: params[:owner_name])
-      @pet = Pet.create(name: params[:pet][:name], owner_id: params[:pet][:owner_id].join)
+    @pet = Pet.create(params[:pet])
+    if !params[:owner_name].empty? #if the user didn't click a checkbox
+      @owner = Owner.create(name: params[:owner_name]) #create a new owner using the name the user provided in owner_name field
+      @pet.owner = @owner #make the association
     end
+    @pet.save #persist to the database
+    redirect "pets/#{@pet.id}"
   end
 
   get '/pets/:id' do
