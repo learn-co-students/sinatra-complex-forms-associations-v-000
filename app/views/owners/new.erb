@@ -2,12 +2,30 @@
 
 <form action="/owners" method="POST">
   <label>Name:</label>
+<<<<<<< HEAD
 
   <br>
 
   <input type="text" name="owner[name]">
 
   <br>
+=======
+  
+  <br></br>
+  
+  <input type="text" name="owner[name]" id="owner_name">
+  
+  <br></br>
+
+  <%Pet.all.each do |pet|%>
+    <input type="checkbox" name="owner[pet_ids][]" id="<%= pet.name %>" value="<%=pet.id%>"><%=pet.name%></input>
+  <%end%>
+
+  <br></br>
+    <label>name:</label>
+      <input  type="text" name="pet[name]" id="pet_name"></input>
+    <br></br>
+>>>>>>> 2dc5010ed581ce2b454fb9eab0955003f1ef6dd9
 
   <input type="submit" value="Create Owner">
 </form>
