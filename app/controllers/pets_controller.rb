@@ -13,12 +13,9 @@ class PetsController < ApplicationController
 
   post '/pets' do
     @pet = Pet.create(:name => params[:pet_name], :owner_id => "")
-    #binding.pry
+    binding.pry
     if params.length>3
       @pet.owner_id = params.keys[1]
-    end
-    if !params[:owner_id].empty?
-      @pet.owner_id = params[:owner_id]
     end
     if !params[:owner_name].empty?
       @new_owner = Owner.create(name: params[:owner_name])
