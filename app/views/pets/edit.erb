@@ -15,7 +15,7 @@
   <br>
 
   <%@owners.each do |owner|%>
-    <input type="radio" name="pet[owner_id][]" id="owner_name" value="<%=owner.id%>"
+    <input type="radio" name="pet[owner_id]" value="<%=owner.id%>" id="<%=owner.id%>"
     <%='checked' if @pet.owner == owner %>
     <%=owner.name%></input>
   <%end%>
@@ -25,7 +25,7 @@
   <label>and/or, create a new owner:</label>
   <br>
   <label>name:</label>
-    <input  type="text" name="pet[owner][name]" id="owner_name"></input>
+    <input type="text" name="owner[name]" id = "owner_name"></input>
   <br>
   <input type="submit" value="Update Pet">
 </form>
