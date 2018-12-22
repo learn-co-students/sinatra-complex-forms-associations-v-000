@@ -1,3 +1,4 @@
+require 'pry'
 class PetsController < ApplicationController
 
   get '/pets' do
@@ -12,8 +13,9 @@ class PetsController < ApplicationController
 
   post '/pets' do
     @pet = Pet.create(:name => params[:pet_name], :owner_id => "")
-    if !params[owner_name].empty?
-      @pet.owner << Owner.create(name: params["owner_name"])
+    if !params[:owner_name].empty?
+      @new_owner = Owner.create(name: params[:owner_name])
+      @pet.owner_id = @new_owner.id
     end
     redirect to "pets/#{@pet.id}"
   end
