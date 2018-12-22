@@ -7,7 +7,11 @@
   <label>Choose an existing owner:</label><br>
 
   <%@owners.each do |owner|%>
+<<<<<<< HEAD
     <input type="checkbox" name="<%=owner.id%>" value="<%=owner.name%>"><%=owner.name%></input>
+=======
+    <input type="checkbox" name="owner" value="<%=owner.id%>"><%=owner.name%></input>
+>>>>>>> 0d05010d08c08e7842e1ce19f2417e6dd1897dae
   <%end%>
 
   <br>
