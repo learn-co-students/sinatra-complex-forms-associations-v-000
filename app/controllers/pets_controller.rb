@@ -13,7 +13,6 @@ class PetsController < ApplicationController
 
   post '/pets' do
     @pet = Pet.create(:name => params[:pet_name], :owner_id => "")
-    binding.pry
     if params.length>3
       @pet.owner_id = params.keys[1]
     end
@@ -21,7 +20,6 @@ class PetsController < ApplicationController
       @new_owner = Owner.create(name: params[:owner_name])
       @pet.owner_id = @new_owner.id
     end
-    binding.pry
     redirect to "pets/#{@pet.id}"
   end
 
