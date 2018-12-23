@@ -33,11 +33,13 @@ class PetsController < ApplicationController
   get '/pets/:id/edit' do
     @pet = Pet.find_by_id(params[:id])
     @owners = Owner.all
+    #binding.pry
     erb :'/pets/edit'
   end
 
   patch '/pets/:id' do
     @pet = Pet.find_by_id(params[:id])
+    #binding.pry
     if params[:pet_name] != ""
       @pet.update(:name => params[:pet_name])
     end
