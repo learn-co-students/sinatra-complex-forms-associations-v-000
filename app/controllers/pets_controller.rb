@@ -46,6 +46,11 @@ class PetsController < ApplicationController
       @pet.owner_id = @new_owner.id
       @pet.save
     end
+    binding.pry
+    if params.length>5
+      @pet.owner_id = params.keys[2]
+      @pet.save
+    end
     redirect to "pets/#{@pet.id}"
   end
 end
