@@ -15,10 +15,12 @@ class PetsController < ApplicationController
     @pet = Pet.create(:name => params[:pet_name], :owner_id => "")
     if params.length>3
       @pet.owner_id = params.keys[1]
+      @pet.save
     end
     if !params[:owner_name].empty?
       @new_owner = Owner.create(name: params[:owner_name])
       @pet.owner_id = @new_owner.id
+      @pet.save
     end
     redirect to "pets/#{@pet.id}"
   end
