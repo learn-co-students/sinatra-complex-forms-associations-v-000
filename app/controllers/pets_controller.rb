@@ -37,7 +37,15 @@ class PetsController < ApplicationController
   end
 
   patch '/pets/:id' do
-
+    @pet = Pet.find_by_id(params[:id])
+    if params[:pet_name]
+      @pet.update(:name => params[:pet_name])
+    end
+    if !params[:owner_name].empty?
+      @new_owner = Owner.create(name: params[:owner_name])
+      @pet.owner_id = @new_owner.id
+      @pet.save
+    end
     redirect to "pets/#{@pet.id}"
   end
 end
