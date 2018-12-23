@@ -32,7 +32,7 @@ class PetsController < ApplicationController
 
   get '/pets/:id/edit' do
     @pet = Pet.find_by_id(params[:id])
-    @owner = Owner.find_by_id(@pet.owner_id)
+    @owners = Owner.all
     erb :'/pets/edit'
   end
 
