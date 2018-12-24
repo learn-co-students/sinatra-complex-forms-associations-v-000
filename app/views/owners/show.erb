@@ -1,7 +1,17 @@
-<h1><%=@owner.name%></h1>
+<h1><%= @owner.name %></h1>
 <h4>Pets:</h4>
-<ul>
-  <%@owner.pets.each do |pet|%>
-  <li><%=pet.name%></li>
-  <%end%>
-</ul>
+
+<% if @owner.pets.empty? %>
+  This person doesn't own any pets.
+  <br>
+<% else %>
+  <ul>
+    <% @owner.pets.each do |pet| %>
+      <li><%= pet.name %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<br>
+
+<a href="/owners/<%= @owner.id %>/edit">Edit Owner</a>

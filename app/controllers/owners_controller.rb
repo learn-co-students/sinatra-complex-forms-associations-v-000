@@ -18,21 +18,23 @@ class OwnersController < ApplicationController
     redirect "owners/#{@owner.id}"
   end
 
+  get '/owners/:id' do
+    @owner = Owner.find_by_id(params[:id])
+    erb :'/owners/show'
+  end
+
   get '/owners/:id/edit' do
     @owner = Owner.find(params[:id])
     @pets = Pet.all
     erb :'/owners/edit'
   end
 
-  get '/owners/:id' do
-    @owner = Owner.find(params[:id])
-    erb :'/owners/show'
-  end
-
   patch '/owners/:id' do
-    if !params[:owner].keys.include?("pets_ids")
-      params[:owner][:pets_ids] = []
+    ###### bug fix required to remove ALL previous pets from owners
+    if !params[:owner].keys.include?("pet_ids")
+      params[:owner][:pet_ids] = []
     end
+    ######
 
     @owner = Owner.find(params[:id])
     @owner.update(params[:owner])

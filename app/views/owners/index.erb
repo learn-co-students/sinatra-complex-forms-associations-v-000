@@ -1,5 +1,6 @@
+<h1>Owners:</h1>
 <% @owners.each do |owner| %>
-  <a href="/owners/owner(params[:id])"><%= owner.name %></a>
+  <a href="/owners/<%= owner.id %>"><%= owner.name %></a>
 
   <br>
 <% end %>
