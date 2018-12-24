@@ -12,20 +12,19 @@
 
   <label>Choose an existing owner:</label>
 
-  <radiogroup>
-    <% @owners.each do |owner| %>
-      <input type="radio" id="<%= owner.id %>" name="pet[owner_id]" value="<%= owner.id %>" <%= 'checked' if @pet.owner == owner %>><%= owner.name %></input>
-    <% end %>
+  <% @owners.each do |owner| %>
+    <input type="radio" id="<%= owner.id %>" name="pet[owner_id]" value="<%= owner.id %>" <%= 'checked' if @pet.owner == owner %>><%= owner.name %></input>
+  <% end %>
 
-    <br>
+  <br>
 
-    <label> and/or create a new owner:</label>
+  <label> and/or create a new owner:</label>
 
-    <br>
+  <br>
 
-    <label for="owner_name">Owner Name:</label>
-    <input type="text" id="owner_name" name="owner[name]">
-  </radiogroup>
+  <label for="owner_name">Owner Name:</label>
+  <input type="text" id="owner_name" name="owner[name]">
+
   <br>
 
   <input type="submit" value="Update Pet">

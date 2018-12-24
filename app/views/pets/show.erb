@@ -2,11 +2,11 @@
 <h4>Owner:</h4>
 <% if !@pet.owner %>
   This pet doesn't have an owner.
-  <br>
 <% else %>
   <%= @pet.owner.name %>
 <% end %>
 
+<br>
 <br>
 
 <a href="/pets/<%= @pet.id %>/edit">Edit Pet</a>
