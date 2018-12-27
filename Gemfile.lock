@@ -60,6 +60,7 @@ GEM
     rack-test (1.0.0)
       rack (>= 1.0, < 3)
     rake (12.3.1)
+    rb-readline (0.5.5)
     require_all (2.0.0)
     ripl (0.7.1)
       bond (~> 0.5.1)
@@ -121,6 +122,7 @@ DEPENDENCIES
   pry-nav
   rack-test
   rake
+  rb-readline
   require_all
   rspec
   shotgun
@@ -131,4 +133,4 @@ DEPENDENCIES
   tux
 
 BUNDLED WITH
-   1.16.0
+   1.16.1
