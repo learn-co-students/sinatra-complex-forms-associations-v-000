@@ -1,0 +1,7 @@
+if !params["owner"]["name"].empty?
+@pet.owner = Owner.create(name: params["owner"]["name"]
+@pet.owner = Owner.create(name: params["owner"]["name"]
+end
+=> nil
+
+How do you create an Owner(belongs to) from the Pets(has many) object.
