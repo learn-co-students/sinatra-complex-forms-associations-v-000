@@ -15,11 +15,11 @@ class PetsController < ApplicationController
     
     if !params["owner"]["name"].empty?
       @pet.owner = Owner.create(name: params["owner"]["name"])
-   # else  
+    #else  
      # owner = Owner.find_by_id(params["pet"]["owner_id"]) 
     end
     
-   # @pet.owner_id = owner.id 
+   #@pet.owner_id = owner.id 
     @pet.save 
   
     redirect "pets/#{@pet.id}"
@@ -41,8 +41,8 @@ class PetsController < ApplicationController
     
     if !params["owner"]["name"].empty?
       @pet.owner = Owner.create(name: params["owner"]["name"])
-    #else 
-    # owner = Owner.find_by_id(params["pet"]["owner_id"])
+   # else 
+     # owner = Owner.find_by_id(params["pet"]["owner_id"])
     end
       
     # @pet.owner_id = owner.id 
