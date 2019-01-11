@@ -1,1 +1,14 @@
-show.erb
+<h1><%=@pet.name%></h1>
+<h4>Owner(s):</h4>
+<ul>
+  <%#if @pet.owner.length > 1%>
+    <%#@pet.owner.each do |owner|%>
+    <%#=owner.name%>
+    <%#end%>
+  <%#else %>
+  <%if @pet.owner != nil %>
+  <li><%= @pet.owner.name %></li>
+  <% else %>
+  <li><%= 'No Owner' %></li>
+  <%end%>
+</ul>
