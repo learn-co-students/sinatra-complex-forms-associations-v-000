@@ -10,8 +10,8 @@
   <br>
   
   <label>Click to choose an existing owner:</label><br>
-  <%@owners.each do |owner|%>
-    <input type="radio" name="pet[owner_ids]" value="<%=owner.id%>" id="<%=owner.id%>"><%=owner.name%></input>
+  <% Owner.all.each do |owner|%>
+     <input type="checkbox" name="pet[owner_id]" id="<%= owner.name %>" value="<%=owner.id%>"><%=owner.name%></input>
   <%end%>
   
   <br>
