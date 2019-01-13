@@ -7,3 +7,8 @@
 </ul>
 
 <a href="/owners/<%= @owner.id %>/edit">EDIT</a>
+
+<form class="" action="/owners/<%= @owner.id %>" method="post">
+  <input type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Delete">
+</form>

@@ -1,7 +1,3 @@
-<h1><%= @pet.name %></h1>
+<h1><%=@pet.name%></h1>
 <h4>Owner:</h4>
-<ul>
-  <li><a href="/owners/<%= @pet.owner.id %>"><%= @pet.owner.name %></a></li>
-</ul>
-
-<a href="/pets/<%= @pet.id %>/edit">EDIT</a>
+<h5> <%=@pet.owner.name %> </h5>
