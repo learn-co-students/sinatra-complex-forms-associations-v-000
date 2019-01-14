@@ -1,3 +1,4 @@
+require 'pry'
 class PetsController < ApplicationController
 
   get '/pets' do
@@ -23,16 +24,16 @@ class PetsController < ApplicationController
     @pet = Pet.find(params[:id])
     erb :'/pets/show'
   end
+  
+  get '/pets/:id/edit' do 
+    @pet = Pet.find(params[:id])
+    erb :'/pets/edit'
+  end
 
   patch '/pets/:id' do
     @pet = Pet.find(params[:id])
-    # binding.pry
-
     @pet.update(params["pet"])
-    # binding.pry
     if !params["owner"]["name"].empty?
-      # binding.pry
-
       @pet.owner = Owner.create(name: params["owner"]["name"])
       @pet.save
     end
