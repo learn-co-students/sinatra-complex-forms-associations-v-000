@@ -9,8 +9,10 @@
 
   <br></br>
 
+  <% #binding.pry %>
+
   <% Owner.all.each do |owner| %>
-    <input type="checkbox" name="pet[owner_id]" id="<%= owner.name %>" value="<%= owner.id %>" <%='checked' if @pets.owner.name == owner.name%>><%=owner.name%></input>
+    <input type="radio" name="pet[owner_id]" id="<%= owner.id %>" value="<%= owner.id %>"><%=owner.name%></input>
   <%end%>
 
   <br></br>
