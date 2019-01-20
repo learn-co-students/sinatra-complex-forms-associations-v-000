@@ -3,10 +3,11 @@
 <form action="/owners" method="POST">
   <label for="owner[name]">Owner Name:</label><br>
   <input type="text" name="owner[name]"><br><br>
+  <label for="owner[pet_ids][]">Choose an existing pet:</label><br>
   <% @pets.each do |pet| %>
     <input id="<%= pet.id %>" type="checkbox" name="owner[pet_ids][]" value="<%= pet.id %>"><%= pet.name %></input><br>
   <% end %><br>
-  <label for="pet[name">Pet Name:</label><br>
-  <input type="text" name="pet[name]"><br><br>
+  <label for="pet[name]">And/or, create a new pet:</label><br>
+  <input id="pet_name"  type="text" name="pet[name]"><br><br>
   <input type="submit" value="Create Owner">
 </form>
