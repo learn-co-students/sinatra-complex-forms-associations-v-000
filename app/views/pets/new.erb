@@ -7,7 +7,7 @@
   <% @owners.each do |owner| %>
     <input id="<%= owner.id %>" type="checkbox" name="owner_id" value="<%= owner.id %>"><%= owner.name %></input><br>
   <% end %><br>
-  <label for="owner_name">And/or, create a new owner:</label><br>
-  <input id="owner_name"  type="text" name="owner_name"><br><br>
+  <label for="owner[name]">And/or, create a new owner:</label><br>
+  <input id="owner_name"  type="text" name="owner[name]"><br><br>
   <input type="submit" value="Create Pet">
 </form>

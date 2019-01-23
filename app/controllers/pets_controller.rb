@@ -15,7 +15,7 @@ class PetsController < ApplicationController
     if params[:owner_id]
       @pet.owner = Owner.find(params[:owner_id])
     else
-      @pet.owner = Owner.create(name: params[:owner_name])
+      @pet.owner = Owner.create(name: params[:owner][:name])
     end
     @pet.save
     redirect "pets/#{@pet.id}"
@@ -34,11 +34,9 @@ class PetsController < ApplicationController
 
   patch '/pets/:id' do 
     @pet = Pet.find(params[:id])
-    @pet.update(name: params[:pet_name])
-    if params[:owner_id]
-      @pet.owner = Owner.find(params[:owner_id])
-    else
-      @pet.owner = Owner.create(name: params[:owner_name])
+    @pet.update(params[:pet])
+    if !params[:owner][:name].empty?
+      @pet.owner = Owner.create(name: params[:owner][:name])
     end
     @pet.save
     redirect "pets/#{@pet.id}"
