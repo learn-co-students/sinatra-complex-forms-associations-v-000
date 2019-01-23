@@ -1,1 +1,6 @@
-index.erb
+<h1>Pets</h1>
+<br>
+<%@pets.each do |pet|%>
+	<label><%=pet.name%></label>
+	<ul><li><%= "Owner: #{pet.owner.name}" if !pet.owner.name.empty?%></li></ul>
+<%end%>
