@@ -20,7 +20,7 @@ class OwnersController < ApplicationController
 
   get '/owners/:id/edit' do
     @owner = Owner.find(params[:id])
-    @pets = Pet.all  #Not in READ.ME
+    @pets = Pet.all #This line wasn't in the readme..
     erb :'/owners/edit'
   end
 
