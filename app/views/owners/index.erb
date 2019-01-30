@@ -1,1 +1,9 @@
-index.erb
+<p>Index Yo!</p>
+<ul>
+<%@owners.each do |owner|%>
+  <label><%=owner.name%></label>
+  <%owner.pets.each do |pet|%>
+  <li>Owner name: <%=owner.name%> and his/her pet: <%=pet.name%></li>
+    <%end%>
+  <%end%>
+</ul>
