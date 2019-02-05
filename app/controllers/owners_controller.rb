@@ -10,7 +10,8 @@ class OwnersController < ApplicationController
   end
 
   post '/owners' do 
-    
+    @owner = Owner.create(params[:name])
+    redirect to "/owners/#{@owner.id}"
   end
 
   get '/owners/:id/edit' do 
@@ -24,6 +25,9 @@ class OwnersController < ApplicationController
   end
 
   patch '/owners/:id' do 
-   
+    @owner = Owner.find(params[:id])
+    @owner.name = params[:name]
+    @owner.save
+    redirect to "/owners/#{@owner.id}"
   end
 end
