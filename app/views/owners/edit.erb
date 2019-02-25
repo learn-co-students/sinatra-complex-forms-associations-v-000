@@ -1,2 +1,29 @@
 <h1>Update Owner</h1>
+<form action="/owners/<%=@owner.id%>" method="POST">
+  <input id="hidden" type="hidden" name="_method" value="patch">
+  <label>Name:</label>
 
+  <br>
+
+  <input type="text" name="owner[name]">
+
+  <br>
+  <!-- Then, we can iterate over them in our owners/new.erb view using ERB tags to inject each pet's
+  information into a checkbox form element. Let's take a look: -->
+  <label>Choose an existing pet:</label>
+
+  <br>
+
+    <%Pet.all.each do |pet|%> <!-- Readme is wrong. @pets is never defined in controller -->
+    <input type="checkbox" name="owner[pet_ids][]" id= "<%=pet.id%>" value="<%=pet.id%>" <%= 'checked' if @owner.pets.include?(pet)%>><%=pet.name%></input>
+    <%end%>
+
+  <br>
+
+    <label>and/or create a new pet:</label>
+    <br>
+    <label>name:</label>
+    <input type="text" name="pet[name]">
+    <br>
+  <input type="submit" value="Update Owner">
+</form>

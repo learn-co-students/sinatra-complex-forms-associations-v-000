@@ -2,24 +2,25 @@ class PetsController < ApplicationController
 
   get '/pets' do
     @pets = Pet.all
-    erb :'/pets/index' 
+    erb :'/pets/index'
   end
 
-  get '/pets/new' do 
+  get '/pets/new' do
+    @owners = Owner.all
     erb :'/pets/new'
   end
 
-  post '/pets' do 
+  post '/pets' do
 
     redirect to "pets/#{@pet.id}"
   end
 
-  get '/pets/:id' do 
+  get '/pets/:id' do
     @pet = Pet.find(params[:id])
     erb :'/pets/show'
   end
 
-  patch '/pets/:id' do 
+  patch '/pets/:id' do
 
     redirect to "pets/#{@pet.id}"
   end
