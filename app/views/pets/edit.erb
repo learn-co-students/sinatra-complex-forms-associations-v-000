@@ -1,3 +1,31 @@
 <h1>Update Pet</h1>
+<form action="/pets/<%=@pet.id%>" method="POST">
+  <input id="hidden" type="hidden" name="_method" value="patch">
+  <label>Name:</label>
 
+  <br>
 
+  <input type="text" name="pet[name]" id="pet_name" value="<%=@pet.name%>">
+  <!-- test spec required pet_name. but params hash needed a pet hash for the Pet Object Instance so the id was changed for spec-->
+<!-- Spec may ask for pet_name but that doesnt mean it works best for the params hash-
+its better to use access the pets hash with a hash Ally Kadel -->
+  <br>
+
+  <label>Choose an existing owner:</label>
+  <br>
+
+    <%@owners.each do |owner|%>
+     <input type="radio" name="pet[owner_id]" value="<%=owner.id%>" id= "<%=owner.id%>"<%='checked'if @pet.owner == owner %>><%=owner.name%></input>
+     <!-- Failure -> Capybara::ElementNotFound:
+      Unable to find visible radio button 2 that is not disabled, changed checklist to radio - Omar Donnadieu
+      In a checkbox group, a user can select more than one option. Each checkbox operates individually, so a user can toggle each response "on" and "off." Radio buttons, however, operate as a group and provide mutually exclusive selection values. A user can select only one option in a radio button group. -->
+    <%end%>
+  <br>
+
+    <label>and/or create a new owner:</label>
+    <br>
+    <label>name:</label>
+    <input type="text" name="owner[name]" id="owner_name">
+    <br>
+  <input type="submit" value="Update Pet">
+</form>
