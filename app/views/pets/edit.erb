@@ -5,7 +5,8 @@
 
   <br>
 
-  <input type="text" name="pet[name]" id="pet_name" value="<%=@pet.name%>"> <!-- this didn't need to be named pet_name it could have been id'd as it-->
+  <input type="text" name="pet[name]" id="pet_name" value="<%=@pet.name%>">
+  <!-- test spec required pet_name. but params hash needed a pet hash for the Pet Object Instance so the id was changed for spec-->
 <!-- Spec may ask for pet_name but that doesnt mean it works best for the params hash-
 its better to use access the pets hash with a hash Ally Kadel -->
   <br>
@@ -24,7 +25,7 @@ its better to use access the pets hash with a hash Ally Kadel -->
     <label>and/or create a new owner:</label>
     <br>
     <label>name:</label>
-    <input type="text" name="owner[name]" id="owner_name" value="<%=@owner.name">
+    <input type="text" name="owner[name]" id="owner_name">
     <br>
   <input type="submit" value="Update Pet">
 </form>
