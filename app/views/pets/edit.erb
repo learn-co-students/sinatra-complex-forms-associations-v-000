@@ -13,13 +13,9 @@
   <br>
 
     <%@owners.each do |owner|%>
-<<<<<<< HEAD
      <input type="radio" name="pet[owner_id]" value="<%=owner.id%>" id= "<%=owner.id%>"<%='checked'if @pet.owner == owner %>><%=owner.name%></input>
      <!-- Failure -> Capybara::ElementNotFound:
       Unable to find visible radio button 2 that is not disabled, changed checklist to radio - Omar Donnadieu -->
-=======
-     <input type="checkbox" name="pet[owner_id]" value="<%=owner.id%>" id= "<%=owner.id%>"<%='checked'if @pet.owner == owner %>><%=owner.name%></input>
->>>>>>> 2d0027c04300617e679d66591fc14e5c85e26dc9
     <%end%>
   <br>
 
