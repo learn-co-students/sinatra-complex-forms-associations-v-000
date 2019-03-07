@@ -18,8 +18,9 @@ class OwnersController < ApplicationController
     redirect "owners/#{@owner.id}"
   end
 
-  get '/owners/:id/edit' do 
+  get '/owners/:id/edit' do
     @owner = Owner.find(params[:id])
+    @pets = Pet.all
     erb :'/owners/edit'
   end
 
@@ -32,7 +33,6 @@ class OwnersController < ApplicationController
    if !params[:owner].keys.include?("pet_ids")
     params[:owner]["pet_ids"] = []
     end
-    ######
     @owner = Owner.find(params[:id])
     @owner.update(params["owner"])
     if !params["pet"]["name"].empty?
