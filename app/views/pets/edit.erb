@@ -5,13 +5,13 @@
     
     <label>Name:</label>
     <br>
-    <input type="text" name="pet[name]" id="pet_name" value="<%= @pet.name %>">
+    <input id='pet_name' type="text" name="pet[name]" value="<%=@pet.name%>">
     <br><br>
     
   <label>Choose an existing owner:</label>
   <br>
-  <% @owners.each do |owner| %>
-    <input type="checkbox" name="pet[owner_id]" id="<%= owner.id %>" value="<%= owner.id %>" <%='checked' if @pet.owner.include?(owner) %>><%=owner.name%></input>
+  <% @owners.each do |owner|%>
+    <input type="radio" name="pet[owner_id]" value="<%=owner.id%>" id="<%=owner.id%>" <%='checked' if @pet.owner.name == owner.name %>><%=owner.name%></input>
   <%end%>
  
   <br>
@@ -22,7 +22,7 @@
     <input  type="text" name="owner[name]" id="owner_name"></input>
   <br>
   
-  <input type="submit" value="Update Owner">
+  <input type="submit" value="Update Pet">
     
 </form>
 
