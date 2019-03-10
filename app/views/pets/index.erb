@@ -1,1 +1,4 @@
-index.erb
+<h1>Pets:</h1>
+<%@pets.each do |pet|%>
+    <h2><%=pet.name%> Owner: <%=pet.owner != nil ? pet.owner.name : "Open for adoption!"%> </h2>
+<%end%>
