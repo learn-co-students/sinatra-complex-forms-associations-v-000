@@ -1,1 +1,8 @@
-index.erb
+<h2>All pets!</h2>
+
+<% @pets.each do |pet| %>
+    <div>
+        <h4><%= pet.name %></h4>
+        <p>Owner: <%= pet.owner.name if pet.owner != nil %></p>
+    </div>
+<% end %>
