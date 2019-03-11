@@ -6,12 +6,19 @@ class PetsController < ApplicationController
   end
 
   get '/pets/new' do 
+    @owners = Owner.all
     erb :'/pets/new'
   end
 
   post '/pets' do 
+    params[:pet][:owner_id] = "" if !params[:pet].keys.include?("owner_id")
 
-    redirect to "pets/#{@pet.id}"
+    pet = Pet.new(params[:pet])
+    if !params[:owner][:name].empty? && params[:pet][:owner_id].empty?
+      pet.build_owner(params[:owner])
+    end
+
+    pet.save ? redirect("pets/#{pet.id}") : "failure"
   end
 
   get '/pets/:id' do 
@@ -19,8 +26,22 @@ class PetsController < ApplicationController
     erb :'/pets/show'
   end
 
-  patch '/pets/:id' do 
+  get '/pets/:id/edit' do
+    @pet = Pet.find(params[:id])
+    @owners = Owner.all
+    erb :"/pets/edit"
+  end
 
-    redirect to "pets/#{@pet.id}"
+  patch '/pets/:id' do 
+    params[:pet][:owner_id] = "" if !params[:pet].keys.include?("owner_id")
+
+    pet = Pet.find(params[:id])
+    pet.update(params[:pet])
+    if !params[:owner][:name].empty?
+      pet.owner = nil
+      pet.build_owner(params[:owner])
+      pet.save
+    end
+    redirect to "pets/#{pet.id}"
   end
 end
