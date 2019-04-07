@@ -16,17 +16,6 @@
   <%end%>
 
 
-  <%@pets.each do |pet|%>
-      <input type="checkbox" name="owner[pet_ids][]" value="<%=pet.id%>" id="<%=pet.id%>"><%=pet.name%></input>
-  <%end%>
-
-  <%Pet.all.each do |pet|%>
-    <input type="checkbox" name="pet[owner_id]" id="<%=owner.name%>" value="<%=owner.id%>"<%=owner.name%></input>
-  <%end%>
-
-
-
-
 
   <br></br>
     <label>name:</label>
