@@ -6,8 +6,8 @@ class PetsController < ApplicationController
   end
 
   get '/pets/new' do
-    @pets = Pet.all
-    @owners= Owner.all 
+    # @pets = Pet.all
+    # @owners= Owner.all
     erb :'/pets/new'
   end
 
