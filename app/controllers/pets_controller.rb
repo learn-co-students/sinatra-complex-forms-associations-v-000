@@ -11,11 +11,11 @@ class PetsController < ApplicationController
   end
 
   post '/pets' do
-    @pet = Pet.create(params[:pet])
-    #binding.pry
-    if !params["owner_name"] == ""
-      @pet.owner = Owner.create(name: params["owner_name"])
-      binding.pry
+    if params["owner"]["name"] != ""
+      @owner = Owner.create(name: params["owner"]["name"])
+      @pet = Pet.create(name: params["pet"]["name"], owner_id: @owner.id)
+    else
+      @pet = Pet.create(params[:pet])
     end
     redirect to "pets/#{@pet.id}"
   end
@@ -32,16 +32,11 @@ class PetsController < ApplicationController
   end
 
   patch '/pets/:id' do
-    ##### bug fix
-    if !params[:pet].keys.include?("owner_id")
-      params[:pet]["owner_id"] = []
-    end
-    #####
-
     @pet = Pet.find(params[:id])
-    @pet.udpate(params["pet"])
-    if !params["owner_name"] == ""
-      @pet.owners = Owner.create(name: params["owner_name"])
+    @pet.update(params["pet"])
+    if params["owner"]["name"] != ""
+      @owner = Owner.create(name: params["owner"]["name"])
+      @pet.update(owner_id: @owner.id)
     end
     redirect to "pets/#{@pet.id}"
   end
