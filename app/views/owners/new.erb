@@ -11,7 +11,7 @@
   <br>
   <label>Pet:</label>
   <% @pets.each do |pet| %>
-    <input type="checkbox" name="pet[name]" value="pet[name]">pet.name<br>
+    <input type="checkbox" name="<%= pet.id %>">pet.name<br>
   <% end %>
   <input type="text" name="pet[name]">
   <input type="submit" value="Create Owner">

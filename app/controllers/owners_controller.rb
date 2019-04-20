@@ -14,7 +14,7 @@ class OwnersController < ApplicationController
 
   post '/owners' do
     @owner = Owner.create(params["owner"])
-    binding.pry
+    #binding.pry
 
       pet = Pet.new(params[:pet]) #instantiate a new pet
       pet.owner = @owner #association
