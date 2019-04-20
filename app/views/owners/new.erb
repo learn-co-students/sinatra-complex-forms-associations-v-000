@@ -3,17 +3,17 @@
 
 <form action="/owners" method="POST">
   <label>Name:</label>
-    <input type="text" name="name" id="name">
+
   <br>
 
   <input type="text" name="owner[name]">
 
   <br>
-
+  <label>Pet:</label>
   <% @pets.each do |pet| %>
-    <input type="checkbox" value="<%= pet.id %>">
+    <input type="checkbox" name="pet[name]" value="pet[name]">pet.name<br>
   <% end %>
-
+  <input type="text" name="pet[name]">
   <input type="submit" value="Create Owner">
 
 </form>

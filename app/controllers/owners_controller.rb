@@ -13,12 +13,12 @@ class OwnersController < ApplicationController
   end
 
   post '/owners' do
-    @owner = Owner.create(params[:name])
-    @pet = Pet.create(params[:name])
+    @owner = Owner.create(params["owner"])
     binding.pry
-    @pet.owner = @owner
-    @pet.save
-    redirect to
+
+      pet = Pet.new(params[:pet]) #instantiate a new pet
+      pet.owner = @owner #association
+      pet.save
   end
 
   get '/owners/:id/edit' do
