@@ -1,13 +1,19 @@
+<% require 'pry' %>
 <h1>Create a new Owner</h1>
 
 <form action="/owners" method="POST">
   <label>Name:</label>
-
+    <input type="text" name="name" id="name">
   <br>
 
   <input type="text" name="owner[name]">
 
   <br>
 
+  <% @pets.each do |pet| %>
+    <input type="checkbox" value="<%= pet.id %>">
+  <% end %>
+
   <input type="submit" value="Create Owner">
+
 </form>
