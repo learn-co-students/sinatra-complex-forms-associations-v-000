@@ -14,21 +14,20 @@ class OwnersController < ApplicationController
 
   post '/owners' do
     @owner = Owner.create(params[:owner]) #creates a new owner
-    pet =
     pets = Pet.all
     pets.detect do |pet|
       binding.pry
-      if pet.name == ""
+      if pets
         pet.owner = @owner
         pet.save
       else
-        new_pet = Pet.create(params[:pet][:name])
-        new_pet.owner = @owner
-        new_pet.save
+        @pet = Pet.new(params[:pet][:name])
+        @pet.owner = @owner
+        @pet.save
       end
+      @owner
     end
-    #pet_name = pets.find(params[:pet][:name]
-    #pets.select do |pet|
+    redirect to "pets/#{@owner.id}"
   end
 
   get '/owners/:id/edit' do
