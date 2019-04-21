@@ -13,11 +13,22 @@ class OwnersController < ApplicationController
   end
 
   post '/owners' do
-    @owner = Owner.create(params["owner"])
-    #binding.pry
-    pet = Pet.new(params[:pet]) #instantiate a new pet
-    pet.owner = @owner #association
-    pet.save
+    @owner = Owner.create(params[:owner]) #creates a new owner
+    pet =
+    pets = Pet.all
+    pets.detect do |pet|
+      binding.pry
+      if pet.name == ""
+        pet.owner = @owner
+        pet.save
+      else
+        new_pet = Pet.create(params[:pet][:name])
+        new_pet.owner = @owner
+        new_pet.save
+      end
+    end
+    #pet_name = pets.find(params[:pet][:name]
+    #pets.select do |pet|
   end
 
   get '/owners/:id/edit' do
