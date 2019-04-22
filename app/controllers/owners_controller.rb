@@ -13,10 +13,10 @@ class OwnersController < ApplicationController
   end
 
   post '/owners' do
+    #binding.pry
     @owner = Owner.create(params[:owner]) #creates a new owner
     pets = Pet.all
     pets.detect do |pet|
-      binding.pry
       if pets
         pet.owner = @owner
         pet.save

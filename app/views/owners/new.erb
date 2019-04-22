@@ -1,4 +1,3 @@
-<% require 'pry' %>
 <h1>Create a new Owner</h1>
 
 <form action="/owners" method="POST">
@@ -6,14 +5,13 @@
 
   <br>
 
-  <input type="text" name="owner[name]">
+  <input type="text" name="owner[name]" id="owner_name">
 
   <br>
-  <label>Pet:</label>
-  <% @pets.each do |pet| %>
-    <input type="checkbox" name="<%= pet.name %>" id="<%= pet.id %>">pet.name<br>
-  <% end %>
-  <input type="text" name="pet[name]">
-  <input type="submit" value="Create Owner">
 
+  <p>Choose an existing pet:</p>
+  <% @pets.each do |pet| %> <!-- iterate over collection of pet objects and generate checkbox for each pet  -->
+    <input type="checkbox" name="owner[pet_ids][]" value="<%= pet.id %>" id="<%= pet.id %>"><%= pet.name %></input>
+  <% end %>
+  <input type="submit" value="Create Owner">
 </form>
