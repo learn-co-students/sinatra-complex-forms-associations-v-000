@@ -13,5 +13,8 @@
   <% @pets.each do |pet| %> <!-- iterate over collection of pet objects and generate checkbox for each pet  -->
     <input type="checkbox" name="owner[pet_ids][]" value="<%= pet.id %>" id="<%= pet.id %>"><%= pet.name %></input>
   <% end %>
+
+  <p>Create a new pet:</p>
+  <input type="text" name="pet[name]" id="pet_name">
   <input type="submit" value="Create Owner">
 </form>

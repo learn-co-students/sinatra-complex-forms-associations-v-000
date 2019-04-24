@@ -15,18 +15,7 @@ class OwnersController < ApplicationController
   post '/owners' do
     #binding.pry
     @owner = Owner.create(params[:owner]) #creates a new owner
-    pets = Pet.all
-    pets.detect do |pet|
-      if pets
-        pet.owner = @owner
-        pet.save
-      else
-        @pet = Pet.new(params[:pet][:name])
-        @pet.owner = @owner
-        @pet.save
-      end
-      @owner
-    end
+    @owner.pets
     redirect to "pets/#{@owner.id}"
   end
 
