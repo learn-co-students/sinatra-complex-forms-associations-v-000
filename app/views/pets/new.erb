@@ -3,7 +3,7 @@
   <input type="text" name="pet[name]" id="pet_name">
   <p>Select an existing owner to choose from:</p>
   <p><%@owners.each do |o|%>
-    <label for="pet[owner_id]"><%=o.name%></label><input type="checkbox" name="pet[owner_id]" id="<%=o.id%>" value="<%=o.id%>">
+    <label for="pet[owner_id]"><%=o.name%></label><input type="radio" name="pet[owner_id]" id="<%=o.id%>" value="<%=o.id%>">
   <%end%></p>
   <p>Or, create a new owner:</p>
   <p><input type="text" name="new_owner" id="owner_name"></p>
