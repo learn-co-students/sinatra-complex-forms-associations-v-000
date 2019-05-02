@@ -7,7 +7,7 @@
     <label for="pet[owner_id]"><%=o.name%></label><input type="radio" name="pet[owner_id]" id="<%=o.id%>" value="<%=o.id%>" <%="checked" if @pet.owner == o%>>
   <%end%></p>
   <p>Or, create a new owner:</p>
-  <p><input type="text" name="owner[name]" id="owner[name]"></p>
+  <p><input type="text" name="owner_name" id="owner[name]"></p>
   <input type="submit" id="submit" value="Update Pet">
 </form>
 
