@@ -27,7 +27,7 @@ class PetsController < ApplicationController
   end
 
   patch '/pets/:id' do 
-
+    @pet = Pet.find(params[:id])
     redirect to "pets/#{@pet.id}"
   end
 end
