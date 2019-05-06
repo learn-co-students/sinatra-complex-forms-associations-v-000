@@ -1,6 +1,6 @@
 <h1>Update Pet</h1>
 
-<form action="/owners/<%= @pet.id %>" method="POST">
+<form action="/pets/<%= @pet.id %>" method="POST">
   <input id="hidden" type="hidden" name="_method" value="PATCH">
   <label>Name: </label>
 
@@ -15,7 +15,7 @@
   <br>
 
   <% @owners.each do |owner| %> <!-- add checked property to each checkbox with condition to test whether given pet is already present -->
-    <input type="checkbox" name="pet[owner_id]" id="<%= owner.id %>" value="<%= owner.id %>" <%='checked' if @pet.owner.include?(owner) %>><%= owner.name %></input>
+    <input type="checkbox" name="pet[owner_id][]" id="<%= owner.id %>" value="<%= owner.id %>" <%='checked' if @pet.owners.include?(owner) %>><%= owner.name %></input>
   <% end %>
   <br>
   <br>
