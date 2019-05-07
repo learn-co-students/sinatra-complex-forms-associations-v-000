@@ -10,17 +10,14 @@
 
   <br>
 
-  <label>Choose an existing owner:</label>
-
-  <br>
-
-  <% @owners.each do |owner| %> <!-- add checked property to each checkbox with condition to test whether given pet is already present -->
-    <input type="checkbox" name="pet[owner_id][]" id="<%= owner.id %>" value="<%= owner.id %>" <%='checked' if @pet.owners.include?(owner) %>><%= owner.name %></input>
+  <p>Choose an existing owner:</p> <!-- Create checkboxes for existing owners -->
+  <% @owners.each do |owner| %>
+    <input type="radio" name="pet[owner_id]" value="<%= owner.id %>" id="<%= owner.id %>" <%= 'checked' if owner == @pet.owner %>><%= owner.name %></input>
   <% end %>
   <br>
   <br>
   <label>name:</label>
-  <input type="text" name="owner[name]" id="owner_name"></input>
+  <input type="text" name="owner[name]" id="owner_name"/>
   <br>
   <input type="submit" value="Update Pet">
 </form>
