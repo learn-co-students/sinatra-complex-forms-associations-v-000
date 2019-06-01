@@ -1,6 +1,7 @@
 <h1>Update Pet</h1>
 
 <form action="/pets" method="POST">
+  <input type="hidden" id="hidden" name="_method" value="patch">
   <label>Name:</label>
 
   <br>
@@ -14,7 +15,7 @@
   <br>
 
   <% @owners.each do |owner| %>
-    <p><input type="checkbox" name="owner_id" value="<%= owner.id %>" id="<%= owner.id %>"><%= owner.name %></p>
+    <p><input type="checkbox" name="owner_id" value="<%= owner.id %>" id="<%= owner.id %>" <%='checked' if @pet.owner.id == owner.id %>><%= owner.name %></p>
   <% end %>
 
   <br>
@@ -24,12 +25,10 @@
   <br>
   <label>name:</label>
   <br>
-  <input type="text" name="owner_name">
+  <input type="text" name="owner[name]">
 
   <br>
   <br>
 
-  <input type="submit" value="Create Pet">
+  <input type="submit" value="Update Pet">
 </form>
-
-
