@@ -1,6 +1,6 @@
 <h1>Update Pet</h1>
 
-<form action="/pets" method="POST">
+<form action="/pets/<%= @pet.id %>" method="POST">
   <input type="hidden" id="hidden" name="_method" value="patch">
   <label>Name:</label>
 
