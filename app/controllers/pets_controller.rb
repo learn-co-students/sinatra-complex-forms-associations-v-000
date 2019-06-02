@@ -37,8 +37,10 @@ class PetsController < ApplicationController
   patch '/pets/:id' do
     @pet = Pet.find(params[:id])
     @pet.update(name: params["pet_name"])
-    if params["owner_name"] != ""
-      @pet.update(owner: Owner.create(params["owner_name"]))
+    if !params["owner_name"].empty?
+
+      binding.pry
+
     else
       @pet.update(owner: Owner.find(params["owner"]["name"]))
     end
