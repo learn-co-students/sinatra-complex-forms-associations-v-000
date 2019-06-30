@@ -20,9 +20,11 @@ class OwnersController < ApplicationController
   end
 
   get '/owners/:id/edit' do
-    binding.pry
+    # binding.pry
     @owner = Owner.find(params[:id])
-    @pets = @owner.pets
+  #  @pets = @owner.pets
+    @pets = Pet.all
+
     erb :'/owners/edit'
   end
 
@@ -32,7 +34,8 @@ class OwnersController < ApplicationController
   end
 
   patch '/owners/:id' do
-    if !params[:owner].keys.include?("pet_ids")
+    # binding.pry
+    if !params[:owner].keys.include?("pet_ids")  # Use case: when existing pets needed to be remove and add a new one.
     params[:owner]["pet_ids"] = []
     end
     #######
