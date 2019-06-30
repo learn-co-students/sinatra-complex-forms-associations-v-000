@@ -11,7 +11,7 @@ class OwnersController < ApplicationController
   end
 
   post '/owners' do
-    # binding.pry
+ # binding.pry
     @owner = Owner.create(params[:owner])
      if !params["pet"]["name"].empty?
         @owner.pets << Pet.create(name: params["pet"]["name"])
@@ -34,11 +34,13 @@ class OwnersController < ApplicationController
   end
 
   patch '/owners/:id' do
+
     # binding.pry
     if !params[:owner].keys.include?("pet_ids")  # Use case: when existing pets needed to be remove and add a new one.
+
     params[:owner]["pet_ids"] = []
     end
-    #######
+
 
     @owner = Owner.find(params[:id])
     @owner.update(params["owner"])
