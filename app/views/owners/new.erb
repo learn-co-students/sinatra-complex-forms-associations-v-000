@@ -5,7 +5,18 @@
 
   <p><input type="text" name="owner[name]" id="owner_name"></p>
   
-  <!-- My attempt: -->
+  <label>Choose an existing pet:</label>
+  
+  <p>
+    <% @pets.each do |pet| %>
+      <input type="checkbox" name="owner[pet_ids][]" id="<%= pet.id %>" value="<%= pet.id %>"><%= pet.name %></input>
+    <% end %>
+  </p>
+  
+  <input type="submit" value="Create Owner">
+</form>
+
+<!-- My initial attempt: -->
   
   <!-- <label>Pets:</label>
 
@@ -19,15 +30,5 @@
   
   <br> -->
   
-  <!-- End of my attempt -->
+  <!-- End of my initial attempt -->
   
-  <label>Choose an existing pet:</label>
-  
-  <p>
-    <% @pets.each do |pet| %>
-      <input type="checkbox" name="owner[pet_ids][]" id="<%= pet.id %>" value="<%= pet.id %>"><%= pet.name %></input>
-    <% end %>
-  </p>
-  
-  <input type="submit" value="Create Owner">
-</form>
