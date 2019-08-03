@@ -1,2 +1,8 @@
 <h1>Update Owner</h1>
 
+<h2>Edits for <%= @owner.name %></h2>
+
+<form action="/owners/<%= @owner.id %>" method="post">
+  <input id="hidden" type="hidden" name="_method" value="patch">
+  
+</form>
