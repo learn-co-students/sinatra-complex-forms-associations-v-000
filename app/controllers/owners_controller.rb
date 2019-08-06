@@ -19,6 +19,7 @@ class OwnersController < ApplicationController
     end
     # owner.pets << Pet.create(name: params[:pet][:name]) unless params[:pet][:name].blank?
     # I also thought about making a new pet, then setting its owner to the owner variable, but that would create extra code just to do the same thing as above.
+    # It may also work just to say Pet.create(params[:pet])
     
     redirect to "/owners/#{owner.id}"
   end
@@ -35,6 +36,20 @@ class OwnersController < ApplicationController
   end
 
   patch '/owners/:id' do 
-    binding.pry
+    ####### bug fix that removes ALL previous pets from the owner
+    if !params[:owner].keys.include?("pet_ids") # or, if !params[:owner][:pet_ids]
+      params[:owner][:pet_ids] = []
+    end 
+    #######
+    
+    owner = Owner.find(params[:id])
+    owner.update(params[:owner])
+    
+    if !params[:pet][:name].empty?
+      owner.pets << Pet.create(name: params[:pet][:name])
+      # See "post '/owners'" for more comments and ideas
+    end
+    
+    redirect to "/owners/#{owner.id}"
   end
 end
