@@ -10,6 +10,7 @@ class PetsController < ApplicationController
   end
 
   post '/pets' do 
+    #binding.pry
 
     redirect to "pets/#{@pet.id}"
   end
