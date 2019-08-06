@@ -11,9 +11,9 @@
   <label>Choose an existing pet:</label>
   <p>
     <% @pets.each do |pet| %>
-      <input type="checkbox" name="owner[pet_ids][]" id="<%= pet.id %>" value="<% pet.id %>" <%= 'checked' if @owner.pets.include?(pet) %>><%= pet.name %></input>
+      <input type="checkbox" name="owner[pet_ids][]" id="<%= pet.id %>" value="<%= pet.id %>" <%= 'checked' if @owner.pets.include?(pet) %>><%= pet.name %></input>
     <% end %>
-    <!-- My attempt: <%# if @owner.pets.include?(pet) %>checked<%# end %> -->
+    <!-- My attempt: <%# if @owner.pets.include?(pet) %> checked <%# end %> (which works, too) -->
   </p>
   
   and/or create a new pet:
