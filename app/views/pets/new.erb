@@ -4,5 +4,16 @@
   <label for="pet_name">Name:</label>
   <input type="text" id="pet_name" name="pet[name]">
   
+  <p>Choose an existing owner or create a new one below.</p>
+  
+  <h4>Existing Owners:</h4>
+  <% @owners.each do |owner| %>
+    <input type="radio" id="<%= owner.id %>" name="pet[owner_id]" value="<%= owner.id %>"><%= owner.name %></input>
+  <% end %>
+  
+  <h4>New Owner:</h4>
+  <label for="owner_name">Owner's Name:</label>
+  <input type="text" id="owner_name" name="owner[name]">
+  
   <p><input type="submit" value="Create Pet"></p>
 </form>
