@@ -35,7 +35,7 @@ class PetsController < ApplicationController
   end
 
   patch '/pets/:id' do 
-    binding.pry
+    # binding.pry
     pet = Pet.find_by_id(params[:id])
     pet.update(params[:pet])
 
