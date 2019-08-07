@@ -9,5 +9,12 @@
     <input type="text" id="pet_name" name="pet[name]" value="<%= @pet.name %>">
   </p>
   
+  <h3>Choose a different owner from the list below, or create a new one.</h3>
+  
+  <h4>Existing Owners</h4>
+  <% @owners.each do |owner| %>
+    
+  <% end %>
+  
   <p><input type="submit" value="Update Pet"></p>
 </form>
