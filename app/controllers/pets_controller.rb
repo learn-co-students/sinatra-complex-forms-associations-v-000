@@ -11,8 +11,8 @@ class PetsController < ApplicationController
   end
 
   post '/pets' do
-    # It wouldn't hurt to create the pet, then change its owner if a new owner is specified. That fixes this problem:
-    # I can't use a radio button for the new owner, so the user can choose an existing owner AND create a new one.
+    # I chose to create the pet (with the existing owner that the user selected), then change its owner if a new owner is specified. That fixes this problem:
+    # I can't use a radio button for the new owner, so the user could choose an existing owner AND create a new one.
     
     @pet = Pet.create(params[:pet])
     unless params[:owner][:name].blank?
@@ -26,6 +26,12 @@ class PetsController < ApplicationController
   get '/pets/:id' do 
     @pet = Pet.find(params[:id])
     erb :'/pets/show'
+  end
+  
+  get '/pets/:id/edit' do
+    @pet = Pet.find_by_id(params[:id])
+    @owners = Owner.all 
+    erb :'/pets/edit'
   end
 
   patch '/pets/:id' do 
