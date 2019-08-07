@@ -13,7 +13,8 @@
   
   <h4>Existing Owners</h4>
   <% @owners.each do |owner| %>
-    
+    <!-- I need to figure out how to select the pet's current owner by default -->
+    <input type="radio" id="<%= owner.id %>" name="owner[name]" value="<%= owner.id %>"><%= owner.name %></input>
   <% end %>
   
   <p><input type="submit" value="Update Pet"></p>
