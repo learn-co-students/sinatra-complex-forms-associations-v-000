@@ -1,2 +1,26 @@
 <h1>Update Owner</h1>
 
+<h2>Edits for <%= @owner.name %></h2>
+
+<form action="/owners/<%= @owner.id %>" method="post">
+  <input id="hidden" type="hidden" name="_method" value="patch">
+  
+  <label for="owner_name">Name:</label>
+  <p><input type="text" id="owner_name" name="owner[name]" value="<%= @owner.name %>"></p>
+  
+  <label>Choose an existing pet:</label>
+  <p>
+    <% @pets.each do |pet| %>
+      <input type="checkbox" name="owner[pet_ids][]" id="<%= pet.id %>" value="<%= pet.id %>" <%= 'checked' if @owner.pets.include?(pet) %>><%= pet.name %></input>
+    <% end %>
+    <!-- My attempt: <%# if @owner.pets.include?(pet) %> checked <%# end %> (which works, too) -->
+  </p>
+  
+  and/or create a new pet:
+  <p>
+    <label for="pet_name">name:</label>
+    <input type="text" id="pet_name" name="pet[name]">
+  </p>
+  
+  <input type="submit" value="Update Owner">
+</form>
