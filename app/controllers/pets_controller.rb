@@ -20,8 +20,6 @@ class PetsController < ApplicationController
       @owner.pets << @pet
     end
     
-    binding.pry
-    
     redirect to "pets/#{@pet.id}"
   end
 
