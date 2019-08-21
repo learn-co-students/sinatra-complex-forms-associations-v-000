@@ -47,6 +47,7 @@ describe "Pets Controller" do
       click_button "Create Pet"
       @owner = Owner.last
       @pet = Pet.last
+      # binding.pry
       expect(@pet.name).to eq("Pippa")
       expect(@pet.owner.name).to eq("Mary Nelson")
     end

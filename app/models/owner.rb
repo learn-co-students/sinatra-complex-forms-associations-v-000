@@ -1,3 +1,3 @@
-class Owner < ActiveRecord::Base
-  has_many :pets
-end
+  class Owner < ActiveRecord::Base
+    has_many :pets
+  end
