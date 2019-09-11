@@ -12,20 +12,28 @@ class OwnersController < ApplicationController
 
   post '/owners' do
     #form for creating a new owner and possible pet.
-    #binding.pry
+    @owner = Owner.create(params[:owner])
+    if !params[:pet][:name].empty?
+      @owner.pets << Pet.create(name: params[:pet][:name])
+    end
+    redirect "/owners/#{@owner.id}"
   end
 
   get '/owners/:id/edit' do
     @owner = Owner.find(params[:id])
+    @pets = Pet.all
     erb :'/owners/edit'
   end
 
   get '/owners/:id' do
+    #binding.pry
     @owner = Owner.find(params[:id])
     erb :'/owners/show'
   end
 
   patch '/owners/:id' do
+    #@owner = Owner.find(params[:id])
+    binding.pry
     # patch for updating owners and also needs a form.
   end
 end
