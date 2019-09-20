@@ -1,2 +1,22 @@
 <h1>Create a new Pet</h1>
 
+<form action="/pets" method="post">
+  <p>
+    <label for="name">Pet name:</label>
+    <input type="text" name="pet_name" id="pet_name">
+  </p>
+
+  <fieldset>
+    <legend>Select Owner:</legend>
+    <% @owners.each do |owner| %>
+      <label for="<%= owner.id %>"><%= owner.name %></label>
+      <input type="radio" name="owner_id" value="<%= owner.id %>" id="<%= owner.id %>">
+    <% end %>
+  </fieldset>
+
+  <p>Or create a new Owner below: <br>
+    <label for="owner_name">Owner Name:</label>
+    <input type="text" name="owner_name" id="owner_name">
+  </p>
+  <input type="submit" value="Create Pet">
+</form>
