@@ -15,7 +15,7 @@
 
   <p>Or create a new Owner below: <br>
     <label for="owner_name">Owner Name:</label>
-    <input type="text" name="owner_name" id="owner_name" value="<%= @pet.owner.name %>">
+    <input type="text" name="owner[name]" id="owner_name">
   </p>
   <input type="hidden" name="_method" value="patch">
   <input type="submit" value="Update Pet">
