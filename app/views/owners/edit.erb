@@ -1,4 +1,3 @@
-# edit.erb
 <h1>Update Owner</h1>
 
 <h2>Edits for <%= @owner.name %></h2>
@@ -6,7 +5,6 @@
   <form action="/owners/<%= @owner.id %>" method="POST">
     <input id="hidden" type="hidden" name="_method" value="patch">
     <label>Edit the Owner's Name:</label>
-    <br>
     <input type="text" name="owner[name]" value="<%= @owner.name %>">
 
     <br>
@@ -21,7 +19,6 @@
 
     <h3>New Pet</h3>
     <label>Pet Name: </label>
-    <br>
     <input type="text" name="pet[name]" id="pet_name"></input>
     <br><br>
 
