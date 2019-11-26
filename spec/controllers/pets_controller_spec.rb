@@ -18,8 +18,8 @@ describe "Pets Controller" do
       @owner2 = Owner.create(:name => "Chris")
 
       visit '/pets/new'
-      expect(page.has_unchecked_field?(@owner1.name)).to eq(true)
-      expect(page.has_unchecked_field?(@owner2.name)).to eq(true)
+      expect(page.has_unchecked_field?(@owner1.id)).to eq(true)
+      expect(page.has_unchecked_field?(@owner2.id)).to eq(true)
     end
 
     it "has a field for creating a new owner" do
@@ -77,7 +77,7 @@ describe "Pets Controller" do
     it " loads form to edit a pet and his owner" do
       visit "/pets/#{@pet.id}/edit"
       expect(page).to have_field('pet_name')
-      expect(page.has_checked_field?(@owner.name)).to eq(true)
+      expect(page.has_checked_field?(@owner.id)).to eq(true)
       expect(page).to have_field('owner[name]')
     end
 
@@ -91,7 +91,7 @@ describe "Pets Controller" do
     it "edit's the pet's owner with an existing owner" do
       @adam = Owner.create(:name => "Adam")
       visit "/pets/#{@pet.id}/edit"
-      choose(@adam.name)
+      choose(@adam.id)
       click_button "Update Pet"
       expect(Pet.last.owner.name).to eq("Adam")
     end
