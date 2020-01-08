@@ -5,8 +5,9 @@ class OwnersController < ApplicationController
     erb :'/owners/index' 
   end
 
-  get '/owners/new' do 
+  get '/owners/new' do
     @pets = Pet.all
+    #binding.pry
     erb :'/owners/new'
   end
 
@@ -20,6 +21,8 @@ class OwnersController < ApplicationController
 
   get '/owners/:id/edit' do 
     @owner = Owner.find(params[:id])
+    #binding.pry
+    @pets = Pet.all
     erb :'/owners/edit'
   end
 
