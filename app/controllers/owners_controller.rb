@@ -1,16 +1,25 @@
 class OwnersController < ApplicationController
 
+
+require 'pry'
+
   get '/owners' do
     @owners = Owner.all
     erb :'/owners/index' 
   end
 
   get '/owners/new' do 
+    @pets = Pet.all
     erb :'/owners/new'
   end
 
+ 
   post '/owners' do 
-    
+    @owner = Owner.create(params[:owner])
+    if !params["pet"]["name"].empty?
+      @owner.pets << Pet.create(name: params["pets"]["name"])
+    end
+    redirect "/owners/#{@owner.id}"
   end
 
   get '/owners/:id/edit' do 
@@ -24,6 +33,7 @@ class OwnersController < ApplicationController
   end
 
   patch '/owners/:id' do 
-   
+   binding.pry
   end
+  
 end
