@@ -12,6 +12,10 @@
     <input type="checkbox" name="owner[pet_ids][]" id="<%= pet.id %>" value="<%= pet.id %>"><%= pet.name %><br>
   <% end %>
   <br>
-
+  <h3>New Pet</h3>
+  <label>Pet Name: </label>
+    <input type="text" name="pet[name]" id="pet_name">
+  <br>
+  <br>
   <input type="submit" value="Create Owner">
 </form>
