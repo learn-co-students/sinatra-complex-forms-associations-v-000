@@ -6,6 +6,7 @@ class OwnersController < ApplicationController
   end
 
   get '/owners/new' do 
+    # binding.pry
     @pets = Pet.all
     erb :'/owners/new'
   end
@@ -29,6 +30,7 @@ end
   end
 
   patch '/owners/:id' do
+    # binding.pry
     if !params[:owner].keys.include?("pet_ids")
     params[:owner]["pet_ids"] = []
     end
