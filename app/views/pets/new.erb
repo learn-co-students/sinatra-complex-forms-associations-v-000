@@ -4,7 +4,20 @@
   <label>Pet Name:</label>
   <br>
   <input type="text" name="pet_name"></input>
+
   <br>
-  <input type="radiobuttons" id="<%= owner.id %>"></input>
-  <br>
+  <p>Select an existing owner or create a new one below.</p>
+
+  <h3>Existing Owners</h3>
+  <% @owners.each do |owner| %>
+    
+    <input type="radio" name="owner_id" id="<%= owner.id %>" value="<%= owner.id %>"><%= owner.name %></input><br>
+  <% end %>
+
+  
 </form>
+
+
+
+
+
